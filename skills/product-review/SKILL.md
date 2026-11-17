@@ -7,8 +7,7 @@ description: >
   screen, all styled in the client's own design system. Handles general reviews and market
   localisation reviews. Use when someone asks for a UX review, UI review, UX audit, expert review,
   IA review, localisation review, "review our site / app", "review <url> and propose
-  improvements", or pastes a client request asking for one, including a sample review for a
-  prospective client. Starts from a bare URL: it asks for what it needs in one batch, with
+  improvements", or pastes a client request asking for one. Starts from a bare URL: it asks for what it needs in one batch, with
   defaults. Not for reviewing a screen Claude just built or a single PR (use ui-design-review).
 metadata:
   version: 0.7.0
@@ -17,7 +16,7 @@ metadata:
 # Product review
 
 A senior UX/UI/IA review of someone else's product, directed by a person. This skill replicates a
-review workflow that produced a client-ready sample: keep to its shape, and add a step only when
+review workflow that was tested against a senior designer's reference review: keep to its shape, and add a step only when
 a real run shows it beats the baseline on quality or cost. New lessons become checklist lines
 (`references/checklist.md`), not new steps.
 
