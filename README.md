@@ -32,7 +32,8 @@ fictional running-shoe brand selling in Japan:
 
 ## Install
 
-Requires [Claude Code](https://code.claude.com) and Node 22.23.5 or newer.
+Requires [Claude Code](https://code.claude.com), in the terminal or the desktop app's Code tab,
+and Node 22.23.5 or newer.
 
 AIspy installs into Claude Code as a skill pack. Either:
 
@@ -49,6 +50,9 @@ AIspy installs into Claude Code as a skill pack. Either:
 git clone https://github.com/stevensmith-design/AIspy.git
 claude --plugin-dir ./AIspy
 ```
+
+To keep it with a project, put the folder inside it and start Claude Code with `--plugin-dir` and
+that path. Keep the folder whole: the skills find their scripts two folders up.
 
 Either way, eight skills become available: `product-review` and `review-scoping`, plus the six
 design-kit skills they call (`ui-design-system`, `ui-design-review`, `ia-review`, `design-refine`,
