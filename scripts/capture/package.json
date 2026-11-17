@@ -1,0 +1,13 @@
+{
+  "name": "product-review-capture",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Capture and annotation scripts for the product-review skill",
+  "dependencies": {
+    "playwright": "^1.47.0"
+  },
+  "engines": {
+    "node": ">=22.23.5"
+  }
+}

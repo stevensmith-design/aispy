@@ -1,0 +1,13 @@
+{
+  "name": "aispy",
+  "owner": {
+    "name": "AIspy"
+  },
+  "plugins": [
+    {
+      "name": "aispy",
+      "source": "./",
+      "description": "UX/UI/IA review of a live website or app, with an optional market-localisation layer, styled in the product's own design system."
+    }
+  ]
+}

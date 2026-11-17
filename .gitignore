@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Claude Code local settings (never commit)
+.claude/settings.local.json
+
+# Secrets
+.env*
+!.env.example
+*.pem
+*.key
+credentials*.json
+service-account*.json
+
+# Review runs: client material stays out of the repo
+/review/
+/_tests/
+
+# OS / tooling
+.DS_Store
+__pycache__/
+*.pyc
+*.tgz
