@@ -4,6 +4,12 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## 0.8.1
+
+- `product-review` "Reference examples": `templates/` sets which sections a document has; `examples/mareo/` sets the standard for what each section contains, how it is argued and how evidence is marked. Names the files to open in each example. The findings count follows the 12–15 rule; Brolga is a run's output, not the standard.
+- Mareo example: the localisation review and IA analysis are renamed without `-draft`, as Brolga's are, with every link updated. Each document carries `data-doc`, so `check-deliverable` works without `--type`.
+- README: "What you get" names Mareo as the standard and shows Brolga as a run's output; the sample request uses neutral wording.
+
 ## 0.8.0
 
 - New example: **Mareo** (`examples/mareo/`), the reference review recreated on a fictional Danish sofa brand selling in Japan: index, localisation review, IA analysis, mock and mock spec, plus the store's product page before and after. One product page; sections that need other pages are labelled "out of scope in this example". English and Japanese, CC BY 4.0 (`examples/mareo/LICENSE.md`).

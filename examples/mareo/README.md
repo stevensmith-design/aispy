@@ -32,8 +32,8 @@ and surface relationships.
 | File | What it is |
 |---|---|
 | `index.html` | Start here: the three documents, four key messages, how to read the markers, how the review was made |
-| `mareo-jp-localisation-review-draft.html` | 13 findings in three perspectives, each with marked evidence, a Japanese site that does it well and a proposal; what already works; market context; a global cross-check; next steps; appendix |
-| `mareo-jp-ia-analysis-draft.html` | Navigation compared with LOWYA, a product-page map, eight shopper journeys, IA findings and items to confirm |
+| `mareo-jp-localisation-review.html` | 13 findings in three perspectives, each with marked evidence, a Japanese site that does it well and a proposal; what already works; market context; a global cross-check; next steps; appendix |
+| `mareo-jp-ia-analysis.html` | Navigation compared with LOWYA, a product-page map, eight shopper journeys, IA findings and items to confirm |
 | `mareo-jp-mock-pdp-mobile.html` | Current and proposed product page side by side, with every change explained |
 | `site/before.html`, `site/after.html` | The store's product page before and after, at 390 px. On the before page, `?state=menu`, `menu-sofa`, `search` (with `&q=`), `popup`, `size`, `spec` or `deliv` opens each state. The after page is generated from the mock |
 

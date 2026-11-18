@@ -96,7 +96,7 @@ The only thing it needs is the product: a URL, a store link, or screens.
 Review https://example.com and propose improvements. Start separate agents for the lenses and checks.
 ```
 ```
-Here's the client's request: <paste>. My direction: focus on mobile checkout, and they're
+Here's the brief: <paste>. My direction: focus on mobile checkout, and the store is
 launching in Japan, so include a localisation review. Report in English.
 ```
 ```
