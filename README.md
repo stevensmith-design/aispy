@@ -86,10 +86,10 @@ are installed.
      ```
      cd aispy/scripts/capture && npm install && npx playwright install chromium
      ```
-   - **With `/plugin`**, in any folder (Claude Code keeps the plugin in a folder named after the
-     installed version, `0.8.2` here; run this again after each update):
+   - **With `/plugin`**, in any folder. Claude Code keeps the plugin in a folder named after the
+     installed version; this picks the newest installed version. Run it again after each update:
      ```
-     cd ~/.claude/plugins/cache/aispy/aispy/0.8.2/scripts/capture && npm install && npx playwright install chromium
+     cd "$(ls -d ~/.claude/plugins/cache/aispy/aispy/*/ | sort -V | tail -1)scripts/capture" && npm install && npx playwright install chromium
      ```
 2. **A browser the session can drive**, such as Claude in Chrome or Playwright, with its commands
    allowed in your permissions so it can open the site.

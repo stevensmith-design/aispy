@@ -6,7 +6,7 @@ measured against.
 
 ## 0.8.2
 
-- README install: the folder is `aispy` (lower case) throughout. The capture install has an explicit path and working directory for both routes: from a clone, and with `/plugin` (`~/.claude/plugins/cache/aispy/aispy/<version>/scripts/capture`).
+- README install: the folder is `aispy` (lower case) throughout. The capture install has an explicit path and working directory for both routes: from a clone, and with `/plugin` (the newest installed version under `~/.claude/plugins/cache/aispy/aispy/`).
 - README prerequisites: Python 3, for the design-system validator.
 - Fonts: `examples/brolga/LICENSE.md` carries the Barlow Condensed copyright notice and the SIL Open Font License 1.1; the embedded font is under OFL, not CC BY. Mareo embeds no font files.
 - Brolga example: the run-folder paths are removed from the documents' CSS comments.
