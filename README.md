@@ -23,8 +23,10 @@ again after the mock, and before packaging.
 
 ## What you get
 
-From the example package in [`examples/brolga/`](examples/brolga/), a localisation review of a
-fictional running-shoe brand selling in Japan:
+The standard a run is held to is [`examples/mareo/`](examples/mareo/), the reference review
+recreated on a fictional store (see [Examples](#examples)). What a run produces, from the full run
+in [`examples/brolga/`](examples/brolga/), a localisation review of a fictional running-shoe brand
+selling in Japan:
 
 | Review report | IA analysis | Mock |
 |---|---|---|
