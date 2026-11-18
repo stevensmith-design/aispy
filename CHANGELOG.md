@@ -4,6 +4,12 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## 0.8.3
+
+- README: a **Quick start** under the intro. Two routes, three steps each: get AIspy (clone or download, or the `/plugin` install), ask "Set up AIspy for my first review", then ask for the review. Each route was tested in a fresh session up to the end of the setup check. A downloaded ZIP unpacks to `aispy-main`, so the Quick start says to rename it to `aispy`.
+- README Install: a plugin added from a local copy (`/plugin marketplace add ./aispy`) runs from that folder, so its capture install goes there, as for a clone. Only the GitHub install uses the plugin cache path.
+- `docs/how-to-use.md` points to the Quick start, says to name the folder in the request when the pack isn't an installed plugin, and says the setup request runs the capture install.
+
 ## 0.8.2
 
 - README install: the folder is `aispy` (lower case) throughout. The capture install has an explicit path and working directory for both routes: from a clone, and with `/plugin` (the newest installed version under `~/.claude/plugins/cache/aispy/aispy/`).

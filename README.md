@@ -21,6 +21,33 @@ findings at least match the reference, and its documents follow the same form.
 It supports a senior reviewer; it doesn't replace one. It stops for your review after the report,
 again after the mock, and before packaging.
 
+## Quick start
+
+**From a clone or download** (nothing to install into Claude Code):
+
+1. **Get AIspy:** `git clone https://github.com/stevensmith-design/aispy.git`, or download the ZIP
+   from GitHub and rename the unzipped folder (`aispy-main`) to `aispy`. Open Claude Code in the
+   folder that contains `aispy` (your project, for example), or connect the `aispy` folder to a
+   session alongside your project.
+2. **Ask Claude:** "Set up AIspy for my first review". It installs the screenshot helper and tests
+   a scripted browser; approve the install and browser commands when it asks.
+3. **Ask for a review:** "Use the AIspy kit in ./aispy to review https://example.com. Start
+   separate agents for the lenses and checks." With the folder connected separately, say "the
+   AIspy kit in the connected aispy folder".
+
+**Or install it as a plugin:**
+
+1. **Get AIspy:** `/plugin marketplace add stevensmith-design/aispy`, then
+   `/plugin install aispy@aispy`. From a local copy: `/plugin marketplace add ./aispy`, then the
+   same install command.
+2. **Ask Claude:** "Set up AIspy for my first review". It offers to install the screenshot helper
+   and test the browser; say yes and approve the commands.
+3. **Ask for a review:** "Use the AIspy kit to review https://example.com. Start separate agents
+   for the lenses and checks."
+
+Each review starts with a setup check (agents, the browser reaching your site, screenshots, the
+kit) and stops if anything fails. The manual commands are under [Install](#install).
+
 ## What you get
 
 The standard a run is held to is [`examples/mareo/`](examples/mareo/), the reference review
@@ -86,8 +113,11 @@ are installed.
      ```
      cd aispy/scripts/capture && npm install && npx playwright install chromium
      ```
-   - **With `/plugin`**, in any folder. Claude Code keeps the plugin in a folder named after the
-     installed version; this picks the newest installed version. Run it again after each update:
+   - **With `/plugin` from a local copy** (`/plugin marketplace add ./aispy`): as from a clone. The
+     plugin runs from that folder.
+   - **With `/plugin` from GitHub**, in any folder. Claude Code keeps the plugin in a folder named
+     after the installed version; this picks the newest installed version. Run it again after each
+     update:
      ```
      cd "$(ls -d ~/.claude/plugins/cache/aispy/aispy/*/ | sort -V | tail -1)scripts/capture" && npm install && npx playwright install chromium
      ```
@@ -185,7 +215,7 @@ demonstrated gap, or when a run shows it beats the reference on quality or cost.
 
 ## Status
 
-0.8.2. See [CHANGELOG.md](CHANGELOG.md) for the history and
+0.8.3. See [CHANGELOG.md](CHANGELOG.md) for the history and
 [ROADMAP.md](ROADMAP.md) for what's next.
 
 ## Licence

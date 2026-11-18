@@ -2,6 +2,11 @@
 
 What to give the pack for each kind of product, what to say in the request, and what to expect.
 
+To get started, follow the [Quick start](../README.md#quick-start) in the README: get AIspy (a
+clone or download, or the `/plugin` install), ask Claude "Set up AIspy for my first review", then
+ask for the review. When the pack is a folder rather than an installed plugin, name it in the
+request ("Use the AIspy kit in ./aispy to review …").
+
 ## What to provide, by product type
 
 ### Live website
@@ -86,3 +91,6 @@ the capture helper's Playwright.
 | `scripts/build/`, `scripts/checks/` | Node 22.23.5+ only | none |
 | `scripts/inventory/` | Node 22.23.5+; `--measure` also needs Playwright | none; for `--measure`, the `scripts/capture/` install |
 | `scripts/capture/` | Node 22.23.5+ and Playwright | `cd scripts/capture && npm install && npx playwright install chromium` |
+
+Asking Claude "Set up AIspy for my first review" runs the capture install for you. To run it by
+hand, see [Install](../README.md#install) in the README for the folder to run it in for each route.
