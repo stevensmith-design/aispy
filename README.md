@@ -48,6 +48,35 @@ again after the mock, and before packaging.
 Each review starts with a setup check (agents, the browser reaching your site, screenshots, the
 kit) and stops if anything fails. The manual commands are under [Install](#install).
 
+### クイックスタート（日本語）
+
+**クローンまたはダウンロードして使う**（Claude Code へのインストールは不要）
+
+1. **AIspy を入手する：** `git clone https://github.com/stevensmith-design/aispy.git` を実行するか、
+   GitHub から ZIP をダウンロードし、展開したフォルダ（`aispy-main`）の名前を `aispy` に変更します。
+   `aispy` が入っているフォルダ（作業中のプロジェクトなど）で Claude Code を開くか、`aispy`
+   フォルダをプロジェクトと一緒にセッションに接続します。
+2. **Claude に依頼する：**「AIspy の初回レビューの準備をして」。スクリーンショット用のツールを
+   インストールし、ブラウザの自動操作をテストします。インストールやブラウザのコマンドの許可を
+   求められたら承認してください。
+3. **レビューを依頼する：**「./aispy の AIspy キットで https://example.com をレビューして。
+   レビュー観点とチェックは別々のエージェントで実行して。」フォルダを別に接続している場合は
+   「接続した aispy フォルダの AIspy キットで」と伝えます。
+
+**プラグインとしてインストールして使う**
+
+1. **AIspy を入手する：** `/plugin marketplace add stevensmith-design/aispy` を実行したあと、
+   `/plugin install aispy@aispy` を実行します。ローカルのコピーから入れる場合は
+   `/plugin marketplace add ./aispy` のあと、同じインストールコマンドを実行します。
+2. **Claude に依頼する：**「AIspy の初回レビューの準備をして」。スクリーンショット用のツールの
+   インストールとブラウザのテストを提案してくるので、了承してコマンドを承認してください。
+3. **レビューを依頼する：**「AIspy キットで https://example.com をレビューして。レビュー観点と
+   チェックは別々のエージェントで実行して。」
+
+レビューは毎回、セットアップチェック（エージェント、サイトへのブラウザ接続、スクリーンショット、
+キット）から始まり、どれかが失敗するとそこで止まります。手動で実行するコマンドは
+[Install](#install) にあります。
+
 ## What you get
 
 The standard a run is held to is [`examples/mareo/`](examples/mareo/), the reference review
@@ -143,6 +172,25 @@ Extract the brand and design system from https://example.com first; we'll review
 It takes a quick look, then asks one batch of questions with a proposed default for each, so "go"
 is enough. Before reviewing, it runs a setup check (agents, browser, screenshots, kit) and stops if
 anything fails.
+
+### 始め方（日本語）
+
+必要なのはプロダクトだけです。URL、ストアのリンク、または画面のどれかを渡してください。
+
+```
+https://example.com をレビューして、改善案を出して。レビュー観点とチェックは別々のエージェントで実行して。
+```
+```
+ブリーフはこちら：<貼り付け>。方針：モバイルの購入手続きを重点的に見てほしい。日本市場でローンチ
+するので、ローカライズのレビューも含めて。レポートは日本語で。
+```
+```
+まず https://example.com からブランドとデザインシステムを抽出して。レビューはそのあとで。
+```
+
+まずサイトをざっと確認し、質問をまとめて一度に送ります。各質問には既定の案が付いているので、
+「進めて」と返すだけで構いません。レビューの前にセットアップチェック（エージェント、ブラウザ、
+スクリーンショット、キット）を行い、どれかが失敗するとそこで止まります。
 
 ## How to use
 
