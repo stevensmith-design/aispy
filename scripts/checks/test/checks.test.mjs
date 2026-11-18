@@ -19,7 +19,7 @@ const out = (r) => r.stdout + r.stderr;
 
 const EXAMPLES = {
   brolga: { report: 'brolga-jp-localisation-review.html', ia: 'brolga-jp-ia-analysis.html', mock: 'brolga-jp-mock-pdp-mobile.html' },
-  mareo: { report: 'mareo-jp-localisation-review-draft.html', ia: 'mareo-jp-ia-analysis-draft.html', mock: 'mareo-jp-mock-pdp-mobile.html' },
+  mareo: { report: 'mareo-jp-localisation-review.html', ia: 'mareo-jp-ia-analysis.html', mock: 'mareo-jp-mock-pdp-mobile.html' },
 };
 const runDoc = (d, file, type) => {
   const e = EXAMPLES[d];

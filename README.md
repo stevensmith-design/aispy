@@ -23,8 +23,10 @@ again after the mock, and before packaging.
 
 ## What you get
 
-From the example package in [`examples/brolga/`](examples/brolga/), a localisation review of a
-fictional running-shoe brand selling in Japan:
+The standard a run is held to is [`examples/mareo/`](examples/mareo/), the reference review
+recreated on a fictional store (see [Examples](#examples)). What a run produces, from the full run
+in [`examples/brolga/`](examples/brolga/), a localisation review of a fictional running-shoe brand
+selling in Japan:
 
 | Review report | IA analysis | Mock |
 |---|---|---|
@@ -94,7 +96,7 @@ The only thing it needs is the product: a URL, a store link, or screens.
 Review https://example.com and propose improvements. Start separate agents for the lenses and checks.
 ```
 ```
-Here's the client's request: <paste>. My direction: focus on mobile checkout, and they're
+Here's the brief: <paste>. My direction: focus on mobile checkout, and the store is
 launching in Japan, so include a localisation review. Report in English.
 ```
 ```
