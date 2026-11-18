@@ -182,8 +182,9 @@ demonstrated gap, or when a run shows it beats the reference on quality or cost.
 ## Licence
 
 Code, skills and templates: [MIT](LICENSE). The bundled design kit keeps its own MIT licence and
-notice (`skills/design-kit/LICENSE`, `NOTICE`). The example package in `examples/brolga/` is
-[CC BY 4.0](examples/brolga/LICENSE.md).
+notice (`skills/design-kit/LICENSE`, `NOTICE`). The example packages are
+CC BY 4.0: [`examples/mareo/`](examples/mareo/LICENSE.md) and
+[`examples/brolga/`](examples/brolga/LICENSE.md).
 
 The AIspy name, logo and character artwork (including the image at the top of this page) are
 not covered by these licences.

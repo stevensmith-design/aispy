@@ -6,7 +6,7 @@ measured against.
 
 ## 0.8.0
 
-- New example: **Mareo** (`examples/mareo/`), the reference review recreated on a fictional Danish sofa brand selling in Japan: index, localisation review, IA analysis, mock and mock spec, plus the store's product page before and after. One product page; sections that need other pages are labelled "out of scope in this example".
+- New example: **Mareo** (`examples/mareo/`), the reference review recreated on a fictional Danish sofa brand selling in Japan: index, localisation review, IA analysis, mock and mock spec, plus the store's product page before and after. One product page; sections that need other pages are labelled "out of scope in this example". English and Japanese, CC BY 4.0 (`examples/mareo/LICENSE.md`).
 - `product-review`: when the person supplies no examples, `examples/mareo/` is the default standard for document form, argument density, evidence marking and the mock, and `examples/brolga/` shows a full multi-page run. A run doesn't copy Mareo's scope or its out-of-scope labels.
 - `check-deliverable` and `check-mock` accept the reference review's structure as well as the templates', each checked in full:
   - report: `overview`, `context`, `works` and `<h3>A1 · …</h3>` appendix subsections; a summary table by perspective that must list every finding with its priority; inline questions (`p.ask`); a page diagram may stand in for a screenshot.

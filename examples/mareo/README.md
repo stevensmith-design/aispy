@@ -1,11 +1,11 @@
 # Example: the reference review, recreated on a fictional store
 
-This product-review kit was built to reproduce one particular review: a Japanese-market UX/UI
-review of a real D2C store, made of four documents (an index, a localisation review, an
-information architecture analysis and a proposed product page). This example is that reference
-review recreated on a store that doesn't exist. The four documents keep the reference's sections,
-order, components and density of argument; the store, its problems, the evidence and the
-benchmarks are new.
+This product-review kit was built to match one reference review: a Japanese-market UX/UI review
+made of four documents (an index, a localisation review, an information architecture analysis and
+a proposed product page). This example is that review
+recreated on a fictional store. The four documents keep the reference's sections, order,
+components and density of argument; the store, its problems, the evidence and the benchmarks are
+made for this example.
 
 It is not the output of a kit run. It shows what the kit is aiming at.
 
@@ -48,7 +48,7 @@ place and marked "out of scope in this example" rather than dropped.
 ## Sources and benchmarks
 
 General Japanese market figures and the global cross-check (Apple, Dyson and Nike Japan) are
-reused from the reference's research, with their sources. Every furniture benchmark (LOWYA, unico,
+carried over from the reference review, with their sources. Every furniture benchmark (LOWYA, unico,
 Re:CENO, ACTUS, IKEA Japan, NOYES) was checked live on 18 November 2026, and the typography table
 was measured on those pages. Red values in the mock stand in for facts a store would have to
 confirm.

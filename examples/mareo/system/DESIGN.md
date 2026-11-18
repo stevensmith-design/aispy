@@ -74,7 +74,7 @@ Every line below was computed by `derive-system.py` at generation time and re-ch
 | `color.tint` | #EDEFF4 | Navy at low chroma. Selected cards, soft fills. |
 | `color.accent` | #A65F43 | Terracotta upholstery (photo sample #B47C62, darkened to pass 4.5:1 on canvas). The single accent: small highlights, and medium-priority labels in the review documents. Never a button. |
 
-**Review-document tokens.** Two colours have a role only in the review documents, never in a shipped storefront. The one exception is the proposed page (`site/after.html`), where `marker` shows placeholder values that the store must supply:
+**Review-document tokens.** Two colours have a role only in the review documents, never in a shipped storefront:
 
 | Token | Value | Role |
 |---|---|---|
