@@ -132,7 +132,8 @@ scripts/              optional helpers, not required steps
   capture/            capture.mjs, extract-in-page.js, sweep-in-page.js, annotate.mjs (evidence crops)
   inventory/          inventory.mjs (sitemap, page types, broken URLs)
   build/              theme-from-tokens.mjs, assemble.mjs, layout-bars.mjs
-  checks/             check-deliverable.mjs, check-report.mjs, check-mock.mjs
+  checks/             check-deliverable.mjs, check-report.mjs, check-mock.mjs, forbid.mjs
+                      (tests: node --test scripts/checks/test/)
 examples/brolga/      a complete example package
 docs/how-to-use.md    inputs by product type, and what to expect
 ```

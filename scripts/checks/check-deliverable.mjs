@@ -13,12 +13,15 @@
 //   - languages carry the same sections and the same findings
 // And for the whole file: no sample content left (data-sample, the sample brand, .ph-img,
 // {{fields}}), no forbidden names (--forbid: names that were NOT supplied at intake, such as
-// the account owner's name or organisation), in-page #links resolve, and theme contrast.
+// the account owner's name or organisation; Latin names match as whole words, Japanese names as
+// substrings, katakana-only names only outside a longer katakana word: see forbid.mjs), in-page
+// #links resolve, and theme contrast.
 // Exit 1 on any failure. No dependencies.
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { forbiddenHits } from './forbid.mjs';
 
 const argv = process.argv.slice(2);
 const file = argv.find((x) => !x.startsWith('--') && !argv[argv.indexOf(x) - 1]?.startsWith('--'));
@@ -52,9 +55,8 @@ if (ph) bad(`${ph} image placeholder(s) (.ph-img) left: use a real capture, or a
 const fields = noComments.match(/\{\{[^}]{1,80}\}\}/g) || [];
 if (fields.length) bad(`${fields.length} unfilled field(s), e.g. ${fields.slice(0, 3).join(' ')}`);
 if (opt('forbid')) {
-  const t = text(html);
-  for (const n of String(opt('forbid')).split(',').map((x) => x.trim()).filter(Boolean)) {
-    if (new RegExp(`\\b${n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(t)) bad(`name not supplied at intake appears in the text: "${n}"`);
+  for (const n of forbiddenHits(text(html), String(opt('forbid')).split(','))) {
+    bad(`name not supplied at intake appears in the text: "${n}"`);
   }
 }
 
