@@ -1,11 +1,13 @@
 #!/usr/bin/env node
-// Site inventory for review scoping. Node 18+, no dependencies (measure needs Playwright).
+// Site inventory for review scoping. Node 18+, no dependencies (--measure uses the Playwright
+// installed in scripts/capture/; see docs/how-to-use.md).
 // Usage: node inventory.mjs --site https://jp.example.com --out scoping/ [--limit 400]
 //        [--concurrency 3] [--measure] [--sitemap https://…/sitemap.xml]
 // Writes: inventory.csv (one row per URL), types.md (grouped page types, fill in tiers),
 //         broken.md (non-200 URLs). Polite by default: 3 parallel requests, 300 ms apart.
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
 
 const a = Object.fromEntries(process.argv.slice(2).reduce((acc, v, i, arr) => {
   if (v.startsWith('--')) acc.push([v.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true]);
@@ -86,7 +88,9 @@ const types = Object.entries(groups).sort((x, y) => y[1].length - x[1].length);
 
 let measured = {};
 if (a.measure) {
-  const { chromium } = await import('playwright');
+  let chromium;
+  try { ({ chromium } = createRequire(new URL('../capture/package.json', import.meta.url))('playwright')); }
+  catch { console.error('--measure needs Playwright: cd scripts/capture && npm install && npx playwright install chromium'); process.exit(2); }
   const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || undefined });
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
   for (const [k, rs] of types) {

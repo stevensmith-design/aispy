@@ -10,7 +10,7 @@ description: >
   improvements", or pastes a client request asking for one. Starts from a bare URL: it asks for what it needs in one batch, with
   defaults. Not for reviewing a screen Claude just built or a single PR (use ui-design-review).
 metadata:
-  version: 0.8.1
+  version: 0.8.2
 ---
 
 # Product review
@@ -50,6 +50,8 @@ Don't polish before the person has seen it.
   2. a browser reaches the site in scope;
   3. a scripted browser can take screenshots (for `annotate.mjs` and captures);
   4. the kit's skills are readable.
+  Exception: if the person supplies only screens (no URL or build), skip check 2 and record in
+  `01-frame.md` that the sweep is done from the supplied screens.
   If any fails, **stop and tell the person** what failed and what it would cost the review. Don't
   continue in a reduced mode: lenses run in your own context are not independent, take a
   fraction of the time and find far less, and the result can't be compared with the reference

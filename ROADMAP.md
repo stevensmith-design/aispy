@@ -24,6 +24,3 @@ Open items, logged but not yet done. Each is also a GitHub issue.
   proposals): in the pack since 0.6.5, not yet confirmed in a run.
 - **Role colours for very dark or monochrome brands.**
 - **Brand fonts not embedded** in the documents when the brand's font files aren't available.
-
-## Examples
-- **A second example package** under a fictional brand, alongside Brolga.

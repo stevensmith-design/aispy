@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Structural checks for a findings mock (see skills/findings-mock/SKILL.md).
+// Structural checks for a findings mock (see the "Mock" section of skills/product-review/references/deliverables.md).
 // Usage: node check-mock.mjs --mock mock.html [--diff diff.md] [--report report.html] [--ia ia.html]
 // With --diff: every row of diff.md that moves, removes or hides something must name the entry
 // point that keeps it findable on the first screen ("Entry point" column, or "entry point:" text).
