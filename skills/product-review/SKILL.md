@@ -10,7 +10,7 @@ description: >
   improvements", or pastes a client request asking for one. Starts from a bare URL: it asks for what it needs in one batch, with
   defaults. Not for reviewing a screen Claude just built or a single PR (use ui-design-review).
 metadata:
-  version: 0.7.0
+  version: 0.8.0
 ---
 
 # Product review
@@ -100,7 +100,12 @@ in scope** (how users arrive, what they want to know or do there, and the goal i
 we won't do, deliverables.
 
 **Reference examples.** If the person supplies example deliverables from an earlier review, they
-are the standard for depth, tone and what a good section contains. Structure and layout still
+are the standard for depth, tone and what a good section contains. If they supply none, the
+pack's examples are the standard: `examples/mareo/` for document form, argument density, evidence
+marking and the mock (it recreates the review the kit was tested against), and `examples/brolga/`
+for what a full multi-page run looks like. Mareo covers one product page, and the parts of the
+reference it leaves out are labelled "out of scope in this example"; a run must not copy those
+labels or that scope, which comes from the run's own intake. Structure and layout still
 come from `templates/`, so the package matches every other run. Take every finding, fact and screenshot from the product being reviewed, never
 from the examples.
 

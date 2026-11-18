@@ -4,6 +4,21 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## 0.8.0
+
+- New example: **Mareo** (`examples/mareo/`), the reference review recreated on a fictional Danish sofa brand selling in Japan: index, localisation review, IA analysis, mock and mock spec, plus the store's product page before and after. One product page; sections that need other pages are labelled "out of scope in this example". English and Japanese, CC BY 4.0 (`examples/mareo/LICENSE.md`).
+- `product-review`: when the person supplies no examples, `examples/mareo/` is the default standard for document form, argument density, evidence marking and the mock, and `examples/brolga/` shows a full multi-page run. A run doesn't copy Mareo's scope or its out-of-scope labels.
+- `check-deliverable` and `check-mock` accept the reference review's structure as well as the templates', each checked in full:
+  - report: `overview`, `context`, `works` and `<h3>A1 · …</h3>` appendix subsections; a summary table by perspective that must list every finding with its priority; inline questions (`p.ask`); a page diagram may stand in for a screenshot.
+  - IA analysis: `pages` (page maps, legend and heading hierarchy) and `journeys`; a task labelled out of scope needs no route.
+  - mock: notes as a title, a paragraph and a source line, as well as Now / Proposed.
+  - In the reference form, a High/Medium finding without a local example and a task without a local site example are reported as notes, not failures.
+- `check-mock` checks each language template on its own and reads only its first notes list, so notes are no longer counted again from the other languages or the no-script copy. Citations ("Localisation review 4", 指摘, IA分析, 付録 …) and design-proposal labels (デザイン提案, デザイン上の判断) are recognised in Japanese.
+- `check-deliverable` passes `--ia` through to `check-mock`, so prefixed markers defined in the IA analysis resolve.
+- `check-deliverable --forbid` matches Japanese names (substring; katakana only outside a longer katakana word). The matcher is in `scripts/checks/forbid.mjs`.
+- Tests for the checks: `node --test scripts/checks/test/` (no dependencies).
+- README: an Examples section; install commands use the repository name `aispy`.
+
 ## 0.7.0 (first public release)
 
 - Released as **AIspy** (previously the working name product-review-pack). The skill names are unchanged.
