@@ -40,15 +40,15 @@ AIspy installs into Claude Code as a skill pack. Either:
 **With Claude Code's `/plugin` command:**
 
 ```
-/plugin marketplace add stevensmith-design/AIspy
+/plugin marketplace add stevensmith-design/aispy
 /plugin install aispy@aispy
 ```
 
 **Or from a clone**, starting Claude Code with it loaded:
 
 ```
-git clone https://github.com/stevensmith-design/AIspy.git
-claude --plugin-dir ./AIspy
+git clone https://github.com/stevensmith-design/aispy.git
+claude --plugin-dir ./aispy
 ```
 
 To keep it with a project, put the folder inside it and start Claude Code with `--plugin-dir` and
