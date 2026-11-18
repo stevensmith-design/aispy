@@ -4,6 +4,16 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## 0.8.2
+
+- README install: the folder is `aispy` (lower case) throughout. The capture install has an explicit path and working directory for both routes: from a clone, and with `/plugin` (`~/.claude/plugins/cache/aispy/aispy/<version>/scripts/capture`).
+- README prerequisites: Python 3, for the design-system validator.
+- Fonts: `examples/brolga/LICENSE.md` carries the Barlow Condensed copyright notice and the SIL Open Font License 1.1; the embedded font is under OFL, not CC BY. Mareo embeds no font files.
+- Brolga example: the run-folder paths are removed from the documents' CSS comments.
+- `product-review` setup check: when the person supplies only screens, the browser check is skipped and `01-frame.md` records that the sweep is done from the supplied screens.
+- `inventory.mjs --measure` loads Playwright from `scripts/capture/`, so it works after the documented capture install; `docs/how-to-use.md` says so.
+- Root `LICENSE` lists both examples under CC BY 4.0; ROADMAP drops the second example (done in 0.8.0); `check-mock.mjs` points to the mock rules in `references/deliverables.md`.
+
 ## 0.8.1
 
 - `product-review` "Reference examples": `templates/` sets which sections a document has; `examples/mareo/` sets the standard for what each section contains, how it is argued and how evidence is marked. Names the files to open in each example. The findings count follows the 12–15 rule; Brolga is a run's output, not the standard.

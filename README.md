@@ -50,7 +50,7 @@ real Japanese sites appear only as benchmarks.
 ## Install
 
 Requires [Claude Code](https://code.claude.com), in the terminal or the desktop app's Code tab,
-and Node 22.23.5 or newer.
+Node 22.23.5 or newer, and Python 3 (for the design-system validator, `validate-tokens.py`).
 
 AIspy installs into Claude Code as a skill pack. Either:
 
@@ -74,16 +74,23 @@ that path. Keep the folder whole: the skills find their scripts two folders up.
 Either way, eight skills become available: `product-review` and `review-scoping`, plus the six
 design-kit skills they call (`ui-design-system`, `ui-design-review`, `ia-review`, `design-refine`,
 `ui-design-principles`, `distinctiveness-review`). The design kit is bundled. To confirm AIspy is
-loaded, run `/plugin` (or `claude --plugin-dir ./AIspy plugin details aispy`) and look for the
+loaded, run `/plugin` (or `claude --plugin-dir ./aispy plugin details aispy`) and look for the
 eight skills; tested, the bare names resolve to AIspy's copies even when other copies of the kit
 are installed.
 
 **Before the first review**, set up what the setup check needs, or it stops:
 
-1. **Screenshots:** install the capture helper (Playwright), which makes the evidence crops.
-   ```
-   cd AIspy/scripts/capture && npm install && npx playwright install chromium
-   ```
+1. **Screenshots:** install the capture helper (Playwright), which makes the evidence crops. Run
+   it in the pack's `scripts/capture/` folder:
+   - **From a clone**, in the folder where you ran `git clone`:
+     ```
+     cd aispy/scripts/capture && npm install && npx playwright install chromium
+     ```
+   - **With `/plugin`**, in any folder (Claude Code keeps the plugin in a folder named after the
+     installed version, `0.8.2` here; run this again after each update):
+     ```
+     cd ~/.claude/plugins/cache/aispy/aispy/0.8.2/scripts/capture && npm install && npx playwright install chromium
+     ```
 2. **A browser the session can drive**, such as Claude in Chrome or Playwright, with its commands
    allowed in your permissions so it can open the site.
 3. **Agents:** say "start separate agents for the lenses and checks" in your request.
@@ -178,7 +185,7 @@ demonstrated gap, or when a run shows it beats the reference on quality or cost.
 
 ## Status
 
-0.8.0. See [CHANGELOG.md](CHANGELOG.md) for the history and
+0.8.2. See [CHANGELOG.md](CHANGELOG.md) for the history and
 [ROADMAP.md](ROADMAP.md) for what's next.
 
 ## Licence
@@ -186,7 +193,8 @@ demonstrated gap, or when a run shows it beats the reference on quality or cost.
 Code, skills and templates: [MIT](LICENSE). The bundled design kit keeps its own MIT licence and
 notice (`skills/design-kit/LICENSE`, `NOTICE`). The example packages are
 CC BY 4.0: [`examples/mareo/`](examples/mareo/LICENSE.md) and
-[`examples/brolga/`](examples/brolga/LICENSE.md).
+[`examples/brolga/`](examples/brolga/LICENSE.md). The Barlow Condensed font embedded in
+Brolga's documents is under the SIL Open Font License 1.1, not CC BY (see its `LICENSE.md`).
 
 The AIspy name, logo and character artwork (including the image at the top of this page) are
 not covered by these licences.

@@ -78,9 +78,11 @@ through the product unless you ask for one.
 
 The skills say when to use each script. Paths are relative to the pack root. The capture helper
 is needed for the evidence crops (`annotate.mjs`) and the setup check's screenshot test, so install
-it before the first review; the rest need nothing beyond Node.
+it before the first review. The rest need only Node, except `inventory.mjs --measure`, which uses
+the capture helper's Playwright.
 
 | Folder | Needs | Install |
 |---|---|---|
-| `scripts/build/`, `scripts/checks/`, `scripts/inventory/` | Node 22.23.5+ only | none |
+| `scripts/build/`, `scripts/checks/` | Node 22.23.5+ only | none |
+| `scripts/inventory/` | Node 22.23.5+; `--measure` also needs Playwright | none; for `--measure`, the `scripts/capture/` install |
 | `scripts/capture/` | Node 22.23.5+ and Playwright | `cd scripts/capture && npm install && npx playwright install chromium` |
