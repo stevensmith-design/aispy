@@ -12,6 +12,8 @@ Made by Steven Smith. More on AIspy and my other work: [stevensmith.dev/aispy](h
 
 <sub>Real output from a full AIspy run on Brolga, a fictional running-shoe brand selling in Japan. The standard every run is held to is [`examples/mareo/`](examples/mareo/), the reference review recreated on a fictional store. More under [Examples](#examples).</sub>
 
+For designers and product managers who want a second pair of eyes before a senior review.
+
 AIspy is a set of Claude skills that runs a professional UX/UI/IA review of a live website or app,
 with an optional market-localisation layer. Give it a product; it captures the pages, extracts the
 design system, researches the market and benchmarks, runs three independent review lenses, and
@@ -260,7 +262,7 @@ demonstrated gap, or when a run shows it beats the reference on quality or cost.
 
 ## Status
 
-0.8.4. See [CHANGELOG.md](CHANGELOG.md) for the history and
+0.8.5. See [CHANGELOG.md](CHANGELOG.md) for the history and
 [ROADMAP.md](ROADMAP.md) for what's next.
 
 ## Licence
