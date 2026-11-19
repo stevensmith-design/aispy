@@ -6,6 +6,12 @@
 
 Made by Steven Smith. More on AIspy and my other work: [stevensmith.dev/aispy](https://stevensmith.dev/aispy)
 
+| Review report | IA analysis | Mock |
+|---|---|---|
+| ![The example review report's cover: headline finding, scope and reviewer](docs/images/example-report.png) | ![The example IA analysis's cover: headline and task-path results](docs/images/example-ia.png) | ![The example mock: current and proposed product page side by side, with numbered markers and notes](docs/images/example-mock.png) |
+
+<sub>Real output from a full AIspy run on Brolga, a fictional running-shoe brand selling in Japan. More under [Examples](#examples).</sub>
+
 AIspy is a set of Claude skills that runs a professional UX/UI/IA review of a live website or app,
 with an optional market-localisation layer. Give it a product; it captures the pages, extracts the
 design system, researches the market and benchmarks, runs three independent review lenses, and
@@ -22,17 +28,6 @@ findings at least match the reference, and its documents follow the same form.
 
 It supports a senior reviewer; it doesn't replace one. It stops for your review after the report,
 again after the mock, and before packaging.
-
-## What you get
-
-The standard a run is held to is [`examples/mareo/`](examples/mareo/), the reference review
-recreated on a fictional store (see [Examples](#examples)). What a run produces, from the full run
-in [`examples/brolga/`](examples/brolga/), a localisation review of a fictional running-shoe brand
-selling in Japan:
-
-| Review report | IA analysis | Mock |
-|---|---|---|
-| ![The example review report's cover: headline finding, scope and reviewer](docs/images/example-report.png) | ![The example IA analysis's cover: headline and task-path results](docs/images/example-ia.png) | ![The example mock: current and proposed product page side by side, with numbered markers and notes](docs/images/example-mock.png) |
 
 ## Quick start
 
