@@ -19,3 +19,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+The example packages in examples/mareo/ and examples/brolga/ are licensed separately
+under CC BY 4.0 (see examples/mareo/LICENSE.md and examples/brolga/LICENSE.md; the font
+embedded in examples/brolga/ is under the SIL Open Font License 1.1). The bundled design kit in
+skills/design-kit/ carries its own MIT licence and notice.

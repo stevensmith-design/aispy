@@ -10,7 +10,7 @@ Made by Steven Smith. More on AIspy and my other work: [stevensmith.dev/aispy](h
 |---|---|---|
 | ![The example review report's cover: headline finding, scope and reviewer](docs/images/example-report.png) | ![The example IA analysis's cover: headline and task-path results](docs/images/example-ia.png) | ![The example mock: current and proposed product page side by side, with numbered markers and notes](docs/images/example-mock.png) |
 
-<sub>Real output from a full AIspy run on Brolga, a fictional running-shoe brand selling in Japan. More under [Examples](#examples).</sub>
+<sub>Real output from a full AIspy run on Brolga, a fictional running-shoe brand selling in Japan. The standard every run is held to is [`examples/mareo/`](examples/mareo/), the reference review recreated on a fictional store. More under [Examples](#examples).</sub>
 
 AIspy is a set of Claude skills that runs a professional UX/UI/IA review of a live website or app,
 with an optional market-localisation layer. Give it a product; it captures the pages, extracts the
