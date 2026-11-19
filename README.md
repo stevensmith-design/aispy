@@ -4,7 +4,7 @@
 
 **A second pair of eyes for your UX, UI and IA.**
 
-Made by Steven Smith. More on AIspy and my other work: [stevensmith.dev/aispy](https://stevensmith.dev/aispy)
+Made by Steven Smith. More on AIspy and my other work: [stevensmith.dev/aispy](https://stevensmith.dev/aispy?utm_source=github&utm_campaign=aispy)
 
 | Review report | IA analysis | Mock |
 |---|---|---|

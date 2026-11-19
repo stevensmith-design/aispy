@@ -4,6 +4,10 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## Unreleased
+
+- README: links to stevensmith.dev carry `utm_source=github` and the repo name, so visits from the repo can be counted.
+
 ## 0.8.5
 
 - README: a line under the screenshots saying who AIspy is for: designers and product managers who want a second pair of eyes before a senior review.
