@@ -4,6 +4,11 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## Unreleased
+
+- README: a line saying who AIspy is for, under the screenshots.
+- README Quick start (English and Japanese): the plugin route comes first, as the shorter one; the clone or download route follows it. The steps themselves are unchanged.
+
 ## 0.8.4
 
 - README: a "Made by" line with a link to stevensmith.dev/aispy under the tagline.
