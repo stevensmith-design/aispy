@@ -12,7 +12,7 @@ Made by Steven Smith. More on AIspy and my other work: [stevensmith.dev/aispy](h
 
 <sub>Real output from a full AIspy run on Brolga, a fictional running-shoe brand selling in Japan. The standard every run is held to is [`examples/mareo/`](examples/mareo/), the reference review recreated on a fictional store. More under [Examples](#examples).</sub>
 
-For designers, product managers and anyone who wants a senior-level design review of a website or app.
+For designers and product managers who want a second pair of eyes before a senior review.
 
 AIspy is a set of Claude skills that runs a professional UX/UI/IA review of a live website or app,
 with an optional market-localisation layer. Give it a product; it captures the pages, extracts the
@@ -33,17 +33,7 @@ again after the mock, and before packaging.
 
 ## Quick start
 
-**Install it as a plugin** (two commands in Claude Code):
-
-1. **Get AIspy:** `/plugin marketplace add stevensmith-design/aispy`, then
-   `/plugin install aispy@aispy`. From a local copy: `/plugin marketplace add ./aispy`, then the
-   same install command.
-2. **Ask Claude:** "Set up AIspy for my first review". It offers to install the screenshot helper
-   and test the browser; say yes and approve the commands.
-3. **Ask for a review:** "Use the AIspy kit to review https://example.com. Start separate agents
-   for the lenses and checks."
-
-**Or from a clone or download** (nothing to install into Claude Code):
+**From a clone or download** (nothing to install into Claude Code):
 
 1. **Get AIspy:** `git clone https://github.com/stevensmith-design/aispy.git`, or download the ZIP
    from GitHub and rename the unzipped folder (`aispy-main`) to `aispy`. Open Claude Code in the
@@ -55,22 +45,22 @@ again after the mock, and before packaging.
    separate agents for the lenses and checks." With the folder connected separately, say "the
    AIspy kit in the connected aispy folder".
 
+**Or install it as a plugin:**
+
+1. **Get AIspy:** `/plugin marketplace add stevensmith-design/aispy`, then
+   `/plugin install aispy@aispy`. From a local copy: `/plugin marketplace add ./aispy`, then the
+   same install command.
+2. **Ask Claude:** "Set up AIspy for my first review". It offers to install the screenshot helper
+   and test the browser; say yes and approve the commands.
+3. **Ask for a review:** "Use the AIspy kit to review https://example.com. Start separate agents
+   for the lenses and checks."
+
 Each review starts with a setup check (agents, the browser reaching your site, screenshots, the
 kit) and stops if anything fails. The manual commands are under [Install](#install).
 
 ### クイックスタート（日本語）
 
-**プラグインとしてインストールして使う**（Claude Code でコマンド 2 つ）
-
-1. **AIspy を入手する：** `/plugin marketplace add stevensmith-design/aispy` を実行したあと、
-   `/plugin install aispy@aispy` を実行します。ローカルのコピーから入れる場合は
-   `/plugin marketplace add ./aispy` のあと、同じインストールコマンドを実行します。
-2. **Claude に依頼する：**「AIspy の初回レビューの準備をして」。スクリーンショット用のツールの
-   インストールとブラウザのテストを提案してくるので、了承してコマンドを承認してください。
-3. **レビューを依頼する：**「AIspy キットで https://example.com をレビューして。レビュー観点と
-   チェックは別々のエージェントで実行して。」
-
-**または、クローンまたはダウンロードして使う**（Claude Code へのインストールは不要）
+**クローンまたはダウンロードして使う**（Claude Code へのインストールは不要）
 
 1. **AIspy を入手する：** `git clone https://github.com/stevensmith-design/aispy.git` を実行するか、
    GitHub から ZIP をダウンロードし、展開したフォルダ（`aispy-main`）の名前を `aispy` に変更します。
@@ -82,6 +72,16 @@ kit) and stops if anything fails. The manual commands are under [Install](#insta
 3. **レビューを依頼する：**「./aispy の AIspy キットで https://example.com をレビューして。
    レビュー観点とチェックは別々のエージェントで実行して。」フォルダを別に接続している場合は
    「接続した aispy フォルダの AIspy キットで」と伝えます。
+
+**プラグインとしてインストールして使う**
+
+1. **AIspy を入手する：** `/plugin marketplace add stevensmith-design/aispy` を実行したあと、
+   `/plugin install aispy@aispy` を実行します。ローカルのコピーから入れる場合は
+   `/plugin marketplace add ./aispy` のあと、同じインストールコマンドを実行します。
+2. **Claude に依頼する：**「AIspy の初回レビューの準備をして」。スクリーンショット用のツールの
+   インストールとブラウザのテストを提案してくるので、了承してコマンドを承認してください。
+3. **レビューを依頼する：**「AIspy キットで https://example.com をレビューして。レビュー観点と
+   チェックは別々のエージェントで実行して。」
 
 レビューは毎回、セットアップチェック（エージェント、サイトへのブラウザ接続、スクリーンショット、
 キット）から始まり、どれかが失敗するとそこで止まります。手動で実行するコマンドは
@@ -262,7 +262,7 @@ demonstrated gap, or when a run shows it beats the reference on quality or cost.
 
 ## Status
 
-0.8.4. See [CHANGELOG.md](CHANGELOG.md) for the history and
+0.8.5. See [CHANGELOG.md](CHANGELOG.md) for the history and
 [ROADMAP.md](ROADMAP.md) for what's next.
 
 ## Licence
