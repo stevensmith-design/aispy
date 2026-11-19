@@ -4,6 +4,11 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## 0.8.4
+
+- README: a "Made by" line with a link to stevensmith.dev/aispy under the tagline.
+- README: the three output screenshots (report, IA analysis, mock) move to the top, under the byline. Their caption keeps what "What you get" said: the images are Brolga's run output, and `examples/mareo/` is the standard a run is held to. The "What you get" heading is gone; its content is in the caption.
+
 ## 0.8.3
 
 - README: a **Quick start** under the intro. Two routes, three steps each: get AIspy (clone or download, or the `/plugin` install), ask "Set up AIspy for my first review", then ask for the review. Each route was tested in a fresh session up to the end of the setup check. A downloaded ZIP unpacks to `aispy-main`, so the Quick start says to rename it to `aispy`.
