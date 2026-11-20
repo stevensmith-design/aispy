@@ -23,7 +23,10 @@ export function parseCapturePages(contents) {
     });
 
   const counts = new Map();
-  for (const { name } of pages) counts.set(name, (counts.get(name) || 0) + 1);
+  for (const { name } of pages) {
+    const key = name.toLowerCase();
+    counts.set(key, (counts.get(key) || 0) + 1);
+  }
   const duplicates = [...counts]
     .filter(([, count]) => count > 1)
     .map(([name]) => name);

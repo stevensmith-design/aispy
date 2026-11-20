@@ -24,6 +24,13 @@ test('duplicate output names fail before capture', () => {
   );
 });
 
+test('explicit output names that differ only by case fail before capture', () => {
+  assert.throws(
+    () => parseCapturePages('Landing\thttps://one.example/\nlanding\thttps://two.example/\n'),
+    /Duplicate capture output name\(s\): landing/,
+  );
+});
+
 test('query variants require explicit names instead of exposing query values', () => {
   assert.throws(
     () => parseCapturePages('https://example.com/item?id=1\nhttps://example.com/item?id=2\n'),
