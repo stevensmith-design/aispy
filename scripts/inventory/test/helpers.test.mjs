@@ -123,6 +123,19 @@ test('identifies redirects whose final target is on another host', () => {
   ), false);
 });
 
+test('treats apex and www redirect targets as the same host', () => {
+  assert.equal(isOffsiteRedirect(
+    'https://brand.jp',
+    'https://www.brand.jp/products',
+    ['https://www.brand.jp/products'],
+  ), false);
+  assert.equal(isOffsiteRedirect(
+    'https://www.brand.jp',
+    'https://brand.jp/products',
+    ['https://brand.jp/products'],
+  ), false);
+});
+
 test('deduplicates groups by final URL and prefers the canonical row', () => {
   const rows = [
     {

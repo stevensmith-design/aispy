@@ -83,7 +83,8 @@ export function isSoft404({ title = '', h1 = '', body = '' }) {
 }
 
 export function isOffsiteRedirect(site, finalUrl, redirects) {
-  return redirects.length > 0 && new URL(site).host !== new URL(finalUrl).host;
+  const host = (value) => new URL(value).host.replace(/^www\./i, '');
+  return redirects.length > 0 && host(site) !== host(finalUrl);
 }
 
 export function uniqueFinalPages(rows) {
