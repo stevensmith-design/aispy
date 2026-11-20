@@ -2,7 +2,7 @@
 
 ![The AIspy team: a retro computer with a magnifying glass, three magnifying-glass review agents and five numbered map pins](.github/assets/hero.png)
 
-**A UX, UI and IA review skill pack for AI agents.**
+**A full UX, UI and IA review from your AI crew.**
 
 Made by Steven Smith. More on AIspy and my other work: [stevensmith.dev/aispy](https://stevensmith.dev/aispy?utm_source=github&utm_campaign=aispy)
 
@@ -12,11 +12,9 @@ Made by Steven Smith. More on AIspy and my other work: [stevensmith.dev/aispy](h
 
 <sub>Real output from a full AIspy run on Brolga, a fictional running-shoe brand selling in Japan. The standard every run is held to is [`examples/mareo/`](examples/mareo/), the reference review recreated on a fictional store. More under [Examples](#examples).</sub>
 
-For designers and product managers who want a second pair of eyes before a senior review.
+For product managers, founders, developers and marketers without a senior designer to hand, and for designers and agent-led teams who want a full review to start from.
 
-AIspy is a set of Claude skills that runs a professional UX/UI/IA review of a live website or app,
-with an optional market-localisation layer. Give it a product; it captures the pages, extracts the
-design system, researches the market and benchmarks, runs three independent review lenses, and
+AIspy is a skill pack for AI agents that runs a professional UX/UI/IA review with an optional market-localisation layer. Give it a product; it captures the pages, extracts the design system, researches the market and benchmarks, runs three independent review lenses, and
 delivers:
 
 - a **review report**: findings grouped by cause, each with annotated evidence and a site that does it well;
