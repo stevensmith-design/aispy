@@ -8,6 +8,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { getUrl, isOffsiteRedirect, isSoft404, pageText, uniqueFinalPages } from './helpers.mjs';
 
 const a = Object.fromEntries(process.argv.slice(2).reduce((acc, v, i, arr) => {
   if (v.startsWith('--')) acc.push([v.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true]);
@@ -21,12 +22,7 @@ const UA = 'Mozilla/5.0 (compatible; review-inventory/0.1)';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function get(url) {
-  try {
-    const r = await fetch(url, { headers: { 'user-agent': UA }, redirect: 'manual' });
-    const loc = r.headers.get('location');
-    const body = r.status === 200 ? await r.text() : '';
-    return { status: r.status, location: loc, body };
-  } catch (e) { return { status: 0, error: e.message, body: '' }; }
+  return getUrl(url, { headers: { 'user-agent': UA } });
 }
 
 async function sitemapUrls(url, seen = new Set()) {
@@ -55,8 +51,8 @@ function classify(url, html) {
     .map((m) => `${m[1]}.${m[2].split(/\s+/)[0]}`).slice(0, 40);
   const fp = (sections.length ? sections : generic || []).join('>');
   const seg = new URL(url).pathname.split('/').filter(Boolean)[0] || '(home)';
-  const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1]?.trim() || '';
-  return { shopTemplate, pageType, seg, fp, title };
+  const { title, h1, body } = pageText(html);
+  return { shopTemplate, pageType, seg, fp, title, h1, body };
 }
 
 const hash = (s) => { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) | 0; return (h >>> 0).toString(36).slice(0, 6); };
@@ -70,20 +66,23 @@ async function worker() {
   while (i < urls.length) {
     const u = urls[i++];
     const r = await get(u.url);
-    const c = r.status === 200 ? classify(u.url, r.body) : { seg: new URL(u.url).pathname.split('/').filter(Boolean)[0] || '(home)', fp: '' };
-    rows.push({ ...u, status: r.status, location: r.location || '', soft404: r.status === 200 && /404|not found|ページが見つかりません/i.test(c.title || ''), ...c, fpId: c.fp ? hash(c.fp) : '' });
+    const c = r.status === 200 ? classify(r.finalUrl, r.body) : { seg: new URL(u.url).pathname.split('/').filter(Boolean)[0] || '(home)', fp: '' };
+    const offsite = r.status === 200 && isOffsiteRedirect(site, r.finalUrl, r.redirects);
+    rows.push({ ...u, status: r.status, error: r.error || '', location: r.redirects.join(' → '), finalUrl: r.finalUrl || u.url, offsite, soft404: r.status === 200 && isSoft404(c), ...c, fpId: c.fp ? hash(c.fp) : '' });
     await sleep(300);
   }
 }
 await Promise.all(Array.from({ length: conc }, worker));
 
 const esc = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
-const cols = ['url', 'sitemap', 'status', 'location', 'soft404', 'seg', 'pageType', 'shopTemplate', 'fpId', 'title'];
+const cols = ['url', 'sitemap', 'status', 'error', 'location', 'offsite', 'soft404', 'seg', 'pageType', 'shopTemplate', 'fpId', 'title'];
 fs.writeFileSync(path.join(out, 'inventory.csv'), [cols.join(','), ...rows.map((r) => cols.map((c) => esc(r[c])).join(','))].join('\n') + '\n');
 
-const ok = rows.filter((r) => r.status === 200 && !r.soft404);
+const usable = rows.filter((r) => r.status === 200 && !r.soft404 && !r.offsite);
+const ok = usable.filter((r) => !r.location);
+const broken = rows.filter((r) => r.status !== 200 || r.soft404 || r.offsite || r.location);
 const groups = {};
-for (const r of ok) { const k = `${r.pageType || r.seg} · ${r.fpId}`; (groups[k] ||= []).push(r); }
+for (const r of uniqueFinalPages(usable)) { const k = `${r.pageType || r.seg} · ${r.fpId}`; (groups[k] ||= []).push(r); }
 const types = Object.entries(groups).sort((x, y) => y[1].length - x[1].length);
 
 let measured = {};
@@ -106,12 +105,11 @@ if (a.measure) {
   await browser.close();
 }
 
-const md = [`# Page types: ${site}`, '', `${rows.length} URLs checked, ${ok.length} OK, ${rows.length - ok.length} broken or redirected, ${types.length} layout groups.`, '',
+const md = [`# Page types: ${site}`, '', `${rows.length} URLs checked, ${ok.length} OK, ${broken.length} broken or redirected, ${types.length} layout groups.`, '',
   'Groups share a page type and a layout fingerprint. Merge groups that are the same type with small layout differences after looking at one page of each; fill in Tier and In scope.', '',
   '| Type · layout | Templates | URLs | Representative URL | Screens @390 | Tier | In scope? |', '|---|---|---|---|---|---|---|',
   ...types.map(([k, rs]) => `| ${k} | ${[...new Set(rs.map((r) => r.shopTemplate).filter(Boolean))].length || '–'} | ${rs.length} | ${rs[0].url} | ${measured[k] ?? '(run --measure)'} | | |`)];
 fs.writeFileSync(path.join(out, 'types.md'), md.join('\n') + '\n');
-const broken = rows.filter((r) => r.status !== 200 || r.soft404);
 fs.writeFileSync(path.join(out, 'broken.md'), [`# Broken or redirected sitemap URLs (${broken.length})`, '', '| Status | URL | Redirects to |', '|---|---|---|',
-  ...broken.map((r) => `| ${r.soft404 ? '200 (soft 404)' : r.status} | ${r.url} | ${r.location} |`)].join('\n') + '\n');
+  ...broken.map((r) => `| ${r.offsite ? 'off-site redirect' : r.soft404 ? '200 (soft 404)' : r.error || r.status} | ${r.url} | ${r.location} |`)].join('\n') + '\n');
 console.log(`Wrote ${out}/inventory.csv, types.md (${types.length} groups), broken.md (${broken.length})`);
