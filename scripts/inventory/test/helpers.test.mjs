@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { getUrl, isSoft404, pageText, uniqueFinalPages } from '../helpers.mjs';
+import { getUrl, isOffsiteRedirect, isSoft404, pageText, uniqueFinalPages } from '../helpers.mjs';
 
 function fakeFetch(routes) {
   return async (url) => {
@@ -93,6 +93,34 @@ test('does not flag prices, SKUs or FAQ copy as soft 404s', () => {
   ]) {
     assert.equal(isSoft404(pageText(html)), false);
   }
+});
+
+test('does not flag a Japanese product page with generic footer help', () => {
+  const html = '<title>商品</title><body><h1>商品名</h1><footer>お探しのページが見つからない場合は、サイトマップをご覧ください。</footer></body>';
+  assert.equal(isSoft404(pageText(html)), false);
+});
+
+test('detects a complete Japanese not-found phrase in body text', () => {
+  const html = '<title>ストア</title><body><main>お探しのページは見つかりませんでした。</main></body>';
+  assert.equal(isSoft404(pageText(html)), true);
+});
+
+test('identifies redirects whose final target is on another host', () => {
+  assert.equal(isOffsiteRedirect(
+    'https://shop.example.com',
+    'https://accounts.example.com/sign-in',
+    ['https://accounts.example.com/sign-in'],
+  ), true);
+  assert.equal(isOffsiteRedirect(
+    'https://shop.example.com',
+    'https://shop.example.com/new',
+    ['https://shop.example.com/new'],
+  ), false);
+  assert.equal(isOffsiteRedirect(
+    'https://shop.example.com',
+    'https://accounts.example.com/sign-in',
+    [],
+  ), false);
 });
 
 test('deduplicates groups by final URL and prefers the canonical row', () => {

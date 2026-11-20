@@ -8,7 +8,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
-import { getUrl, isSoft404, pageText, uniqueFinalPages } from './helpers.mjs';
+import { getUrl, isOffsiteRedirect, isSoft404, pageText, uniqueFinalPages } from './helpers.mjs';
 
 const a = Object.fromEntries(process.argv.slice(2).reduce((acc, v, i, arr) => {
   if (v.startsWith('--')) acc.push([v.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true]);
@@ -67,19 +67,20 @@ async function worker() {
     const u = urls[i++];
     const r = await get(u.url);
     const c = r.status === 200 ? classify(r.finalUrl, r.body) : { seg: new URL(u.url).pathname.split('/').filter(Boolean)[0] || '(home)', fp: '' };
-    rows.push({ ...u, status: r.status, error: r.error || '', location: r.redirects.join(' → '), finalUrl: r.finalUrl || u.url, soft404: r.status === 200 && isSoft404(c), ...c, fpId: c.fp ? hash(c.fp) : '' });
+    const offsite = r.status === 200 && isOffsiteRedirect(site, r.finalUrl, r.redirects);
+    rows.push({ ...u, status: r.status, error: r.error || '', location: r.redirects.join(' → '), finalUrl: r.finalUrl || u.url, offsite, soft404: r.status === 200 && isSoft404(c), ...c, fpId: c.fp ? hash(c.fp) : '' });
     await sleep(300);
   }
 }
 await Promise.all(Array.from({ length: conc }, worker));
 
 const esc = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
-const cols = ['url', 'sitemap', 'status', 'error', 'location', 'soft404', 'seg', 'pageType', 'shopTemplate', 'fpId', 'title'];
+const cols = ['url', 'sitemap', 'status', 'error', 'location', 'offsite', 'soft404', 'seg', 'pageType', 'shopTemplate', 'fpId', 'title'];
 fs.writeFileSync(path.join(out, 'inventory.csv'), [cols.join(','), ...rows.map((r) => cols.map((c) => esc(r[c])).join(','))].join('\n') + '\n');
 
-const usable = rows.filter((r) => r.status === 200 && !r.soft404);
+const usable = rows.filter((r) => r.status === 200 && !r.soft404 && !r.offsite);
 const ok = usable.filter((r) => !r.location);
-const broken = rows.filter((r) => r.status !== 200 || r.soft404 || r.location);
+const broken = rows.filter((r) => r.status !== 200 || r.soft404 || r.offsite || r.location);
 const groups = {};
 for (const r of uniqueFinalPages(usable)) { const k = `${r.pageType || r.seg} · ${r.fpId}`; (groups[k] ||= []).push(r); }
 const types = Object.entries(groups).sort((x, y) => y[1].length - x[1].length);
@@ -110,5 +111,5 @@ const md = [`# Page types: ${site}`, '', `${rows.length} URLs checked, ${ok.leng
   ...types.map(([k, rs]) => `| ${k} | ${[...new Set(rs.map((r) => r.shopTemplate).filter(Boolean))].length || '–'} | ${rs.length} | ${rs[0].url} | ${measured[k] ?? '(run --measure)'} | | |`)];
 fs.writeFileSync(path.join(out, 'types.md'), md.join('\n') + '\n');
 fs.writeFileSync(path.join(out, 'broken.md'), [`# Broken or redirected sitemap URLs (${broken.length})`, '', '| Status | URL | Redirects to |', '|---|---|---|',
-  ...broken.map((r) => `| ${r.soft404 ? '200 (soft 404)' : r.error || r.status} | ${r.url} | ${r.location} |`)].join('\n') + '\n');
+  ...broken.map((r) => `| ${r.offsite ? 'off-site redirect' : r.soft404 ? '200 (soft 404)' : r.error || r.status} | ${r.url} | ${r.location} |`)].join('\n') + '\n');
 console.log(`Wrote ${out}/inventory.csv, types.md (${types.length} groups), broken.md (${broken.length})`);

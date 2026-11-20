@@ -78,8 +78,12 @@ export function pageText(html) {
 
 export function isSoft404({ title = '', h1 = '', body = '' }) {
   const headingPattern = /\b404\b|\bnot found\b|ページが見つかりません|お探しのページ/i;
-  const bodyPattern = /\bpage not found\b|ページが見つかりません|お探しのページ/i;
+  const bodyPattern = /\bpage not found\b|ページが見つかりません|お探しのページ(?:は|が)?(?:見つかりません(?:でした)?|存在しません)/i;
   return headingPattern.test(`${title} ${h1}`) || bodyPattern.test(body);
+}
+
+export function isOffsiteRedirect(site, finalUrl, redirects) {
+  return redirects.length > 0 && new URL(site).host !== new URL(finalUrl).host;
 }
 
 export function uniqueFinalPages(rows) {
