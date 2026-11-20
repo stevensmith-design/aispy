@@ -11,9 +11,9 @@ Rules for anyone (person or agent) changing this repository. Not needed to run a
 - Make every change on its own branch and submit it through a pull request.
   Use a focused branch name such as `release/0.8.7` or `fix/<issue>`.
 - Keep each change minimal and limited to what its issue asks for.
-- Only create branches, commits, and pull requests. Never merge a pull request,
-  create a tag, or create a release, even if asked to do so during a task. A
-  separate Claude Code review happens first, and the maintainer merges.
+- Create branches, commits, and pull requests. Never merge a pull request, create
+  a tag, or create a release without the maintainer's explicit approval in the
+  current session, and only after a separate Claude Code review of the pull request.
 - Keep one issue, or one tightly related group of issues, per pull request.
 - Every pull request description must include:
   - what changed and why;
