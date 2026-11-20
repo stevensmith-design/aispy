@@ -6,12 +6,12 @@ measured against.
 
 ## 0.8.7
 
-- `capture.mjs` (#20, #35): exits with status 1 when any page fails, still writing `capture-notes.md`. Pages listed without a name are named from host and path, so two URLs with the same path no longer overwrite each other. Duplicate names are refused before capturing, and query values are never put in file names. Tests: `node --test scripts/capture/test/`.
+- `capture.mjs` (#20, #35): exits with status 1 when any page fails, still writing `capture-notes.md`. Pages listed without a name are renamed: names now include the host, e.g. `example.com/products` → `example-com-products` (was `products`), and `_` is no longer kept, so two URLs with the same path no longer overwrite each other. Pages given a tab-separated name are unchanged. Duplicate names are refused before capturing, and query values are never put in file names. Tests: `node --test scripts/capture/test/`.
 - `inventory.mjs` (#21, #36):
   - Redirects are followed, and the target is grouped under its own page type; the original URL stays in `broken.md` for cleanup.
   - Redirect loops, and chains over 10 hops, are reported.
   - A redirect to another site is listed as an off-site redirect and kept out of the page groups; `www.` and the bare domain count as the same site.
-  - Soft 404s are detected from the title, the H1 and complete not-found phrasing in the page text, in English and Japanese, without flagging pages that only mention 404 or have a "page not found? see the sitemap" footer.
+  - Soft 404s are detected from the title, the H1 and complete not-found phrasing in the page text, in English and Japanese, without flagging pages that only mention 404 in their text, or the common Japanese footer 「お探しのページが見つからない場合は…」.
   - `inventory.csv` gains `error` and `offsite` columns.
   - Tests: `node --test scripts/inventory/test/`.
 - `AGENTS.md` and `CLAUDE.md` (#34, #37, #38): `CLAUDE.md` loads `AGENTS.md`, so Claude Code and Codex read the same instructions. `AGENTS.md` holds only what a review needs, starting from `skills/product-review/SKILL.md` with no install, and points anyone changing the kit to `docs/maintaining.md`.
