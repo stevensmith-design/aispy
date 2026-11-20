@@ -4,8 +4,12 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
-## Unreleased
+## 0.8.6
 
+- README: tagline is now "A full UX, UI and IA review from your AI crew.", as on the product page.
+- README: who it's for: product managers, founders, developers and marketers without a senior designer to hand, plus designers and agent-led teams.
+- README: the intro says "a skill pack for Claude Code" (was "a set of Claude skills"), as on the product page. Other agents aren't tested yet (#13).
+- README: the "supports a reviewer" line is reworded to match the new audience and the product page.
 - README: links to stevensmith.dev carry `utm_source=github` and the repo name, so visits from the repo can be counted.
 
 ## 0.8.5
