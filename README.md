@@ -274,3 +274,12 @@ Brolga's documents is under the SIL Open Font License 1.1, not CC BY (see its `L
 
 The AIspy name, logo and character artwork (including the image at the top of this page) are
 not covered by these licences.
+
+## Other tools
+
+Claude Code remains AIspy's supported and fully tested host. Codex CLI can discover the eight
+skills from a clone and can run the lenses and checks as separate subagents, but its required
+end-to-end Brolga comparison is still pending. Cursor is untested. ChatGPT in a browser cannot run
+the local scripts and is not supported for a complete AIspy run. See
+[the other-tools notes](docs/other-tools.md) for Codex setup, Windows symlink guidance and the
+manual fallback when subagents are unavailable.
