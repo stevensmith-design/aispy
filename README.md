@@ -14,7 +14,7 @@ Made by Steven Smith. More on AIspy and my other work: [stevensmith.dev/aispy](h
 
 For product managers, founders, developers and marketers without a senior designer to hand, and for designers and agent-led teams who want a full review to start from.
 
-AIspy is a skill pack for AI agents that runs a professional UX/UI/IA review with an optional market-localisation layer. Give it a product; it captures the pages, extracts the design system, researches the market and benchmarks, runs three independent review lenses, and
+AIspy is a skill pack for Claude Code that runs a professional UX/UI/IA review with an optional market-localisation layer. Give it a product; it captures the pages, extracts the design system, researches the market and benchmarks, runs three independent review lenses, and
 delivers:
 
 - a **review report**: findings grouped by cause, each with annotated evidence and a site that does it well;
@@ -26,7 +26,7 @@ All four are styled in the reviewed product's own design system. AIspy replicate
 review made by a senior designer, and was tested against it (November 2026): its research and
 findings at least match the reference, and its documents follow the same form.
 
-It supports a senior reviewer; it doesn't replace one. It stops for your review after the report,
+It supports a reviewer; it doesn't replace one. It stops for your review after the report,
 again after the mock, and before packaging.
 
 ## Quick start
