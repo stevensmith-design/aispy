@@ -1,5 +1,19 @@
 # Repository instructions
 
+AIspy is a skill pack that runs a UX, UI and IA review of a website or app and delivers a report,
+an IA analysis, a mock and an index page.
+
+## Running a review
+
+- Follow `skills/product-review/SKILL.md`. It names the design-kit skills and scripts it uses; paths
+  in it are relative to this folder.
+- No install is needed to use the kit from this folder. Don't ask for `--plugin-dir` or `/plugin`.
+  The only setup is the capture helper, which the setup check covers.
+- Everything below this section is for maintainers changing this repository. Ignore it when running
+  a review.
+
+# Maintaining this repository
+
 ## Project and issue workflow
 
 - This repository is public. Work through the open GitHub issues shown by
@@ -20,6 +34,10 @@
   - anything that remains uncertain.
 - In GitHub issues, pull requests, changelogs, and other public text, do not
   name the reference review's client or real people.
+- Never commit reference or private material (the reference review, client files, captures of
+  real client sites). Before a release, run `check-deliverable.mjs --forbid "<names>"` on the
+  example documents, with the private names the maintainer gives you; never write that list
+  into the repository.
 
 ## Release workflow
 
