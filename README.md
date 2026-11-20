@@ -2,7 +2,7 @@
 
 ![The AIspy team: a retro computer with a magnifying glass, three magnifying-glass review agents and five numbered map pins](.github/assets/hero.png)
 
-**A second pair of eyes for your UX, UI and IA.**
+**A UX, UI and IA review skill pack for AI agents.**
 
 Made by Steven Smith. More on AIspy and my other work: [stevensmith.dev/aispy](https://stevensmith.dev/aispy?utm_source=github&utm_campaign=aispy)
 
