@@ -85,11 +85,14 @@ be presented as an AIspy run.
 ## Current validation status
 
 - Claude Code: supported; the complete workflow and examples are tested here.
-- Codex CLI: repository skill discovery, independent subagents and the Node scripts are compatible;
-  the required end-to-end Brolga comparison has not yet been completed.
+- Codex CLI: repository skill discovery, independent subagents, the Node scripts and a Brolga
+  artifact replay are tested; an end-to-end review from the original product remains untested.
 - Cursor: untested.
 - ChatGPT in a browser: untested and not supported for a complete run.
 
 Codex's repository skill discovery and subagent behavior are documented in the official
 [skills](https://learn.chatgpt.com/docs/build-skills) and
 [subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents) guides.
+
+The [Brolga comparison](codex-brolga-comparison.md) records what the artifact replay established,
+what it found and why it is not an end-to-end quality or cost comparison.

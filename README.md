@@ -277,9 +277,9 @@ not covered by these licences.
 
 ## Other tools
 
-Claude Code remains AIspy's supported and fully tested host. Codex CLI can discover the eight
-skills from a clone and can run the lenses and checks as separate subagents, but its required
-end-to-end Brolga comparison is still pending. Cursor is untested. ChatGPT in a browser cannot run
-the local scripts and is not supported for a complete AIspy run. See
+Claude Code remains AIspy's supported and fully tested host. Codex CLI has been tested for skill
+discovery, separate subagents, the local scripts and an audit of the supplied Brolga artifacts;
+an end-to-end review from the original product remains untested. Cursor is untested. ChatGPT in a
+browser cannot run the local scripts and is not supported for a complete AIspy run. See
 [the other-tools notes](docs/other-tools.md) for Codex setup, Windows symlink guidance and the
 manual fallback when subagents are unavailable.
