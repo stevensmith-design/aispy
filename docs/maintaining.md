@@ -43,8 +43,8 @@ Rules for anyone (person or agent) changing this repository. Not needed to run a
     `examples/mareo/*.html` and `examples/brolga/*.html`;
   - all six `skills/design-kit/*/tests/run.sh` scripts, but only when files
     under `skills/design-kit/` changed.
-- Stop after opening the release pull request. The maintainer handles review,
-  squash-merge, branch deletion, the annotated tag, and the GitHub release.
+- Stop after opening the release pull request. Merging, tagging and releasing
+  follow the approval rule above.
 - In the pull request handoff, remind the maintainer that the eventual squash
   subject is `Release X.Y.Z: <summary> (#N)` and that the GitHub release should
   be titled `AIspy X.Y.Z`, use the matching changelog entry as its notes, and
