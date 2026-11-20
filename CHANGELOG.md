@@ -4,6 +4,22 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## 0.8.7
+
+- `capture.mjs` (#20, #35): exits with status 1 when any page fails, still writing `capture-notes.md`. Pages listed without a name are named from host and path, so two URLs with the same path no longer overwrite each other. Duplicate names are refused before capturing, and query values are never put in file names. Tests: `node --test scripts/capture/test/`.
+- `inventory.mjs` (#21, #36):
+  - Redirects are followed, and the target is grouped under its own page type; the original URL stays in `broken.md` for cleanup.
+  - Redirect loops, and chains over 10 hops, are reported.
+  - A redirect to another site is listed as an off-site redirect and kept out of the page groups; `www.` and the bare domain count as the same site.
+  - Soft 404s are detected from the title, the H1 and complete not-found phrasing in the page text, in English and Japanese, without flagging pages that only mention 404 or have a "page not found? see the sitemap" footer.
+  - `inventory.csv` gains `error` and `offsite` columns.
+  - Tests: `node --test scripts/inventory/test/`.
+- `AGENTS.md` and `CLAUDE.md` (#34, #37, #38): `CLAUDE.md` loads `AGENTS.md`, so Claude Code and Codex read the same instructions. `AGENTS.md` holds only what a review needs, starting from `skills/product-review/SKILL.md` with no install, and points anyone changing the kit to `docs/maintaining.md`.
+- `docs/maintaining.md` (#38): the maintainer rules.
+  - Branches and PRs; merge, tag or release only with the maintainer's approval and after a separate review.
+  - The release steps, and no private material in commits.
+  - "Changes must not make reviews worse": other-tools work is additive only, and issue fixes are compared before and after.
+
 ## 0.8.6
 
 - README: tagline is now "A full UX, UI and IA review from your AI crew.", as on the product page.
