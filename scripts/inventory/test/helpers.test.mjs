@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { getUrl, isSoft404, pageText } from '../helpers.mjs';
+import { getUrl, isSoft404, pageText, uniqueFinalPages } from '../helpers.mjs';
 
 function fakeFetch(routes) {
   return async (url) => {
@@ -57,6 +57,19 @@ test('stops redirect chains at the configured limit', async () => {
   ]);
 });
 
+test('cancels unused redirect and non-200 response bodies', async () => {
+  let cancellations = 0;
+  const fetchImpl = async (url) => ({
+    status: url.endsWith('/old') ? 302 : 404,
+    headers: { get: (name) => (name === 'location' && url.endsWith('/old') ? '/missing' : null) },
+    body: { cancel: async () => { cancellations++; } },
+    text: async () => '',
+  });
+  const result = await getUrl('https://example.com/old', { fetchImpl });
+  assert.equal(result.status, 404);
+  assert.equal(cancellations, 2);
+});
+
 test('detects soft 404 text in the title, h1 or body', () => {
   for (const html of [
     '<title>404</title><body>Try again</body>',
@@ -70,4 +83,44 @@ test('detects soft 404 text in the title, h1 or body', () => {
 test('ignores not-found text inside scripts and styles', () => {
   const html = '<title>Store</title><body><script>const message = "not found";</script><style>.not-found{}</style><h1>Welcome</h1></body>';
   assert.equal(isSoft404(pageText(html)), false);
+});
+
+test('does not flag prices, SKUs or FAQ copy as soft 404s', () => {
+  for (const html of [
+    '<title>Store</title><body><h1>Tee</h1><p>¥1,404 (tax incl.)</p></body>',
+    '<title>Store</title><body><h1>Model</h1><p>SKU 404-BLK</p></body>',
+    '<title>Store</title><body><h1>FAQ</h1><p>If your order number is not found, contact us.</p></body>',
+  ]) {
+    assert.equal(isSoft404(pageText(html)), false);
+  }
+});
+
+test('deduplicates groups by final URL and prefers the canonical row', () => {
+  const rows = [
+    {
+      url: 'https://example.com/products/deleted',
+      finalUrl: 'https://example.com/',
+      location: 'https://example.com/',
+      title: 'Home',
+    },
+    {
+      url: 'https://example.com/',
+      finalUrl: 'https://example.com/',
+      location: '',
+      title: 'Home',
+    },
+  ];
+  assert.deepEqual(uniqueFinalPages(rows), [rows[1]]);
+});
+
+test('uses the final URL as representative when only a redirect row exists', () => {
+  assert.deepEqual(uniqueFinalPages([{
+    url: 'https://example.com/old',
+    finalUrl: 'https://example.com/new',
+    location: 'https://example.com/new',
+  }]), [{
+    url: 'https://example.com/new',
+    finalUrl: 'https://example.com/new',
+    location: 'https://example.com/new',
+  }]);
 });

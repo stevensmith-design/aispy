@@ -8,7 +8,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
-import { getUrl, isSoft404, pageText } from './helpers.mjs';
+import { getUrl, isSoft404, pageText, uniqueFinalPages } from './helpers.mjs';
 
 const a = Object.fromEntries(process.argv.slice(2).reduce((acc, v, i, arr) => {
   if (v.startsWith('--')) acc.push([v.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true]);
@@ -67,7 +67,7 @@ async function worker() {
     const u = urls[i++];
     const r = await get(u.url);
     const c = r.status === 200 ? classify(r.finalUrl, r.body) : { seg: new URL(u.url).pathname.split('/').filter(Boolean)[0] || '(home)', fp: '' };
-    rows.push({ ...u, status: r.status, error: r.error || '', location: r.redirects.join(' → '), soft404: r.status === 200 && isSoft404(c), ...c, fpId: c.fp ? hash(c.fp) : '' });
+    rows.push({ ...u, status: r.status, error: r.error || '', location: r.redirects.join(' → '), finalUrl: r.finalUrl || u.url, soft404: r.status === 200 && isSoft404(c), ...c, fpId: c.fp ? hash(c.fp) : '' });
     await sleep(300);
   }
 }
@@ -81,7 +81,7 @@ const usable = rows.filter((r) => r.status === 200 && !r.soft404);
 const ok = usable.filter((r) => !r.location);
 const broken = rows.filter((r) => r.status !== 200 || r.soft404 || r.location);
 const groups = {};
-for (const r of usable) { const k = `${r.pageType || r.seg} · ${r.fpId}`; (groups[k] ||= []).push(r); }
+for (const r of uniqueFinalPages(usable)) { const k = `${r.pageType || r.seg} · ${r.fpId}`; (groups[k] ||= []).push(r); }
 const types = Object.entries(groups).sort((x, y) => y[1].length - x[1].length);
 
 let measured = {};

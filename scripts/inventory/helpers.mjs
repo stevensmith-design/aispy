@@ -10,6 +10,7 @@ export async function getUrl(url, { fetchImpl = fetch, headers = {}, maxRedirect
       const response = await fetchImpl(current, { headers, redirect: 'manual' });
       const location = response.headers.get('location');
       if (REDIRECT_STATUS.has(response.status) && location) {
+        await response.body?.cancel();
         const next = new URL(location, current).href;
         if (seen.has(next)) {
           return {
@@ -35,10 +36,12 @@ export async function getUrl(url, { fetchImpl = fetch, headers = {}, maxRedirect
         continue;
       }
 
+      const body = response.status === 200 ? await response.text() : '';
+      if (response.status !== 200) await response.body?.cancel();
       return {
         status: response.status,
         error: '',
-        body: response.status === 200 ? await response.text() : '',
+        body,
         finalUrl: current,
         redirects,
       };
@@ -74,5 +77,19 @@ export function pageText(html) {
 }
 
 export function isSoft404({ title = '', h1 = '', body = '' }) {
-  return /\b404\b|\bnot found\b|ページが見つかりません/i.test(`${title} ${h1} ${body}`);
+  const headingPattern = /\b404\b|\bnot found\b|ページが見つかりません|お探しのページ/i;
+  const bodyPattern = /\bpage not found\b|ページが見つかりません|お探しのページ/i;
+  return headingPattern.test(`${title} ${h1}`) || bodyPattern.test(body);
+}
+
+export function uniqueFinalPages(rows) {
+  const byUrl = new Map();
+  for (const row of rows) {
+    const finalUrl = row.finalUrl || row.url;
+    const existing = byUrl.get(finalUrl);
+    if (!existing || (existing.location && !row.location)) {
+      byUrl.set(finalUrl, { ...row, url: finalUrl });
+    }
+  }
+  return [...byUrl.values()];
 }
