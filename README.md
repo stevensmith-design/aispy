@@ -229,6 +229,7 @@ skills/
   design-kit/         the six design-kit skills the pack calls (see design-kit/PROVENANCE.md)
 scripts/              optional helpers, not required steps
   capture/            capture.mjs, extract-in-page.js, sweep-in-page.js, annotate.mjs (evidence crops)
+                      (tests: node --test scripts/capture/test/)
   inventory/          inventory.mjs (sitemap, page types, broken URLs)
   build/              theme-from-tokens.mjs, assemble.mjs, layout-bars.mjs
   checks/             check-deliverable.mjs, check-report.mjs, check-mock.mjs, forbid.mjs

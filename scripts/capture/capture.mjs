@@ -13,6 +13,7 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseCapturePages } from './input.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, arr) => {
@@ -29,10 +30,7 @@ const firstWait = Number(args.firstwait || 15000); // first visit: wait for moda
 const screens = Number(args.screens || 3);
 const outDir = path.resolve(args.out);
 fs.mkdirSync(outDir, { recursive: true });
-const pages = fs.readFileSync(args.urls, 'utf8').split('\n').map((l) => l.trim()).filter((l) => l && !l.startsWith('#')).map((l) => {
-  const [name, url] = l.includes('\t') ? l.split('\t') : [new URL(l).pathname.replace(/\W+/g, '-').replace(/^-|-$/g, '') || 'top', l];
-  return { name: name.trim(), url: url.trim() };
-});
+const pages = parseCapturePages(fs.readFileSync(args.urls, 'utf8'));
 const extractSrc = fs.readFileSync(path.join(here, 'extract-in-page.js'), 'utf8');
 const consentTries = [
   ...(args.consent ? String(args.consent).split('|') : []),
@@ -40,6 +38,7 @@ const consentTries = [
   'text=/^(Accept all|Accept|Allow all|I agree|OK|同意する|すべて許可|すべて同意|同意して閉じる|閉じる)$/i',
 ];
 const log = [`# Capture log ${new Date().toISOString()}`, ''];
+let failures = 0;
 
 async function dismissConsent(page) {
   for (const sel of consentTries) {
@@ -149,6 +148,7 @@ try {
         notes.push(`height ${data.structure.pageHeight}px, ${data.structure.headings.length} headings, ${data.structure.links.length} links, fixed/sticky ${data.structure.fixed.length}`);
         if (/captcha|access denied|are you a robot|blocked/i.test(await page.title())) notes.push('POSSIBLE BLOCK: use manual capture');
       } catch (e) {
+        failures++;
         notes.push(`ERROR ${e.message.split('\n')[0]}`);
       }
       log.push(`- **${name} @ ${width}** ${url}: ${notes.join('; ')}`);
@@ -160,4 +160,9 @@ try {
   await browser.close();
   fs.writeFileSync(path.join(outDir, 'capture-notes.md'), log.join('\n') + '\n');
   console.log(`Wrote ${outDir}/capture-notes.md`);
+}
+
+if (failures) {
+  console.error(`Capture failed for ${failures} page${failures === 1 ? '' : 's'}; see capture-notes.md.`);
+  process.exitCode = 1;
 }
