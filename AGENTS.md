@@ -12,4 +12,6 @@ an IA analysis, a mock and an index page.
 
 ## Changing this repository
 
-Before changing any file in this repository, read `docs/maintaining.md` and follow it.
+Before changing the kit itself (its skills, scripts, templates, docs, examples or README), read
+`docs/maintaining.md` and follow it. Running a review doesn't count, including writing its output to
+`review/`: a review doesn't need that file.
