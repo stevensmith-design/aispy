@@ -9,11 +9,14 @@
 //   B  <name>-<w>-screen<N>.png  the first N screens exactly as a visitor sees them, with chat
 //                                 buttons, coupon bubbles, sticky bars and badges left on
 //                                 (for "current vs proposed" comparisons)
+// capture-notes.md gets one section per run, so a second run into the same --out folder adds
+// its notes after the first run's instead of replacing them.
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseCapturePages } from './input.mjs';
+import { writeCaptureNotes } from './notes.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, arr) => {
@@ -158,7 +161,7 @@ try {
   }
 } finally {
   await browser.close();
-  fs.writeFileSync(path.join(outDir, 'capture-notes.md'), log.join('\n') + '\n');
+  writeCaptureNotes(path.join(outDir, 'capture-notes.md'), log);
   console.log(`Wrote ${outDir}/capture-notes.md`);
 }
 
