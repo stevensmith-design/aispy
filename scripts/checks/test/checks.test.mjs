@@ -190,3 +190,27 @@ test('check-report: a document without language templates is read as a whole', (
   const r = node([reportCheck, '--new', writeTmp(`<html><body>${EN_F.join('')}</body></html>`)]);
   assert.equal(r.status, 0, out(r)); assert.match(out(r), /^New version: 2 findings$/m);
 });
+test('check-report: a document without templates is compared with a single-template version', () => {
+  const plain = writeTmp(`<html><body>${EN_F.join('')}</body></html>`);
+  const tpl = writeTmp(reportHtml([['en', EN_F.slice(0, 1)]]));
+  for (const [o, n, gone] of [[plain, tpl, true], [tpl, plain, false]]) {
+    const r = node([reportCheck, '--old', o, '--new', n]);
+    assert.doesNotMatch(out(r), /not compared|to compare with/);
+    if (gone) { assert.equal(r.status, 1, out(r)); assert.match(out(r), /✗ gone: #2 Tax-inclusive prices/); }
+    else { assert.equal(r.status, 0, out(r)); assert.match(out(r), /\+ new: #2 Tax-inclusive prices/); }
+  }
+});
+test('check-report: a language added or dropped between versions is a note, not a failure', () => {
+  const both = writeTmp(reportHtml([['en', EN_F], ['ja', JA_F]]));
+  const enOnly = writeTmp(reportHtml([['en', EN_F]]));
+  const drop = node([reportCheck, '--old', both, '--new', enOnly]);
+  assert.equal(drop.status, 0, out(drop)); assert.match(out(drop), /old version's "ja" template is not in the new version/);
+  const add = node([reportCheck, '--old', enOnly, '--new', both]);
+  assert.equal(add.status, 0, out(add)); assert.match(out(add), /\[ja\] Old version: · no "ja" template to compare with/);
+});
+test('check-report: templates and findings inside HTML comments are ignored', () => {
+  const html = reportHtml([['en', EN_F]], `<!-- <template id="t-ja">${JA_F.join('')}${finding(1, 'x', 'Old draft')}</template> -->`).replace('<template id="t-en">', '<template id="t-en"><!-- ' + finding(9, 'draft', 'Draft') + ' -->');
+  const r = node([reportCheck, '--new', writeTmp(html)]);
+  assert.equal(r.status, 0, out(r));
+  assert.match(out(r), /^\[en\] New version: 2 findings$/m); assert.doesNotMatch(out(r), /\[ja\]/);
+});
