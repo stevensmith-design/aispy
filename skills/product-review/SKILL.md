@@ -1,13 +1,13 @@
 ---
 name: product-review
 description: >
-  Professional UX/UI/IA review of an existing website or app for a client: capture the product,
+  Professional UX/UI/IA review of an existing website or app: capture the product,
   extract its design system, run three independent review lenses, research the market and
   benchmarks, and deliver a review report, an IA analysis and a current-vs-proposed mock of a key
-  screen, all styled in the client's own design system. Handles general reviews and market
+  screen, all styled in the product's own design system. Handles general reviews and market
   localisation reviews. Use when someone asks for a UX review, UI review, UX audit, expert review,
   IA review, localisation review, "review our site / app", "review <url> and propose
-  improvements", or pastes a client request asking for one. Starts from a bare URL: it asks for what it needs in one batch, with
+  improvements", or pastes a request asking for one. Starts from a bare URL: it asks for what it needs in one batch, with
   defaults. Not for reviewing a screen Claude just built or a single PR (use ui-design-review).
 metadata:
   version: 0.8.8

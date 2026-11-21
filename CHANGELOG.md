@@ -15,6 +15,7 @@ measured against.
 - `CLAUDE.md` removed. Claude Code finds the kit without it, and it would have loaded the Codex lines into every Claude review. A Claude run is unchanged from 0.8.6.
 - `CONTRIBUTING.md` replaces `docs/maintaining.md`, keeping the rules any contributor needs: the checks to run, one issue per PR, and "Changes must not make reviews worse" (other-tools work is additive only; script fixes are compared before and after). The maintainer's own process is kept out of the repository, in git-ignored `*.local.md` files.
 - `ROADMAP.md` removed. The README points to the open issues instead.
+- Plugin metadata: `plugin.json` adds `author`, `homepage`, `repository` and `keywords`; the marketplace `owner` is the author. The `product-review` skill description says "the product" and "a request" instead of "client"; its trigger phrases are unchanged.
 
 ## 0.8.7
 
