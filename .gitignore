@@ -12,6 +12,9 @@ node_modules/
 credentials*.json
 service-account*.json
 
+# Maintainer-only notes, kept on the maintainer's machine
+*.local.md
+
 # Review runs: client material stays out of the repo
 /review/
 /_tests/
