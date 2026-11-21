@@ -111,7 +111,7 @@ for (const { lang, html } of blocks) {
   else if (assets.includes('stand-in') && !/stand-in/i.test(clean(html.slice(html.search(/class="legend"/))))) bad('stand-in logo used but not noted in the legend');
   else ok(`logo provenance: ${uniq(assets).join(', ')}`);
 
-  /class="fixed"/.test(current) ? ok('current side has a fixed-element layer') : bad('current side has no fixed-element layer: use set B and overlay fixed elements, or state that the page has none (class="fixed none")');
+  /class="(?:[^"]*\s)?fixed(?:\s[^"]*)?"/.test(current) ? ok('current side has a fixed-element layer') : bad('current side has no fixed-element layer: use set B and overlay fixed elements, or state that the page has none (class="fixed none")');
 
   const unfilled = html.match(/\{\{[^}]{1,80}\}\}/g) || [];
   if (unfilled.length) bad(`${unfilled.length} unfilled template fields, e.g. ${unfilled.slice(0, 3).join(' ')}`);
