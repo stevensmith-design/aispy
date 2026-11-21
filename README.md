@@ -105,7 +105,8 @@ real Japanese sites appear only as benchmarks.
 Requires [Claude Code](https://code.claude.com), in the terminal or the desktop app's Code tab,
 Node 22.23.5 or newer, and Python 3 (for the design-system validator, `validate-tokens.py`).
 
-Built and tested in Claude Code. Also tested in Codex (November 2026): see
+AIspy is designed for Claude Code, and that's where we recommend running it. It also works with
+other agents that can read skills, run commands and start sub-agents, such as Codex: see
 [docs/other-agents.md](docs/other-agents.md).
 
 AIspy installs into Claude Code as a skill pack. Either:
