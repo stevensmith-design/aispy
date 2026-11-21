@@ -6,7 +6,7 @@ measured against.
 
 ## Unreleased
 
-- Plugin metadata: `plugin.json` adds `author`, `homepage`, `repository` and `keywords`; the marketplace `owner` is Steven Smith. The `product-review` skill description says "the product" and "a request" instead of "client"; its trigger phrases are unchanged.
+- Plugin metadata: `plugin.json` adds `author`, `homepage`, `repository` and `keywords`; the marketplace `owner` is the author. The `product-review` skill description says "the product" and "a request" instead of "client"; its trigger phrases are unchanged.
 
 ## 0.8.7
 
