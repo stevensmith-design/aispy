@@ -12,6 +12,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const deliverable = path.join(root, 'scripts/checks/check-deliverable.mjs');
 const mockCheck = path.join(root, 'scripts/checks/check-mock.mjs');
+const reportCheck = path.join(root, 'scripts/checks/check-report.mjs');
 const ex = (d, f) => path.join(root, 'examples', d, f);
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'aispy-checks-'));
 const node = (args) => spawnSync(process.execPath, args, { encoding: 'utf8' });
@@ -146,4 +147,70 @@ test('two languages and a no-script copy: each list is counted once, per languag
 test('more than 18 notes in one language still fails', () => {
   const r = runMock(mockHtml([['en', Array.from({ length: 19 }, (_, i) => EN_NOWTHEN[i % 2])]]));
   assert.equal(r.status, 1); assert.match(out(r), /19 notes: keep the mock/);
+});
+
+// check-mock: the advice for a page with no fixed elements passes.
+const runMockWith = (fixedLayer) => runMock(mockHtml([['en', EN_NOWTHEN]]).replace('<div class="fixed"></div>', fixedLayer));
+test('check-mock accepts class="fixed none", as its own message advises', () => {
+  const r = runMockWith('<div class="fixed none"></div>');
+  assert.equal(r.status, 0, out(r)); assert.match(out(r), /current side has a fixed-element layer/);
+});
+test('check-mock still fails without a fixed-element layer', () => {
+  for (const layer of ['<div class="overlay"></div>', '<div class="fixed-bar"></div>', '<div class="unfixed"></div>']) {
+    const r = runMockWith(layer);
+    assert.equal(r.status, 1, layer); assert.match(out(r), /current side has no fixed-element layer/);
+  }
+});
+
+// check-report reads one language template at a time.
+const finding = (n, key, title) => `<article class="finding" id="f${n}" data-key="${key}"><span class="f-no">${n}</span><h3>${title}</h3></article>`;
+const reportHtml = (langs, extra = '') => `<!doctype html><html><body>${langs.map(([lang, fs_]) => `<template id="t-${lang}">${fs_.join('')}</template>`).join('')}${extra}</body></html>`;
+const EN_F = [finding(1, 'type', 'Japanese type'), finding(2, 'tax', 'Tax-inclusive prices')];
+const JA_F = [finding(1, 'type', '和文の書体'), finding(2, 'tax', '税込価格')];
+const writeTmp = (html) => { const f = path.join(tmp, `report-${Math.random().toString(36).slice(2)}.html`); fs.writeFileSync(f, html); return f; };
+test('check-report: a bilingual report counts each finding once per language', () => {
+  const r = node([reportCheck, '--new', writeTmp(reportHtml([['en', EN_F], ['ja', JA_F]], `<noscript>${EN_F.join('')}</noscript>`))]);
+  assert.equal(r.status, 0, out(r));
+  assert.match(out(r), /\[en\] New version: 2 findings/); assert.match(out(r), /\[ja\] New version: 2 findings/);
+  assert.doesNotMatch(out(r), /duplicate/);
+});
+test('check-report: a duplicate number within one language still fails', () => {
+  const r = node([reportCheck, '--new', writeTmp(reportHtml([['en', [...EN_F, finding(2, 'pay', 'Payment')]], ['ja', JA_F]]))]);
+  assert.equal(r.status, 1); assert.match(out(r), /\[en\] New version: 3 findings\n {2}✗ duplicate finding numbers: 2/);
+});
+test('check-report: a finding gone from one language is reported under that language', () => {
+  const oldF = writeTmp(reportHtml([['en', EN_F], ['ja', JA_F]]));
+  const newF = writeTmp(reportHtml([['en', EN_F], ['ja', JA_F.slice(0, 1)]]));
+  const r = node([reportCheck, '--old', oldF, '--new', newF]);
+  assert.equal(r.status, 1, out(r));
+  assert.match(out(r), /\[ja\] Old version: 2 findings\n {2}✗ gone: #2 税込価格/);
+  assert.doesNotMatch(out(r), /gone: #2 Tax/);
+});
+test('check-report: a document without language templates is read as a whole', () => {
+  const r = node([reportCheck, '--new', writeTmp(`<html><body>${EN_F.join('')}</body></html>`)]);
+  assert.equal(r.status, 0, out(r)); assert.match(out(r), /^New version: 2 findings$/m);
+});
+test('check-report: a document without templates is compared with a single-template version', () => {
+  const plain = writeTmp(`<html><body>${EN_F.join('')}</body></html>`);
+  const tpl = writeTmp(reportHtml([['en', EN_F.slice(0, 1)]]));
+  for (const [o, n, gone] of [[plain, tpl, true], [tpl, plain, false]]) {
+    const r = node([reportCheck, '--old', o, '--new', n]);
+    assert.doesNotMatch(out(r), /not compared|to compare with/);
+    if (gone) { assert.equal(r.status, 1, out(r)); assert.match(out(r), /✗ gone: #2 Tax-inclusive prices/); }
+    else { assert.equal(r.status, 0, out(r)); assert.match(out(r), /\+ new: #2 Tax-inclusive prices/); }
+  }
+});
+test('check-report: a language added or dropped between versions is a note, not a failure', () => {
+  const both = writeTmp(reportHtml([['en', EN_F], ['ja', JA_F]]));
+  const enOnly = writeTmp(reportHtml([['en', EN_F]]));
+  const drop = node([reportCheck, '--old', both, '--new', enOnly]);
+  assert.equal(drop.status, 0, out(drop)); assert.match(out(drop), /old version's "ja" template is not in the new version/);
+  const add = node([reportCheck, '--old', enOnly, '--new', both]);
+  assert.equal(add.status, 0, out(add)); assert.match(out(add), /\[ja\] Old version: · no "ja" template to compare with/);
+});
+test('check-report: templates and findings inside HTML comments are ignored', () => {
+  const html = reportHtml([['en', EN_F]], `<!-- <template id="t-ja">${JA_F.join('')}${finding(1, 'x', 'Old draft')}</template> -->`).replace('<template id="t-en">', '<template id="t-en"><!-- ' + finding(9, 'draft', 'Draft') + ' -->');
+  const r = node([reportCheck, '--new', writeTmp(html)]);
+  assert.equal(r.status, 0, out(r));
+  assert.match(out(r), /^\[en\] New version: 2 findings$/m); assert.doesNotMatch(out(r), /\[ja\]/);
 });
