@@ -4,6 +4,18 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## 0.8.8
+
+- Codex: tested unchanged in three runs on 0.8.6, with findings and research close to the Claude standard. `docs/other-agents.md` records the results, how to start a review in Codex, and that other agents are untested. The README links to it.
+- `AGENTS.md` "Running a review", for agents that read it (Codex does, automatically):
+  - start each lens and checker with no conversation history;
+  - give checkers only the render and the report, and don't reuse an agent for a second role;
+  - stop and show the mock spec before building the mock;
+  - read the reference examples in full.
+- `CLAUDE.md` removed. Claude Code finds the kit without it, and it would have loaded the Codex lines into every Claude review. A Claude run is unchanged from 0.8.6.
+- `CONTRIBUTING.md` replaces `docs/maintaining.md`, keeping the rules any contributor needs: the checks to run, one issue per PR, and "Changes must not make reviews worse" (other-tools work is additive only; script fixes are compared before and after). The maintainer's own process is kept out of the repository, in git-ignored `*.local.md` files.
+- `ROADMAP.md` removed. The README points to the open issues instead.
+
 ## 0.8.7
 
 - `capture.mjs` (#20, #35): exits with status 1 when any page fails, still writing `capture-notes.md`. Pages listed without a name are renamed: names now include the host, e.g. `example.com/products` → `example-com-products` (was `products`), and `_` is no longer kept, so two URLs with the same path no longer overwrite each other. Pages given a tab-separated name are unchanged. Duplicate names are refused before capturing, and query values are never put in file names. Tests: `node --test scripts/capture/test/`.

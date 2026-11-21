@@ -41,5 +41,6 @@ least as good, and add real value for the complexity it brings.
 
 ## Support position
 
-AIspy is built and tested in Claude Code. Don't claim support for another tool until it has been
-tested and documented.
+AIspy is built and tested in Claude Code, and has also been tested in Codex (see
+`docs/other-agents.md`). Other agents (Cursor, ChatGPT and so on) are untested. Don't claim support
+for another tool until it has been tested and documented.

@@ -105,6 +105,9 @@ real Japanese sites appear only as benchmarks.
 Requires [Claude Code](https://code.claude.com), in the terminal or the desktop app's Code tab,
 Node 22.23.5 or newer, and Python 3 (for the design-system validator, `validate-tokens.py`).
 
+Built and tested in Claude Code. Also tested in Codex (November 2026): see
+[docs/other-agents.md](docs/other-agents.md).
+
 AIspy installs into Claude Code as a skill pack. Either:
 
 **With Claude Code's `/plugin` command:**
@@ -261,7 +264,7 @@ demonstrated gap, or when a run shows it beats the reference on quality or cost.
 
 ## Status
 
-0.8.7. See [CHANGELOG.md](CHANGELOG.md) for the history and the
+0.8.8. See [CHANGELOG.md](CHANGELOG.md) for the history and the
 [open issues](https://github.com/stevensmith-design/aispy/issues) for what's next.
 
 ## Licence
