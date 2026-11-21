@@ -61,15 +61,17 @@ Don't polish before the person has seen it.
   check independent if it ran in your own context.
 - **Kit skills** (bundled in `skills/design-kit/`): `ui-design-system`, `ui-design-review`,
   `ia-review`, `design-refine`, `ui-design-principles`, `distinctiveness-review`. These are the
-  copies in `skills/design-kit/`. Use them by path, not same-named skills installed elsewhere.
+  copies in `skills/design-kit/` (from the pack root). Use them by path, not same-named skills
+  installed elsewhere.
 - **Pack paths.** `scripts/…` paths are relative to the pack root, two folders above this file
   (`../../` from `skills/product-review/`); `references/` and `templates/` sit beside this file.
-- **Files.** Work in one folder, `review/<product>-<date>/`, inside the folder the person
-  connected. If the product isn't settled at setup, name the folder from the site's URL and keep
-  that name for the whole run. Keep a short `run-log.md`: what ran, what didn't, which agents were started (with
-  what input), the start and end time of each phase (read from the clock when it happens, never
-  estimated afterwards), and anything dropped between drafts, with the reason. **Before every stop, the
-  deliverables must be in that folder**, not only in your own workspace.
+- **Files.** Work in one folder, `review/<product>-<date>/`, inside the folder the person connected
+  (in a terminal session, the folder Claude was started in). If the product isn't settled at setup,
+  name the folder from the site's URL and keep that name for the whole run. Keep a short
+  `run-log.md`: what ran, what didn't, which agents were started (with what input), the start and
+  end time of each phase (read from the clock when it happens, never estimated afterwards), and
+  anything dropped between drafts, with the reason. **Before every stop, the deliverables must be in
+  that folder**, not only in your own workspace.
 - **Don't** add to cart, enter personal or payment data, sign in for the person, or publish
   anything. For logged-in areas, the person signs in in the browser themselves. Never use
   another client's name, screenshots or content in any output.

@@ -50,14 +50,14 @@ localisation review. Phone first; top page, listing, two product pages and the s
 Deliverables in English. Start separate agents for the lenses and checks.
 ```
 
-The pack takes a quick look, then asks one batch of questions with a proposed default for each,
-so "go" is a valid answer.
+The pack first runs the setup check (below). Then it takes a quick look and asks one batch of
+questions with a proposed default for each, so "go" is a valid answer.
 
 ## What to expect
 
-Before the review starts, a **setup check** confirms that agents start, a browser reaches the site,
-screenshots work and the kit's skills are readable. If any of these fails, it stops and tells you
-rather than continuing in a weaker mode.
+First, before the intake questions, a **setup check** confirms that agents start, a browser reaches
+the site, screenshots work and the kit's skills are readable. If any of these fails, it stops and
+tells you rather than continuing in a weaker mode.
 
 Then three stops, each with one review round from you:
 
