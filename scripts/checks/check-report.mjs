@@ -11,8 +11,10 @@
 // A bilingual document is read one language template (<template id="t-xx">) at a time, as
 // check-deliverable does, and each language is compared with the same language in --old; a
 // document without templates is read as a whole. HTML comments are ignored when finding
-// templates and findings. When one version has no templates and the other has a single one,
-// those two are compared with each other (the same document in the other form).
+// templates and findings. When one version has no templates and the other has one or more,
+// the plain document is compared with the "en" template (or the first, if there's no "en"),
+// since it's the same document in the other form; any other language is a note, as when a
+// language is added or dropped.
 import fs from 'node:fs';
 
 const a = Object.fromEntries(process.argv.slice(2).reduce((acc, v, i, arr) => {
@@ -77,12 +79,18 @@ if (a.old) {
   const OLD = load(a.old);
   const log = a.changelog && fs.existsSync(a.changelog) ? norm(fs.readFileSync(a.changelog, 'utf8')) : '';
   const what = (lang) => (lang ? `"${lang}" template` : 'document without language templates');
-  const lone = NEW.langs.length === 1 && OLD.langs.length === 1 && (NEW.langs[0].lang === null || OLD.langs[0].lang === null);
+  // Findings can't pick the language: a bilingual report uses the same data-keys in each.
+  const main = (tpls) => (tpls.find((t) => t.lang === 'en') || tpls[0]).lang;
+  const plainOld = OLD.langs[0].lang === null; const plainNew = NEW.langs[0].lang === null;
+  const pair = plainOld && !plainNew ? { newLang: main(NEW.langs), oldLang: null }
+    : plainNew && !plainOld ? { newLang: null, oldLang: main(OLD.langs) } : null;
   for (const { lang, out: newOut } of NEW.langs) {
     const tag = lang ? `[${lang}] ` : '';
-    const oldOut = lone ? OLD.langs[0].out : OLD.langs.find((o) => o.lang === lang)?.out;
+    const oldLang = pair && lang === pair.newLang ? pair.oldLang : lang;
+    const oldOut = OLD.langs.find((o) => o.lang === oldLang)?.out;
     if (!oldOut) { console.log(`${tag}Old version: · no ${what(lang)} to compare with`); continue; }
     console.log(`${tag}Old version: ${oldOut.length} findings`);
+    if (oldLang !== lang) console.log(`  · compared with the old version's ${what(oldLang)}`);
     for (const f of oldOut) {
       const match = newOut.find((g) => same(f, g));
       const explained = log && (log.includes(norm(f.title).slice(0, 40)) || (f.no && new RegExp(`\\b(finding|#|no\\.?)\\s*${f.no}\\b`).test(log)));
@@ -98,7 +106,7 @@ if (a.old) {
     for (const g of newOut) if (!oldOut.find((f) => same(f, g))) console.log(`  + new: #${g.no} ${g.title}`);
   }
   for (const { lang } of OLD.langs) {
-    if (!lone && !NEW.langs.some((n) => n.lang === lang)) console.log(`  · the old version's ${what(lang)} is not in the new version, so it was not compared`);
+    if (!(pair && lang === pair.oldLang) && !NEW.langs.some((n) => n.lang === lang)) console.log(`  · the old version's ${what(lang)} is not in the new version, so it was not compared`);
   }
 }
 console.log(problems ? `FAIL: ${problems} problem(s)` : 'PASS');

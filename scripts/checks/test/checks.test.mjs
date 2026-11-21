@@ -214,3 +214,22 @@ test('check-report: templates and findings inside HTML comments are ignored', ()
   assert.equal(r.status, 0, out(r));
   assert.match(out(r), /^\[en\] New version: 2 findings$/m); assert.doesNotMatch(out(r), /\[ja\]/);
 });
+test('check-report: a plain document is compared with the "en" template of a bilingual version', () => {
+  const plain = writeTmp(`<html><body>${EN_F.join('')}</body></html>`);
+  const both = writeTmp(reportHtml([['ja', JA_F], ['en', EN_F.slice(0, 1)]]));
+  const fwd = node([reportCheck, '--old', plain, '--new', both]);
+  assert.equal(fwd.status, 1, out(fwd));
+  assert.match(out(fwd), /\[en\] Old version: 2 findings\n {2}· compared with the old version's document without language templates\n {2}✗ gone: #2 Tax-inclusive prices/);
+  assert.match(out(fwd), /\[ja\] Old version: · no "ja" template to compare with/);
+  const back = node([reportCheck, '--old', both, '--new', plain]);
+  assert.equal(back.status, 0, out(back));
+  assert.match(out(back), /^Old version: 1 findings\n {2}· compared with the old version's "en" template\n {2}\+ new: #2 Tax-inclusive prices/m);
+  assert.match(out(back), /old version's "ja" template is not in the new version/);
+});
+test('check-report: without an "en" template, a plain document is compared with the first one', () => {
+  const plain = writeTmp(`<html><body>${JA_F.join('')}</body></html>`);
+  const r = node([reportCheck, '--old', plain, '--new', writeTmp(reportHtml([['ja', JA_F.slice(0, 1)], ['fr', EN_F]]))]);
+  assert.equal(r.status, 1, out(r));
+  assert.match(out(r), /\[ja\] Old version: 2 findings\n {2}· compared with[^\n]*\n {2}✗ gone: #2 税込価格/);
+  assert.match(out(r), /\[fr\] Old version: · no "fr" template/);
+});
