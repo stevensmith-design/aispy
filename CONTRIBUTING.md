@@ -5,8 +5,10 @@ least as good, and add real value for the complexity it brings.
 
 ## Pull requests
 
-- Start from an issue. Keep one issue, or one tightly related group, per pull request, and keep the
-  change limited to what the issue asks.
+- Start from an issue, except for small docs fixes. Keep one issue, or one tightly related group,
+  per pull request, and keep the change limited to what the issue asks.
+- Never push to `main` or force-push. Don't merge a pull request, create a tag or create a release
+  unless the maintainer explicitly approves it, after a separate review of the pull request.
 - In the description, say what changed and why, which issue it closes, the full output of the
   checks below, and anything you're unsure about.
 
