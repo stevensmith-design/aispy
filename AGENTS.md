@@ -9,6 +9,12 @@ an IA analysis, a mock and an index page.
   in it are relative to this folder.
 - No install is needed to use the kit from this folder. Don't ask for `--plugin-dir` or `/plugin`.
   The only setup is the capture helper, which the setup check covers.
+- Start each lens and each checker as a new agent with no conversation history (in Codex,
+  `fork_turns: "none"`). Give checkers only the render and the report, not your notes, the spec's
+  reasoning or other checks. Don't reuse an agent for a second role.
+- After writing the mock spec, stop and show it to the person before building the mock. A general
+  "go ahead" for the mock doesn't approve the spec.
+- Read the reference examples `SKILL.md` names in full, not only their headings.
 
 ## Changing this repository
 

@@ -43,5 +43,5 @@ least as good, and add real value for the complexity it brings.
 
 ## Support position
 
-AIspy is built and tested in Claude Code. Don't claim support for another tool until it has been
-tested and documented.
+AIspy is designed for Claude Code. Changes that help other agents are additive (see above) and must
+not change a Claude run.

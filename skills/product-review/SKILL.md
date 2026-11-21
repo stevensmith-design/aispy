@@ -10,7 +10,7 @@ description: >
   improvements", or pastes a request asking for one. Starts from a bare URL: it asks for what it needs in one batch, with
   defaults. Not for reviewing a screen Claude just built or a single PR (use ui-design-review).
 metadata:
-  version: 0.8.7
+  version: 0.8.8
 ---
 
 # Product review
