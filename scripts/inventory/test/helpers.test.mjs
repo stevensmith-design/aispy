@@ -100,6 +100,24 @@ test('does not flag a Japanese product page with generic footer help', () => {
   assert.equal(isSoft404(pageText(html)), false);
 });
 
+test('does not flag English "Page not found?" help text on a normal page', () => {
+  for (const html of [
+    '<title>Shop</title><body><h1>Products</h1><footer>Page not found? See the sitemap.</footer></body>',
+    '<title>Shop</title><body><h1>Products</h1><footer>Page not found ? Contact us.</footer></body>',
+  ]) {
+    assert.equal(isSoft404(pageText(html)), false);
+  }
+});
+
+test('detects a complete English not-found statement in body text', () => {
+  for (const html of [
+    '<title>Shop</title><body><main><p>Page not found.</p></main></body>',
+    '<title>Shop</title><body><main><p>Sorry, page not found</p></main></body>',
+  ]) {
+    assert.equal(isSoft404(pageText(html)), true);
+  }
+});
+
 test('detects a complete Japanese not-found phrase in body text', () => {
   const html = '<title>ストア</title><body><main>お探しのページは見つかりませんでした。</main></body>';
   assert.equal(isSoft404(pageText(html)), true);
