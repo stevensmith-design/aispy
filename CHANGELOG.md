@@ -4,6 +4,15 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## 0.8.10
+
+- `SKILL.md` "Before you start", wording only (#8, #9, #10, #25 item 1, #61):
+  - the setup check asks for the go-ahead to start agents now, before intake, instead of "at intake", which came after it;
+  - if the product isn't settled at setup, the review folder is named from the site's URL and keeps that name for the whole run;
+  - the kit skills are the copies in `skills/design-kit/`, used by path rather than same-named skills installed elsewhere. The undefined "install or lock check" sentence, which said to carry on where the setup check says to stop, is removed.
+- `assemble.mjs` (#53, #59): an `@2x` image that already has a `style` attribute gets the width added at the start of that attribute instead of a second `style`, which the browser ignored. Only real `style` attributes are changed: text like `style='…'` inside an `alt` or `title` is left alone. Tags without a `style` are unchanged. First tests for `scripts/build/`: `node --test scripts/build/test/`, now part of the test command in `CONTRIBUTING.md`.
+- `check-report.mjs` (#58, #60): with `--old`, a document without language templates is now compared with the `en` template of a bilingual version (or the first template if there's no `en`), not only with a single-template version, so a finding removed in that case is reported. The output says which template it compared with. Other languages are still a note. Tests: `node --test scripts/checks/test/`.
+
 ## 0.8.9
 
 Script fixes only; `skills/` and `examples/` are unchanged apart from the version line.
