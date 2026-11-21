@@ -7,10 +7,7 @@ measured against.
 ## Unreleased
 
 - Plugin metadata: `plugin.json` adds `author`, `homepage`, `repository` and `keywords`; the marketplace `owner` is the author. The `product-review` skill description says "the product" and "a request" instead of "client"; its trigger phrases are unchanged.
-
-## Unreleased
-
-- Examples: the screenshots embedded in both localisation reviews are re-encoded as lossless WebP, so each file is under the plugin directory's 5 MiB limit (Brolga 5.3 → 2.2 MiB, Mareo 4.8 → 2.6 MiB). Every image and every rendered page is pixel-identical; nothing else changed. Compressing a run's own documents is #50.
+- Examples: the screenshots embedded in both localisation reviews are re-encoded as lossless WebP, so both files are well under the plugin directory's file-size limit (Brolga 5.5 → 2.3 MB, Mareo 5.0 → 2.7 MB). Every image and every rendered page is pixel-identical; nothing else changed. Compressing a run's own documents is #50.
 
 ## 0.8.7
 
