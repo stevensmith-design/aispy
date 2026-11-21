@@ -6,7 +6,7 @@ measured against.
 
 ## 0.8.8
 
-- `docs/other-agents.md`: how to use AIspy with other agents such as Codex, which runs it unchanged. The README links to it.
+- `docs/other-agents.md`: how to use AIspy with other agents such as Codex. The README links to it.
 - `AGENTS.md` "Running a review", for agents that read it (Codex does, automatically):
   - start each lens and checker with no conversation history;
   - give checkers only the render and the report, and don't reuse an agent for a second role;

@@ -106,7 +106,8 @@ Requires [Claude Code](https://code.claude.com), in the terminal or the desktop 
 Node 22.23.5 or newer, and Python 3 (for the design-system validator, `validate-tokens.py`).
 
 AIspy is designed for Claude Code, and that's where we recommend running it. It also works with
-other agents that can read skills, run commands and start sub-agents, such as Codex: see
+other agents that can read skills, run commands and a browser, and start sub-agents, such as
+Codex: see
 [docs/other-agents.md](docs/other-agents.md).
 
 AIspy installs into Claude Code as a skill pack. Either:
