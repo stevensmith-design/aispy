@@ -37,6 +37,21 @@ function dims(buf) {
   }
   return null;
 }
+// Adds a width to the style attribute among these attributes, if there is one; returns null if
+// there isn't. Attributes are read one at a time, so text that looks like style="…" inside
+// another attribute's value (an alt or title) is left alone.
+const ATTR = /(\s+)([^\s"'>\/=]+)(?:(\s*=\s*)("[^"]*"|'[^']*'|[^\s"'=<>`]+))?/g;
+function withWidth(attrs, w) {
+  let found = false;
+  const out = attrs.replace(ATTR, (m, sp, name, eq, val) => {
+    if (found || val === undefined || name.toLowerCase() !== 'style') return m;
+    found = true;
+    const q = val[0] === '"' || val[0] === "'" ? val[0] : '"';
+    const css = val[0] === q ? val.slice(1, -1) : val;
+    return `${sp}${name}${eq}${q}width:${w}px;${css}${q}`;
+  });
+  return found ? out : null;
+}
 const map = []; const index = new Map(); let missing = 0;
 html = html.replace(/<img\b([^>]*?)\bsrc="([^"]+)"([^>]*)>/g, (m, a, s, b) => {
   if (!local(s)) return m;
@@ -54,7 +69,17 @@ html = html.replace(/<img\b([^>]*?)\bsrc="([^"]+)"([^>]*)>/g, (m, a, s, b) => {
     const d = dims(fs.readFileSync(file));
     // Inline width: base.css sets width:auto on figure images, which would override the
     // width attribute and show a 2x crop at double size.
-    if (d) size = ` width="${Math.round(d[0] / 2)}" height="${Math.round(d[1] / 2)}" style="width:${Math.round(d[0] / 2)}px"`;
+    if (d) {
+      const w = Math.round(d[0] / 2);
+      size = ` width="${w}" height="${Math.round(d[1] / 2)}"`;
+      // A tag can carry only one style attribute (the browser ignores a second one), so the
+      // width goes at the start of the tag's own style when it has one; the tag's own
+      // declarations come after it and still apply.
+      const inA = withWidth(a, w); const inB = inA === null ? withWidth(b, w) : null;
+      if (inA !== null) a = inA;
+      else if (inB !== null) b = inB;
+      else size += ` style="width:${w}px"`;
+    }
   }
   return `<img${a}data-img="${index.get(file)}" data-src="${s}"${size}${b}>`;
 });
