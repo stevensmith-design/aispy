@@ -171,9 +171,9 @@ launching in Japan, so include a localisation review. Report in English.
 Extract the brand and design system from https://example.com first; we'll review afterwards.
 ```
 
-It takes a quick look, then asks one batch of questions with a proposed default for each, so "go"
-is enough. Before reviewing, it runs a setup check (agents, browser, screenshots, kit) and stops if
-anything fails.
+It first runs a setup check (agents, browser, screenshots, kit) and stops if anything fails. Then
+it takes a quick look and asks one batch of questions with a proposed default for each, so "go" is
+enough.
 
 ### 始め方（日本語）
 
@@ -190,9 +190,9 @@ https://example.com をレビューして、改善案を出して。レビュー
 まず https://example.com からブランドとデザインシステムを抽出して。レビューはそのあとで。
 ```
 
-まずサイトをざっと確認し、質問をまとめて一度に送ります。各質問には既定の案が付いているので、
-「進めて」と返すだけで構いません。レビューの前にセットアップチェック（エージェント、ブラウザ、
-スクリーンショット、キット）を行い、どれかが失敗するとそこで止まります。
+最初にセットアップチェック（エージェント、ブラウザ、スクリーンショット、キット）を行い、どれかが
+失敗するとそこで止まります。そのあとサイトをざっと確認し、質問をまとめて一度に送ります。各質問には
+既定の案が付いているので、「進めて」と返すだけで構いません。
 
 ## How to use
 
