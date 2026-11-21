@@ -4,6 +4,10 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## Unreleased
+
+- Plugin metadata: `plugin.json` adds `author`, `homepage`, `repository` and `keywords`; the marketplace `owner` is the author. The `product-review` skill description says "the product" and "a request" instead of "client"; its trigger phrases are unchanged.
+
 ## 0.8.7
 
 - `capture.mjs` (#20, #35): exits with status 1 when any page fails, still writing `capture-notes.md`. Pages listed without a name are renamed: names now include the host, e.g. `example.com/products` → `example-com-products` (was `products`), and `_` is no longer kept, so two URLs with the same path no longer overwrite each other. Pages given a tab-separated name are unchanged. Duplicate names are refused before capturing, and query values are never put in file names. Tests: `node --test scripts/capture/test/`.
