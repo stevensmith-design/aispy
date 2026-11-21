@@ -78,7 +78,9 @@ export function pageText(html) {
 
 export function isSoft404({ title = '', h1 = '', body = '' }) {
   const headingPattern = /\b404\b|\bnot found\b|ページが見つかりません|お探しのページ/i;
-  const bodyPattern = /\bpage not found\b|ページが見つかりません|お探しのページ(?:は|が)?(?:見つかりません(?:でした)?|存在しません)/i;
+  // In the body, only a complete statement counts: "Page not found? See the sitemap." is help
+  // text on a normal page, like the Japanese お探しのページが見つからない場合は….
+  const bodyPattern = /\bpage not found\b(?!\s*[?？])|ページが見つかりません|お探しのページ(?:は|が)?(?:見つかりません(?:でした)?|存在しません)/i;
   return headingPattern.test(`${title} ${h1}`) || bodyPattern.test(body);
 }
 
