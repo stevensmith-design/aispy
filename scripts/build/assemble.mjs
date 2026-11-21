@@ -54,7 +54,17 @@ html = html.replace(/<img\b([^>]*?)\bsrc="([^"]+)"([^>]*)>/g, (m, a, s, b) => {
     const d = dims(fs.readFileSync(file));
     // Inline width: base.css sets width:auto on figure images, which would override the
     // width attribute and show a 2x crop at double size.
-    if (d) size = ` width="${Math.round(d[0] / 2)}" height="${Math.round(d[1] / 2)}" style="width:${Math.round(d[0] / 2)}px"`;
+    if (d) {
+      const w = Math.round(d[0] / 2);
+      size = ` width="${w}" height="${Math.round(d[1] / 2)}"`;
+      // A tag can carry only one style attribute (the browser ignores a second one), so the
+      // width goes at the start of the tag's own style when it has one; the tag's own
+      // declarations come after it and still apply.
+      const style = /(\sstyle=)(["'])([\s\S]*?)\2/i;
+      if (style.test(a)) a = a.replace(style, (m, eq, q, v) => `${eq}${q}width:${w}px;${v}${q}`);
+      else if (style.test(b)) b = b.replace(style, (m, eq, q, v) => `${eq}${q}width:${w}px;${v}${q}`);
+      else size += ` style="width:${w}px"`;
+    }
   }
   return `<img${a}data-img="${index.get(file)}" data-src="${s}"${size}${b}>`;
 });

@@ -14,7 +14,7 @@ least as good, and add real value for the complexity it brings.
 
 ## Checks to run before a pull request
 
-- `node --test scripts/checks/test/ scripts/capture/test/ scripts/inventory/test/` (all must pass).
+- `node --test scripts/checks/test/ scripts/capture/test/ scripts/inventory/test/ scripts/build/test/` (all must pass).
 - `node scripts/checks/check-deliverable.mjs <file>` for every HTML file in `examples/mareo/` and
   `examples/brolga/`.
 - All six `skills/design-kit/*/tests/run.sh`, when anything under `skills/design-kit/` changed.
