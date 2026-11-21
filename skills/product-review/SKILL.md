@@ -45,7 +45,7 @@ Don't polish before the person has seen it.
 - **Setup check (two minutes, before anything else).** Confirm, and note in the run log:
   1. you have the person's go-ahead to start separate agents, and you can. Many sessions only
      start agents when the person asks for them, so if the request doesn't already say so, ask
-     once at intake: "This review runs its three lenses and two checks as separate agents, so
+     now, before intake: "This review runs its three lenses and two checks as separate agents, so
      they're independent. OK to start them?" Then start a trivial one and see it return;
   2. a browser reaches the site in scope;
   3. a scripted browser can take screenshots (for `annotate.mjs` and captures);
@@ -60,12 +60,13 @@ Don't polish before the person has seen it.
 - **Agents.** The three lenses and every independent review run as separate agents. Never call a
   check independent if it ran in your own context.
 - **Kit skills** (bundled in `skills/design-kit/`): `ui-design-system`, `ui-design-review`,
-  `ia-review`, `design-refine`, `ui-design-principles`, `distinctiveness-review`. If the kit's
-  install or lock check fails, note it once and carry on.
+  `ia-review`, `design-refine`, `ui-design-principles`, `distinctiveness-review`. These are the
+  copies in `skills/design-kit/`. Use them by path, not same-named skills installed elsewhere.
 - **Pack paths.** `scripts/…` paths are relative to the pack root, two folders above this file
   (`../../` from `skills/product-review/`); `references/` and `templates/` sit beside this file.
 - **Files.** Work in one folder, `review/<product>-<date>/`, inside the folder the person
-  connected. Keep a short `run-log.md`: what ran, what didn't, which agents were started (with
+  connected. If the product isn't settled at setup, name the folder from the site's URL and keep
+  that name for the whole run. Keep a short `run-log.md`: what ran, what didn't, which agents were started (with
   what input), the start and end time of each phase (read from the clock when it happens, never
   estimated afterwards), and anything dropped between drafts, with the reason. **Before every stop, the
   deliverables must be in that folder**, not only in your own workspace.
