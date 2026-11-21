@@ -37,6 +37,21 @@ function dims(buf) {
   }
   return null;
 }
+// Adds a width to the style attribute among these attributes, if there is one; returns null if
+// there isn't. Attributes are read one at a time, so text that looks like style="…" inside
+// another attribute's value (an alt or title) is left alone.
+const ATTR = /(\s+)([^\s"'>\/=]+)(?:(\s*=\s*)("[^"]*"|'[^']*'|[^\s"'=<>`]+))?/g;
+function withWidth(attrs, w) {
+  let found = false;
+  const out = attrs.replace(ATTR, (m, sp, name, eq, val) => {
+    if (found || val === undefined || name.toLowerCase() !== 'style') return m;
+    found = true;
+    const q = val[0] === '"' || val[0] === "'" ? val[0] : '"';
+    const css = val[0] === q ? val.slice(1, -1) : val;
+    return `${sp}${name}${eq}${q}width:${w}px;${css}${q}`;
+  });
+  return found ? out : null;
+}
 const map = []; const index = new Map(); let missing = 0;
 html = html.replace(/<img\b([^>]*?)\bsrc="([^"]+)"([^>]*)>/g, (m, a, s, b) => {
   if (!local(s)) return m;
@@ -60,9 +75,9 @@ html = html.replace(/<img\b([^>]*?)\bsrc="([^"]+)"([^>]*)>/g, (m, a, s, b) => {
       // A tag can carry only one style attribute (the browser ignores a second one), so the
       // width goes at the start of the tag's own style when it has one; the tag's own
       // declarations come after it and still apply.
-      const style = /(\sstyle=)(["'])([\s\S]*?)\2/i;
-      if (style.test(a)) a = a.replace(style, (m, eq, q, v) => `${eq}${q}width:${w}px;${v}${q}`);
-      else if (style.test(b)) b = b.replace(style, (m, eq, q, v) => `${eq}${q}width:${w}px;${v}${q}`);
+      const inA = withWidth(a, w); const inB = inA === null ? withWidth(b, w) : null;
+      if (inA !== null) a = inA;
+      else if (inB !== null) b = inB;
       else size += ` style="width:${w}px"`;
     }
   }

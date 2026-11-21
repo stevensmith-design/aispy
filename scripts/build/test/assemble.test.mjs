@@ -60,3 +60,20 @@ test('images with their own width, or not @2x, keep their style unchanged', () =
   assert.equal(sized, '<img data-img="0" data-src="img/crop@2x.png" width="390" style="left:0" alt="">');
   assert.equal(plain, '<img data-img="1" data-src="img/plain.png" style="top:0" alt="">');
 });
+
+test('only a real style attribute is changed, however it is written', () => {
+  const [inTitle, inAlt, spaced, unquoted, upper, selfClosing] = run([
+    '<img src="img/crop@2x.png" title="t style=\'q\'" alt="a">',
+    '<img alt="see style=&quot;x&quot; or style=\'y\'" src="img/crop@2x.png" style="margin:0">',
+    '<img src="img/crop@2x.png" style = "border:0" alt="c">',
+    '<img src="img/crop@2x.png" style=border:0 alt="d">',
+    '<img src="img/crop@2x.png" STYLE="border:0" alt="e">',
+    '<img src="img/crop@2x.png" style="border:0" />',
+  ].join(''));
+  assert.equal(inTitle, '<img data-img="0" data-src="img/crop@2x.png" width="200" height="100" style="width:200px" title="t style=\'q\'" alt="a">');
+  assert.equal(inAlt, '<img alt="see style=&quot;x&quot; or style=\'y\'" data-img="0" data-src="img/crop@2x.png" width="200" height="100" style="width:200px;margin:0">');
+  assert.equal(spaced, '<img data-img="0" data-src="img/crop@2x.png" width="200" height="100" style = "width:200px;border:0" alt="c">');
+  assert.equal(unquoted, '<img data-img="0" data-src="img/crop@2x.png" width="200" height="100" style="width:200px;border:0" alt="d">');
+  assert.equal(upper, '<img data-img="0" data-src="img/crop@2x.png" width="200" height="100" STYLE="width:200px;border:0" alt="e">');
+  assert.equal(selfClosing, '<img data-img="0" data-src="img/crop@2x.png" width="200" height="100" style="width:200px;border:0" />');
+});
