@@ -16,6 +16,7 @@ measured against.
 - `CONTRIBUTING.md` replaces `docs/maintaining.md`, keeping the rules any contributor needs: the checks to run, one issue per PR, and "Changes must not make reviews worse" (other-tools work is additive only; script fixes are compared before and after). The maintainer's own process is kept out of the repository, in git-ignored `*.local.md` files.
 - `ROADMAP.md` removed. The README points to the open issues instead.
 - Plugin metadata: `plugin.json` adds `author`, `homepage`, `repository` and `keywords`; the marketplace `owner` is the author. The `product-review` skill description says "the product" and "a request" instead of "client"; its trigger phrases are unchanged.
+- Examples: the screenshots embedded in both localisation reviews are re-encoded as lossless WebP, so both files are well under the plugin directory's file-size limit (Brolga 5.5 → 2.3 MB, Mareo 5.0 → 2.7 MB). Every image and every rendered page is pixel-identical; nothing else changed. Compressing a run's own documents is #50.
 
 ## 0.8.7
 
