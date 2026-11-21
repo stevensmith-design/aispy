@@ -4,6 +4,16 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## 0.8.9
+
+Script fixes only; `skills/` and `examples/` are unchanged apart from the version line.
+
+- `inventory.mjs` (#40, #54): English help text such as "Page not found? See the sitemap." no longer marks a normal page as a soft 404. In the page text, "page not found" counts only when it isn't a question, as the Japanese footer case already did; the title and H1 rules are unchanged.
+- `capture.mjs` (#44, #55): a second run into the same `--out` folder (for example English pages, then Japanese) adds its notes to `capture-notes.md` under its own `# Capture log <time>` heading instead of replacing the first run's. A first run writes the same file as before. Tests: `node --test scripts/capture/test/`.
+- `check-report.mjs` (#52, #56): a bilingual report is read one language template at a time, as `check-deliverable` does, so each finding is counted once per language instead of once per copy (which failed every bilingual report with duplicate numbers). With `--old`, each language is compared with the same language. Reports with templates now print `[en]`, `[ja]` before their counts.
+- `check-mock.mjs` (#52, #56): `class="fixed none"`, which its own message advises for a page with no fixed elements, now passes.
+- The duplicate `style` attribute in `assemble.mjs` is tracked in #53; neither the templates nor the examples hit it.
+
 ## 0.8.8
 
 - `docs/other-agents.md`: how to use AIspy with other agents such as Codex. The README links to it.
