@@ -13,9 +13,11 @@
 //       { "label": "Proposed", "kind": "proposed", "sections": [ ... ] } ] } ] }
 // top/bottom in CSS px from the top of the page (from the capture's section sweep), or
 // "from"/"to" in screens. Roles: decide, reassure, persuade, sell, navigate.
-// Output per page: a .layoutcard with .pmap bars on one shared scale, a .shares table, an
-// empty p.reads to write (with the numbers it should use in a comment), and the client's
-// section list. Stdout also ends with a plain-text summary per page for the run log.
+// Output per page: a .layoutcard with .pmap bars on one shared scale (colour only: each
+// segment's name and screens are in data-tip, which base.css shows as a tooltip on hover; never
+// text in the bar; .e marks segments in the right half, whose tooltip opens leftwards), a .shares
+// table, an empty p.reads to write (with the numbers it should use in a comment), and the
+// client's section list. Stdout also ends with a plain-text summary per page for the run log.
 import fs from 'node:fs';
 
 const file = process.argv[2];
@@ -64,7 +66,7 @@ for (const page of L.pages) {
     h.push(`<div class="r${r.kind === 'proposed' ? ' prop' : ''}"><b>${esc(r.label)}<small>${r1(r.end)} screens · ${r.secs.length} sections</small></b><div class="bar">`);
     for (const s of r.secs) {
       const w = ((s.to - s.from) / max) * 100;
-      h.push(`<div class="s r-${s.role}" style="left:${pct((s.from / max) * 100)};width:${pct(w)}" title="${esc(s.name)} (screens ${r1(s.from + 1)}–${r1(s.to + 1)})">${w > 7 ? esc(s.name) : ''}</div>`);
+      h.push(`<div class="s r-${s.role}${s.from / max > 0.5 ? ' e' : ''}" style="left:${pct((s.from / max) * 100)};width:${pct(w)}" data-tip="${esc(s.name)} (screens ${r1(s.from + 1)}–${r1(s.to + 1)})"></div>`);
     }
     h.push('</div></div>');
   }

@@ -56,3 +56,19 @@ test('every child of a parent is flagged, not only the first', () => {
   assert.match(r.stderr, /Child A: overlaps Main/);
   assert.match(r.stderr, /Child B: overlaps Main/);
 });
+
+test('bar segments are colour only: no text in the segment, the name in data-tip', () => {
+  const r = run([
+    { name: 'Reviews', role: 'reassure', from: 0, to: 5 },
+    { name: '足幅 · カラー · サイズ · カートに追加', role: 'decide', from: 5, to: 6 },
+  ]);
+  assert.equal(r.status, 0, r.stderr);
+  const segs = [...r.stdout.matchAll(/<div class="s r-[a-z]+( e)?"[^>]*data-tip="([^"]*)">([^<]*)<\/div>/g)];
+  assert.equal(segs.length, 2);
+  assert.deepEqual(segs.map((m) => m[3]), ['', '']);
+  assert.equal(segs[0][2], 'Reviews (screens 1–6)');
+  assert.equal(segs[1][2], '足幅 · カラー · サイズ · カートに追加 (screens 6–7)');
+  // A segment starting past the middle of the bar opens its tooltip leftwards.
+  assert.deepEqual(segs.map((m) => !!m[1]), [false, true]);
+  assert.doesNotMatch(r.stdout, /class="s [^"]*"[^>]*\stitle=/);
+});
