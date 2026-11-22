@@ -36,6 +36,15 @@ function norm(row) {
     if (!(to > from)) { console.error(`  ✗ ${row.label} · ${s.name}: end is not after start`); problems++; }
     return { ...s, from, to };
   }).sort((a, b) => a.from - b.from);
+  // Sections must not overlap (a nested element listed beside its parent): the bars would draw
+  // on top of each other and the shares could sum past 100%. 0.05 screens allows for rounding.
+  // Compare with the section that reaches furthest so far, so a parent is checked against every
+  // child, not only the first.
+  let reach = secs[0];
+  for (const s of secs.slice(1)) {
+    if (s.from < reach.to - 0.05) { console.error(`  ✗ ${row.label} · ${s.name}: overlaps ${reach.name} (screens ${r1(s.from + 1)}–${r1(Math.min(s.to, reach.to) + 1)}); list only one of them`); problems++; }
+    if (s.to > reach.to) reach = s;
+  }
   const end = Math.max(...secs.map((s) => s.to));
   const share = Object.fromEntries(ROLES.map((r) => [r, secs.filter((s) => s.role === r).reduce((t, s) => t + (s.to - s.from), 0) / end]));
   const first = Object.fromEntries(ROLES.map((r) => [r, (secs.find((s) => s.role === r) || {}).from]));
