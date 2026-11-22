@@ -3,6 +3,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { forbiddenHits } from '../forbid.mjs';
@@ -42,5 +44,36 @@ test('check-deliverable fails on a katakana name standing alone', () => {
 
 test('check-deliverable passes when the katakana term only occurs inside longer words', () => {
   const r = run('ガイド,シューズ');
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+});
+
+// A name that appears only in an attribute (alt, title, aria-label, data-*) is caught too.
+// "Zorblax" is made up.
+const withAttr = (from, to) => {
+  const src = fs.readFileSync(mock, 'utf8');
+  assert.ok(src.includes(from), `fixture text not found: ${from}`);
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'aispy-forbid-'));
+  const f = path.join(dir, 'mock.html');
+  fs.writeFileSync(f, src.replace(from, to));
+  const r = spawnSync(process.execPath, [check, f, '--type', 'mock', '--forbid', 'Zorblax'], { encoding: 'utf8' });
+  fs.rmSync(dir, { recursive: true, force: true });
+  return r;
+};
+
+test('check-deliverable fails on a name only in an alt attribute', () => {
+  const r = withAttr('alt="Live Swell 3 page at 390 px, full length"', 'alt="Zorblax page at 390 px, full length"');
+  assert.equal(r.status, 1, r.stdout + r.stderr);
+  assert.match(r.stdout, /appears in an attribute \([^)]*\): "Zorblax"/);
+  assert.doesNotMatch(r.stdout, /appears in the text: "Zorblax"/);
+});
+
+test('check-deliverable fails on a name only in a data-* attribute', () => {
+  const r = withAttr('data-src="', 'data-src="zorblax-');
+  assert.equal(r.status, 1, r.stdout + r.stderr);
+  assert.match(r.stdout, /appears in an attribute[^\n]*"Zorblax"/);
+});
+
+test('check-deliverable passes when the forbidden name appears nowhere', () => {
+  const r = withAttr('alt="Live Swell 3', 'alt="Live Swell 3');
   assert.equal(r.status, 0, r.stdout + r.stderr);
 });

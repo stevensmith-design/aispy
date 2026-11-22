@@ -19,8 +19,10 @@
 // And for the whole file: no sample content left (data-sample, the sample brand, .ph-img,
 // {{fields}}), no forbidden names (--forbid: names that were NOT supplied at intake, such as
 // the account owner's name or organisation; Latin names match as whole words, Japanese names as
-// substrings, katakana-only names only outside a longer katakana word: see forbid.mjs), in-page
-// #links resolve, and theme contrast.
+// substrings, katakana-only names only outside a longer katakana word: see forbid.mjs; checked
+// in the text and in double-quoted alt, title, aria-label, aria-description, placeholder and
+// data-* attributes, not in href, src, value or <meta content>), in-page #links resolve, the
+// index's links to the other documents resolve, and theme contrast.
 // Exit 1 on any failure. No dependencies.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -66,6 +68,7 @@ const note = (m) => { console.log(`  ! ${m}`); warn++; };
 const ok = (m) => console.log(`  ✓ ${m}`);
 const text = (h) => h.replace(/<!--[\s\S]*?-->/g, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/gi, ' ').replace(/\s+/g, ' ');
 const noComments = html.replace(/<!--[\s\S]*?-->/g, '');
+const markup = noComments.replace(/<style[\s\S]*?<\/style>/g, '').replace(/<script[\s\S]*?<\/script>/g, '');
 
 // ---------- whole file ----------
 console.log(`${path.basename(file)} · ${type}`);
@@ -76,9 +79,24 @@ if (ph) bad(`${ph} image placeholder(s) (.ph-img) left: use a real capture, or a
 const fields = noComments.match(/\{\{[^}]{1,80}\}\}/g) || [];
 if (fields.length) bad(`${fields.length} unfilled field(s), e.g. ${fields.slice(0, 3).join(' ')}`);
 if (opt('forbid')) {
-  for (const n of forbiddenHits(text(html), String(opt('forbid')).split(','))) {
-    bad(`name not supplied at intake appears in the text: "${n}"`);
+  const terms = String(opt('forbid')).split(',');
+  const inText = forbiddenHits(text(html), terms);
+  for (const n of inText) bad(`name not supplied at intake appears in the text: "${n}"`);
+  // text() drops tags, so also look in the attributes a reader or screen reader sees, and in
+  // data-* (image names, titles).
+  const attrs = [...markup.matchAll(/\s(alt|title|aria-label|aria-description|placeholder|data-[\w-]+)="([^"]*)"/gi)]
+    .map((m) => m[2]).join(' | ');
+  for (const n of forbiddenHits(attrs, terms).filter((t) => !inText.includes(t))) {
+    bad(`name not supplied at intake appears in an attribute (alt, title, aria-label, aria-description, placeholder or data-*): "${n}"`);
   }
+}
+if (type === 'index') {
+  // The index is built last, at packaging, so every document it links to must exist beside it.
+  const local = [...markup.matchAll(/<a\b[^>]*\shref="([^"#][^"]*)"/gi)].map((m) => m[1])
+    .filter((h) => !/^([a-z][a-z0-9+.-]*:|\/\/)/i.test(h)).map((h) => h.split(/[?#]/)[0]);
+  const decode = (h) => { try { return decodeURI(h); } catch { return null; } }; // bad %-escapes count as dead
+  const gone = [...new Set(local)].filter((h) => { const d = decode(h); return d === null || !fs.existsSync(path.resolve(path.dirname(file), d)); });
+  gone.length ? bad(`links to documents that aren't beside the index: ${gone.join(', ')}`) : ok(`linked documents present (${new Set(local).size})`);
 }
 
 // ---------- theme contrast ----------

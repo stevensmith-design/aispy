@@ -233,3 +233,28 @@ test('check-report: without an "en" template, a plain document is compared with 
   assert.match(out(r), /\[ja\] Old version: 2 findings\n {2}· compared with[^\n]*\n {2}✗ gone: #2 税込価格/);
   assert.match(out(r), /\[fr\] Old version: · no "fr" template/);
 });
+
+// The index's links to the other documents must resolve beside it.
+test('index: a link to a document that was renamed or never built fails', () => {
+  const dir = fs.mkdtempSync(path.join(tmp, 'pkg-'));
+  for (const f of fs.readdirSync(ex('brolga', ''))) if (f.endsWith('.html')) fs.copyFileSync(ex('brolga', f), path.join(dir, f));
+  let r = node([deliverable, path.join(dir, 'index.html'), '--type', 'index']);
+  assert.equal(r.status, 0, out(r));
+  assert.match(out(r), /✓ linked documents present \(3\)/);
+  fs.renameSync(path.join(dir, EXAMPLES.brolga.mock), path.join(dir, 'brolga-jp-mock-v2.html'));
+  r = node([deliverable, path.join(dir, 'index.html'), '--type', 'index']);
+  assert.equal(r.status, 1, out(r));
+  assert.match(out(r), new RegExp(`links to documents that aren't beside the index: ${EXAMPLES.brolga.mock}`));
+});
+
+test('index: a malformed link fails cleanly, and links inside scripts are ignored', () => {
+  const dir = fs.mkdtempSync(path.join(tmp, 'pkg-'));
+  for (const f of fs.readdirSync(ex('brolga', ''))) if (f.endsWith('.html')) fs.copyFileSync(ex('brolga', f), path.join(dir, f));
+  const idx = path.join(dir, 'index.html');
+  const src = fs.readFileSync(idx, 'utf8');
+  fs.writeFileSync(idx, src.replace('</body>', '<script>const s = \'<a href="gone.html">\';</script><a href="bad%zz.html">x</a></body>'));
+  const r = node([deliverable, idx, '--type', 'index']);
+  assert.equal(r.status, 1, out(r));
+  assert.doesNotMatch(out(r), /URIError/);
+  assert.match(out(r), /aren't beside the index: bad%zz\.html$/m);
+});
