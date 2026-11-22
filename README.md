@@ -152,8 +152,19 @@ are installed.
      ```
      cd "$(ls -d ~/.claude/plugins/cache/aispy/aispy/*/ | sort -V | tail -1)scripts/capture" && npm install && npx playwright install chromium
      ```
-2. **A browser the session can drive**, such as Claude in Chrome or Playwright, with its commands
-   allowed in your permissions so it can open the site.
+2. **A browser the session can drive**, with its commands allowed in your permissions so it can
+   open the site. For a public site, the capture helper's Playwright from step 1 is enough. Use
+   **Claude in Chrome** when you need your own browser: to sign in to logged-in areas yourself, or
+   when the site blocks scripted browsers. To connect it:
+   - install the [Claude in Chrome extension](https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn)
+     (version 1.0.36 or later) in Chrome, Edge or another Chromium-based browser;
+   - start Claude Code with `claude --chrome`, or run `/chrome` in a session. It needs a Pro, Max,
+     Ultra, Team or Enterprise plan with `/login`, and isn't available in WSL or with an API key;
+   - run `/chrome` and check that it shows `Status: Enabled` and `Extension: Installed`.
+
+   See [Claude in Chrome](https://code.claude.com/docs/en/chrome) for details and troubleshooting.
+   To confirm the whole setup, ask "Set up AIspy for my first review": it tests that a scripted
+   browser can take screenshots.
 3. **Agents:** say "start separate agents for the lenses and checks" in your request.
 
 ## How to start
