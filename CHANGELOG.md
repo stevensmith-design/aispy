@@ -4,6 +4,16 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## 0.8.11
+
+- `SKILL.md` "Before you start", setup check only (#66, #67): when check 3 fails only because the capture helper isn't installed (no `scripts/capture/node_modules`), the agent offers to install it, in the same message as the agents question when both are open. After a yes, it runs `npm install` and `npx playwright install chromium` in the pack's `scripts/capture/` and re-runs check 3. A decline or a failed install means check 3 has failed, and the review stops as before. Checked with two setup-only Claude runs on fresh clones (approve: installs, all four checks pass; decline: stops). No Brolga comparison, since nothing after the setup check changed.
+- `layout-bars.mjs` (#23, #64): a section that overlaps another by more than 0.05 screens (a nested element listed beside its parent) is now an input error, so shares can no longer sum past 100%. Output for valid input is byte-identical. Tests: `node --test scripts/build/test/`.
+- `check-deliverable.mjs` (#22, #65):
+  - `--forbid` also checks the values of `alt`, `title`, `aria-label`, `aria-description`, `placeholder` and `data-*` attributes, not only the visible text.
+  - An index fails when a link to another document doesn't resolve beside it, for example when `assemble.mjs` ran without `--names`.
+  - Results on the examples are unchanged, apart from one new `✓ linked documents present` line on each index.
+- `README.md` and `docs/how-to-use.md` (#24, #63): how to connect a browser. Any browser the session can drive works for a public site. Claude in Chrome is for logged-in areas and for sites that block scripted browsers; the docs give its connection steps and how to confirm them.
+
 ## 0.8.10
 
 - `SKILL.md` "Before you start", wording only (#8, #9, #10, #25 item 1, #61):
