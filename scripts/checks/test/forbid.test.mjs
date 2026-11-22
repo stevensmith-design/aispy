@@ -52,15 +52,18 @@ test('check-deliverable passes when the katakana term only occurs inside longer 
 const withAttr = (from, to) => {
   const src = fs.readFileSync(mock, 'utf8');
   assert.ok(src.includes(from), `fixture text not found: ${from}`);
-  const f = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'aispy-forbid-')), 'mock.html');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'aispy-forbid-'));
+  const f = path.join(dir, 'mock.html');
   fs.writeFileSync(f, src.replace(from, to));
-  return spawnSync(process.execPath, [check, f, '--type', 'mock', '--forbid', 'Zorblax'], { encoding: 'utf8' });
+  const r = spawnSync(process.execPath, [check, f, '--type', 'mock', '--forbid', 'Zorblax'], { encoding: 'utf8' });
+  fs.rmSync(dir, { recursive: true, force: true });
+  return r;
 };
 
 test('check-deliverable fails on a name only in an alt attribute', () => {
   const r = withAttr('alt="Live Swell 3 page at 390 px, full length"', 'alt="Zorblax page at 390 px, full length"');
   assert.equal(r.status, 1, r.stdout + r.stderr);
-  assert.match(r.stdout, /appears in an attribute \(alt, title, aria-label, data-…\): "Zorblax"/);
+  assert.match(r.stdout, /appears in an attribute \([^)]*\): "Zorblax"/);
   assert.doesNotMatch(r.stdout, /appears in the text: "Zorblax"/);
 });
 

@@ -246,3 +246,15 @@ test('index: a link to a document that was renamed or never built fails', () => 
   assert.equal(r.status, 1, out(r));
   assert.match(out(r), new RegExp(`links to documents that aren't beside the index: ${EXAMPLES.brolga.mock}`));
 });
+
+test('index: a malformed link fails cleanly, and links inside scripts are ignored', () => {
+  const dir = fs.mkdtempSync(path.join(tmp, 'pkg-'));
+  for (const f of fs.readdirSync(ex('brolga', ''))) if (f.endsWith('.html')) fs.copyFileSync(ex('brolga', f), path.join(dir, f));
+  const idx = path.join(dir, 'index.html');
+  const src = fs.readFileSync(idx, 'utf8');
+  fs.writeFileSync(idx, src.replace('</body>', '<script>const s = \'<a href="gone.html">\';</script><a href="bad%zz.html">x</a></body>'));
+  const r = node([deliverable, idx, '--type', 'index']);
+  assert.equal(r.status, 1, out(r));
+  assert.doesNotMatch(out(r), /URIError/);
+  assert.match(out(r), /aren't beside the index: bad%zz\.html$/m);
+});
