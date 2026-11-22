@@ -45,7 +45,6 @@
   .tbl.kv tr,.tbl.persp tr{display:block}
   .tbl.kv th,.tbl.kv td,.tbl.persp td{display:block;width:auto!important}
   .tbl.kv th{border-bottom:0;padding-bottom:0}
-  .layoutcard .pmap .bar .s{font-size:0;padding:0}
   .layoutcard .pmap .r,.layoutcard .pmap .axis{grid-template-columns:1fr;gap:4px}
   .layoutcard .pmap .axis>span:first-child{display:none}
 }
@@ -272,9 +271,10 @@ footer.doc{margin-top:var(--s8);border-top:1px solid var(--border);padding:var(-
 .pmap .s{position:absolute;top:0;bottom:0;border-right:1px solid rgba(255,255,255,.7)}
 .pmap .s:first-child{border-radius:5px 0 0 5px}
 .pmap .s:last-child{border-radius:0 5px 5px 0}
-.pmap .s:hover{outline:2px solid var(--text);outline-offset:-2px;z-index:2}
-.pmap .s[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:0;z-index:3;width:max-content;max-width:min(240px,45vw);padding:4px 8px;border-radius:4px;background:var(--text);color:var(--surface);font-size:12px;font-weight:400;line-height:1.4;letter-spacing:0;white-space:normal;pointer-events:none}
-.pmap .s.e:hover::after{left:auto;right:0}
+.pmap .s:hover,.pmap .s:focus{outline:2px solid var(--text);outline-offset:-2px;z-index:2}
+.pmap .s[data-tip]:hover::after,.pmap .s[data-tip]:focus::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:0;z-index:3;width:max-content;max-width:min(240px,45vw);padding:4px 8px;border-radius:4px;background:var(--text);color:var(--surface);font-size:12px;font-weight:400;line-height:1.4;letter-spacing:0;white-space:normal;pointer-events:none}
+.pmap .s.e:hover::after,.pmap .s.e:focus::after{left:auto;right:0}
+.pmap .r:first-child .s:hover::after,.pmap .r:first-child .s:focus::after{bottom:auto;top:calc(100% + 6px)}
 .pmap .axis{display:grid;grid-template-columns:160px 1fr;gap:var(--s3);font-size:12px;color:var(--text-2)}
 .pmap .axis div{display:flex;justify-content:space-between}
 .shares{width:100%;border-collapse:collapse;font-size:13px;margin:var(--s3) 0}
@@ -286,6 +286,7 @@ footer.doc{margin-top:var(--s8);border-top:1px solid var(--border);padding:var(-
 .lrow .lrole{display:inline-flex;align-items:center;gap:6px;font-size:12px}
 .lrow .lrole i{width:10px;height:10px;border-radius:3px}
 .lrow .track{position:relative;height:12px;background:var(--canvas);border-radius:3px}
+.lrow.lhead .track{background:none}
 .lrow .track b{position:absolute;top:0;bottom:0;border-radius:3px}
 .lrow .lscr{text-align:right;color:var(--text-2);font-variant-numeric:tabular-nums}
 @media(max-width:700px){.lrow{grid-template-columns:1fr 90px 40px}.lrow .track{display:none}}
@@ -488,42 +489,42 @@ footer.doc{margin-top:var(--s8);border-top:1px solid var(--border);padding:var(-
 <h3>Product page (Swell 3)</h3>
 <div class="pmap">
 <div class="r"><b>Brolga JP · Swell 3<small>6.3 screens · 11 sections</small></b><div class="bar">
-<div class="s r-navigate" style="left:0.00%;width:1.92%" data-tip="Header and breadcrumb (screens 1–1.2)"></div>
-<div class="s r-persuade" style="left:1.92%;width:5.88%" data-tip="Gallery (1 / 3) (screens 1.2–1.7)"></div>
-<div class="s r-decide" style="left:7.79%;width:4.91%" data-tip="Name, rating, price （税込） (screens 1.7–2.1)"></div>
-<div class="s r-decide" style="left:12.70%;width:8.63%" data-tip="足幅 · カラー · サイズ · カートに追加 (screens 2.1–2.8)"></div>
-<div class="s r-reassure" style="left:21.33%;width:3.55%" data-tip="Delivery, returns, payment lines (screens 2.8–3.1)"></div>
-<div class="s r-persuade" style="left:24.88%;width:4.44%" data-tip="特徴 (open) (screens 3.1–3.4)"></div>
-<div class="s r-reassure" style="left:29.32%;width:2.43%" data-tip="スペック · 配送・返品 · お手入れ (closed) (screens 3.4–3.7)"></div>
-<div class="s r-decide" style="left:31.75%;width:7.79%" data-tip="モデルを比べる (fixed four) (screens 3.7–4.3)"></div>
-<div class="s r-reassure" style="left:39.54%;width:13.65%" data-tip="レビュー (4 of 198) (screens 4.3–5.4)"></div>
-<div class="s r-sell e" style="left:53.19%;width:9.03%" data-tip="こちらもおすすめ (screens 5.4–6.2)"></div>
-<div class="s r-navigate e" style="left:62.22%;width:13.38%" data-tip="Footer (screens 6.2–7.3)"></div>
+<div class="s r-navigate" style="left:0.00%;width:1.92%" tabindex="0" role="img" aria-label="Header and breadcrumb (screens 1–1.2)" data-tip="Header and breadcrumb (screens 1–1.2)"></div>
+<div class="s r-persuade" style="left:1.92%;width:5.88%" tabindex="0" role="img" aria-label="Gallery (1 / 3) (screens 1.2–1.7)" data-tip="Gallery (1 / 3) (screens 1.2–1.7)"></div>
+<div class="s r-decide" style="left:7.79%;width:4.91%" tabindex="0" role="img" aria-label="Name, rating, price （税込） (screens 1.7–2.1)" data-tip="Name, rating, price （税込） (screens 1.7–2.1)"></div>
+<div class="s r-decide" style="left:12.70%;width:8.63%" tabindex="0" role="img" aria-label="足幅 · カラー · サイズ · カートに追加 (screens 2.1–2.8)" data-tip="足幅 · カラー · サイズ · カートに追加 (screens 2.1–2.8)"></div>
+<div class="s r-reassure" style="left:21.33%;width:3.55%" tabindex="0" role="img" aria-label="Delivery, returns, payment lines (screens 2.8–3.1)" data-tip="Delivery, returns, payment lines (screens 2.8–3.1)"></div>
+<div class="s r-persuade" style="left:24.88%;width:4.44%" tabindex="0" role="img" aria-label="特徴 (open) (screens 3.1–3.4)" data-tip="特徴 (open) (screens 3.1–3.4)"></div>
+<div class="s r-reassure" style="left:29.32%;width:2.43%" tabindex="0" role="img" aria-label="スペック · 配送・返品 · お手入れ (closed) (screens 3.4–3.7)" data-tip="スペック · 配送・返品 · お手入れ (closed) (screens 3.4–3.7)"></div>
+<div class="s r-decide" style="left:31.75%;width:7.79%" tabindex="0" role="img" aria-label="モデルを比べる (fixed four) (screens 3.7–4.3)" data-tip="モデルを比べる (fixed four) (screens 3.7–4.3)"></div>
+<div class="s r-reassure" style="left:39.54%;width:13.65%" tabindex="0" role="img" aria-label="レビュー (4 of 198) (screens 4.3–5.4)" data-tip="レビュー (4 of 198) (screens 4.3–5.4)"></div>
+<div class="s r-sell e" style="left:53.19%;width:9.03%" tabindex="0" role="img" aria-label="こちらもおすすめ (screens 5.4–6.2)" data-tip="こちらもおすすめ (screens 5.4–6.2)"></div>
+<div class="s r-navigate e" style="left:62.22%;width:13.38%" tabindex="0" role="img" aria-label="Footer (screens 6.2–7.3)" data-tip="Footer (screens 6.2–7.3)"></div>
 </div></div>
 <div class="r"><b>On · Cloudrunner 3 Max<small>8.3 screens · 10 sections</small></b><div class="bar">
-<div class="s r-navigate" style="left:0.00%;width:1.82%" data-tip="Header (screens 1–1.2)"></div>
-<div class="s r-persuade" style="left:1.82%;width:8.16%" data-tip="Gallery (screens 1.2–1.8)"></div>
-<div class="s r-decide" style="left:9.98%;width:6.91%" data-tip="Name, use blocks, size, add to bag (screens 1.8–2.4)"></div>
-<div class="s r-decide" style="left:16.89%;width:0.81%" data-tip="サイズとフィット感 (fit verdict) (screens 2.4–2.5)"></div>
-<div class="s r-reassure" style="left:17.70%;width:0.81%" data-tip="配送料＆返品送料 (screens 2.5–2.5)"></div>
-<div class="s r-persuade" style="left:18.51%;width:6.94%" data-tip="Materials, specs (screens 2.5–3.1)"></div>
-<div class="s r-persuade" style="left:25.45%;width:12.55%" data-tip="Features and technology (screens 3.1–4.2)"></div>
-<div class="s r-persuade" style="left:37.99%;width:16.97%" data-tip="Brand story blocks (screens 4.2–5.6)"></div>
-<div class="s r-sell e" style="left:54.97%;width:18.76%" data-tip="Collection and picks (screens 5.6–7.2)"></div>
-<div class="s r-navigate e" style="left:73.73%;width:26.27%" data-tip="Footer (screens 7.2–9.3)"></div>
+<div class="s r-navigate" style="left:0.00%;width:1.82%" tabindex="0" role="img" aria-label="Header (screens 1–1.2)" data-tip="Header (screens 1–1.2)"></div>
+<div class="s r-persuade" style="left:1.82%;width:8.16%" tabindex="0" role="img" aria-label="Gallery (screens 1.2–1.8)" data-tip="Gallery (screens 1.2–1.8)"></div>
+<div class="s r-decide" style="left:9.98%;width:6.91%" tabindex="0" role="img" aria-label="Name, use blocks, size, add to bag (screens 1.8–2.4)" data-tip="Name, use blocks, size, add to bag (screens 1.8–2.4)"></div>
+<div class="s r-decide" style="left:16.89%;width:0.81%" tabindex="0" role="img" aria-label="サイズとフィット感 (fit verdict) (screens 2.4–2.5)" data-tip="サイズとフィット感 (fit verdict) (screens 2.4–2.5)"></div>
+<div class="s r-reassure" style="left:17.70%;width:0.81%" tabindex="0" role="img" aria-label="配送料＆返品送料 (screens 2.5–2.5)" data-tip="配送料＆返品送料 (screens 2.5–2.5)"></div>
+<div class="s r-persuade" style="left:18.51%;width:6.94%" tabindex="0" role="img" aria-label="Materials, specs (screens 2.5–3.1)" data-tip="Materials, specs (screens 2.5–3.1)"></div>
+<div class="s r-persuade" style="left:25.45%;width:12.55%" tabindex="0" role="img" aria-label="Features and technology (screens 3.1–4.2)" data-tip="Features and technology (screens 3.1–4.2)"></div>
+<div class="s r-persuade" style="left:37.99%;width:16.97%" tabindex="0" role="img" aria-label="Brand story blocks (screens 4.2–5.6)" data-tip="Brand story blocks (screens 4.2–5.6)"></div>
+<div class="s r-sell e" style="left:54.97%;width:18.76%" tabindex="0" role="img" aria-label="Collection and picks (screens 5.6–7.2)" data-tip="Collection and picks (screens 5.6–7.2)"></div>
+<div class="s r-navigate e" style="left:73.73%;width:26.27%" tabindex="0" role="img" aria-label="Footer (screens 7.2–9.3)" data-tip="Footer (screens 7.2–9.3)"></div>
 </div></div>
 <div class="r prop"><b>Proposed<small>6.4 screens · 11 sections</small></b><div class="bar">
-<div class="s r-navigate" style="left:0.00%;width:1.92%" data-tip="Header and breadcrumb (screens 1–1.2)"></div>
-<div class="s r-persuade" style="left:1.92%;width:5.88%" data-tip="Gallery with dots (5–6 images) (screens 1.2–1.7)"></div>
-<div class="s r-decide" style="left:7.79%;width:4.91%" data-tip="Name, rating, price （税込） (screens 1.7–2.1)"></div>
-<div class="s r-decide" style="left:12.70%;width:10.01%" data-tip="足幅 with help and drawing · fit line · サイズ · button (screens 2.1–2.9)"></div>
-<div class="s r-reassure" style="left:22.71%;width:3.97%" data-tip="Service list: from Japan, returns, payment marks (screens 2.9–3.2)"></div>
-<div class="s r-reassure" style="left:26.68%;width:4.26%" data-tip="Fit summary from reviews (サイズ感, width filter) (screens 3.2–3.6)"></div>
-<div class="s r-decide" style="left:30.94%;width:6.53%" data-tip="Compare: this model + closest (screens 3.6–4.1)"></div>
-<div class="s r-persuade" style="left:37.47%;width:6.81%" data-tip="特徴 · スペック · 配送・返品 · お手入れ (screens 4.1–4.7)"></div>
-<div class="s r-reassure" style="left:44.28%;width:11.07%" data-tip="レビュー (filterable, all 198) (screens 4.7–5.6)"></div>
-<div class="s r-sell e" style="left:55.35%;width:7.66%" data-tip="こちらもおすすめ (screens 5.6–6.3)"></div>
-<div class="s r-navigate e" style="left:63.01%;width:13.38%" data-tip="Footer (screens 6.3–7.4)"></div>
+<div class="s r-navigate" style="left:0.00%;width:1.92%" tabindex="0" role="img" aria-label="Header and breadcrumb (screens 1–1.2)" data-tip="Header and breadcrumb (screens 1–1.2)"></div>
+<div class="s r-persuade" style="left:1.92%;width:5.88%" tabindex="0" role="img" aria-label="Gallery with dots (5–6 images) (screens 1.2–1.7)" data-tip="Gallery with dots (5–6 images) (screens 1.2–1.7)"></div>
+<div class="s r-decide" style="left:7.79%;width:4.91%" tabindex="0" role="img" aria-label="Name, rating, price （税込） (screens 1.7–2.1)" data-tip="Name, rating, price （税込） (screens 1.7–2.1)"></div>
+<div class="s r-decide" style="left:12.70%;width:10.01%" tabindex="0" role="img" aria-label="足幅 with help and drawing · fit line · サイズ · button (screens 2.1–2.9)" data-tip="足幅 with help and drawing · fit line · サイズ · button (screens 2.1–2.9)"></div>
+<div class="s r-reassure" style="left:22.71%;width:3.97%" tabindex="0" role="img" aria-label="Service list: from Japan, returns, payment marks (screens 2.9–3.2)" data-tip="Service list: from Japan, returns, payment marks (screens 2.9–3.2)"></div>
+<div class="s r-reassure" style="left:26.68%;width:4.26%" tabindex="0" role="img" aria-label="Fit summary from reviews (サイズ感, width filter) (screens 3.2–3.6)" data-tip="Fit summary from reviews (サイズ感, width filter) (screens 3.2–3.6)"></div>
+<div class="s r-decide" style="left:30.94%;width:6.53%" tabindex="0" role="img" aria-label="Compare: this model + closest (screens 3.6–4.1)" data-tip="Compare: this model + closest (screens 3.6–4.1)"></div>
+<div class="s r-persuade" style="left:37.47%;width:6.81%" tabindex="0" role="img" aria-label="特徴 · スペック · 配送・返品 · お手入れ (screens 4.1–4.7)" data-tip="特徴 · スペック · 配送・返品 · お手入れ (screens 4.1–4.7)"></div>
+<div class="s r-reassure" style="left:44.28%;width:11.07%" tabindex="0" role="img" aria-label="レビュー (filterable, all 198) (screens 4.7–5.6)" data-tip="レビュー (filterable, all 198) (screens 4.7–5.6)"></div>
+<div class="s r-sell e" style="left:55.35%;width:7.66%" tabindex="0" role="img" aria-label="こちらもおすすめ (screens 5.6–6.3)" data-tip="こちらもおすすめ (screens 5.6–6.3)"></div>
+<div class="s r-navigate e" style="left:63.01%;width:13.38%" tabindex="0" role="img" aria-label="Footer (screens 6.3–7.4)" data-tip="Footer (screens 6.3–7.4)"></div>
 </div></div>
 <div class="axis"><span></span><div><span>screen 1</span><span>screen 5</span><span>screen 9</span></div></div>
 </div>
@@ -551,29 +552,29 @@ footer.doc{margin-top:var(--s8);border-top:1px solid var(--border);padding:var(-
 <h3>Top page</h3>
 <div class="pmap">
 <div class="r"><b>Brolga JP · top<small>6.8 screens · 10 sections</small></b><div class="bar">
-<div class="s r-navigate" style="left:0.00%;width:1.50%" data-tip="Header (screens 1–1.1)"></div>
-<div class="s r-persuade" style="left:1.50%;width:13.97%" data-tip="Hero 「足幅で選ぶ、という選択肢。」 (screens 1.1–2.1)"></div>
-<div class="s r-decide" style="left:15.46%;width:14.24%" data-tip="足幅のこと (no link to wide models) (screens 2.1–3.1)"></div>
-<div class="s r-navigate" style="left:29.70%;width:9.10%" data-tip="新作とおすすめ rail (screens 3.1–3.7)"></div>
-<div class="s r-navigate" style="left:38.80%;width:8.40%" data-tip="用途で選ぶ (screens 3.7–4.3)"></div>
-<div class="s r-reassure" style="left:47.20%;width:6.98%" data-tip="30日間走って返品 (screens 4.3–4.8)"></div>
-<div class="s r-reassure e" style="left:54.18%;width:11.04%" data-tip="履いた人の声 (screens 4.8–5.6)"></div>
-<div class="s r-persuade e" style="left:65.22%;width:8.50%" data-tip="フリーマントルから (screens 5.6–6.2)"></div>
-<div class="s r-sell e" style="left:73.72%;width:6.38%" data-tip="Newsletter (screens 6.2–6.6)"></div>
-<div class="s r-navigate e" style="left:80.09%;width:15.87%" data-tip="Footer (screens 6.6–7.8)"></div>
+<div class="s r-navigate" style="left:0.00%;width:1.50%" tabindex="0" role="img" aria-label="Header (screens 1–1.1)" data-tip="Header (screens 1–1.1)"></div>
+<div class="s r-persuade" style="left:1.50%;width:13.97%" tabindex="0" role="img" aria-label="Hero 「足幅で選ぶ、という選択肢。」 (screens 1.1–2.1)" data-tip="Hero 「足幅で選ぶ、という選択肢。」 (screens 1.1–2.1)"></div>
+<div class="s r-decide" style="left:15.46%;width:14.24%" tabindex="0" role="img" aria-label="足幅のこと (no link to wide models) (screens 2.1–3.1)" data-tip="足幅のこと (no link to wide models) (screens 2.1–3.1)"></div>
+<div class="s r-navigate" style="left:29.70%;width:9.10%" tabindex="0" role="img" aria-label="新作とおすすめ rail (screens 3.1–3.7)" data-tip="新作とおすすめ rail (screens 3.1–3.7)"></div>
+<div class="s r-navigate" style="left:38.80%;width:8.40%" tabindex="0" role="img" aria-label="用途で選ぶ (screens 3.7–4.3)" data-tip="用途で選ぶ (screens 3.7–4.3)"></div>
+<div class="s r-reassure" style="left:47.20%;width:6.98%" tabindex="0" role="img" aria-label="30日間走って返品 (screens 4.3–4.8)" data-tip="30日間走って返品 (screens 4.3–4.8)"></div>
+<div class="s r-reassure e" style="left:54.18%;width:11.04%" tabindex="0" role="img" aria-label="履いた人の声 (screens 4.8–5.6)" data-tip="履いた人の声 (screens 4.8–5.6)"></div>
+<div class="s r-persuade e" style="left:65.22%;width:8.50%" tabindex="0" role="img" aria-label="フリーマントルから (screens 5.6–6.2)" data-tip="フリーマントルから (screens 5.6–6.2)"></div>
+<div class="s r-sell e" style="left:73.72%;width:6.38%" tabindex="0" role="img" aria-label="Newsletter (screens 6.2–6.6)" data-tip="Newsletter (screens 6.2–6.6)"></div>
+<div class="s r-navigate e" style="left:80.09%;width:15.87%" tabindex="0" role="img" aria-label="Footer (screens 6.6–7.8)" data-tip="Footer (screens 6.6–7.8)"></div>
 </div></div>
 <div class="r prop"><b>Proposed<small>7 screens · 11 sections</small></b><div class="bar">
-<div class="s r-navigate" style="left:0.00%;width:1.50%" data-tip="Header (screens 1–1.1)"></div>
-<div class="s r-persuade" style="left:1.50%;width:13.97%" data-tip="Hero (screens 1.1–2.1)"></div>
-<div class="s r-decide" style="left:15.46%;width:14.24%" data-tip="足幅のこと + links to 標準 / ワイド models (screens 2.1–3.1)"></div>
-<div class="s r-reassure" style="left:29.70%;width:4.04%" data-tip="日本での体制 strip (screens 3.1–3.4)"></div>
-<div class="s r-navigate" style="left:33.74%;width:9.10%" data-tip="新作とおすすめ rail (screens 3.4–4)"></div>
-<div class="s r-navigate" style="left:42.84%;width:8.40%" data-tip="用途で選ぶ (+ キッズ) (screens 4–4.6)"></div>
-<div class="s r-reassure e" style="left:51.24%;width:6.98%" data-tip="30日間走って返品 + 会員について (screens 4.6–5.1)"></div>
-<div class="s r-reassure e" style="left:58.22%;width:11.04%" data-tip="履いた人の声 (model-true heading, source line) (screens 5.1–5.9)"></div>
-<div class="s r-persuade e" style="left:69.26%;width:8.50%" data-tip="フリーマントルから (screens 5.9–6.5)"></div>
-<div class="s r-sell e" style="left:77.76%;width:6.38%" data-tip="Newsletter (screens 6.5–6.9)"></div>
-<div class="s r-navigate e" style="left:84.13%;width:15.87%" data-tip="Footer (screens 6.9–8)"></div>
+<div class="s r-navigate" style="left:0.00%;width:1.50%" tabindex="0" role="img" aria-label="Header (screens 1–1.1)" data-tip="Header (screens 1–1.1)"></div>
+<div class="s r-persuade" style="left:1.50%;width:13.97%" tabindex="0" role="img" aria-label="Hero (screens 1.1–2.1)" data-tip="Hero (screens 1.1–2.1)"></div>
+<div class="s r-decide" style="left:15.46%;width:14.24%" tabindex="0" role="img" aria-label="足幅のこと + links to 標準 / ワイド models (screens 2.1–3.1)" data-tip="足幅のこと + links to 標準 / ワイド models (screens 2.1–3.1)"></div>
+<div class="s r-reassure" style="left:29.70%;width:4.04%" tabindex="0" role="img" aria-label="日本での体制 strip (screens 3.1–3.4)" data-tip="日本での体制 strip (screens 3.1–3.4)"></div>
+<div class="s r-navigate" style="left:33.74%;width:9.10%" tabindex="0" role="img" aria-label="新作とおすすめ rail (screens 3.4–4)" data-tip="新作とおすすめ rail (screens 3.4–4)"></div>
+<div class="s r-navigate" style="left:42.84%;width:8.40%" tabindex="0" role="img" aria-label="用途で選ぶ (+ キッズ) (screens 4–4.6)" data-tip="用途で選ぶ (+ キッズ) (screens 4–4.6)"></div>
+<div class="s r-reassure e" style="left:51.24%;width:6.98%" tabindex="0" role="img" aria-label="30日間走って返品 + 会員について (screens 4.6–5.1)" data-tip="30日間走って返品 + 会員について (screens 4.6–5.1)"></div>
+<div class="s r-reassure e" style="left:58.22%;width:11.04%" tabindex="0" role="img" aria-label="履いた人の声 (model-true heading, source line) (screens 5.1–5.9)" data-tip="履いた人の声 (model-true heading, source line) (screens 5.1–5.9)"></div>
+<div class="s r-persuade e" style="left:69.26%;width:8.50%" tabindex="0" role="img" aria-label="フリーマントルから (screens 5.9–6.5)" data-tip="フリーマントルから (screens 5.9–6.5)"></div>
+<div class="s r-sell e" style="left:77.76%;width:6.38%" tabindex="0" role="img" aria-label="Newsletter (screens 6.5–6.9)" data-tip="Newsletter (screens 6.5–6.9)"></div>
+<div class="s r-navigate e" style="left:84.13%;width:15.87%" tabindex="0" role="img" aria-label="Footer (screens 6.9–8)" data-tip="Footer (screens 6.9–8)"></div>
 </div></div>
 <div class="axis"><span></span><div><span>screen 1</span><span>screen 5</span><span>screen 8</span></div></div>
 </div>
@@ -599,18 +600,18 @@ footer.doc{margin-top:var(--s8);border-top:1px solid var(--border);padding:var(-
 <h3>All shoes</h3>
 <div class="pmap">
 <div class="r"><b>Brolga JP · /shoes/<small>3.8 screens · 5 sections</small></b><div class="bar">
-<div class="s r-navigate" style="left:0.00%;width:4.12%" data-tip="Header and breadcrumb (screens 1–1.2)"></div>
-<div class="s r-navigate" style="left:4.12%;width:3.63%" data-tip="H1 ランニングシューズ (screens 1.2–1.3)"></div>
-<div class="s r-navigate" style="left:7.75%;width:3.42%" data-tip="Use chips (width inside 絞り込み) (screens 1.3–1.4)"></div>
-<div class="s r-decide" style="left:11.17%;width:58.42%" data-tip="10 cards, filter, sort (screens 1.4–3.7)"></div>
-<div class="s r-navigate e" style="left:69.59%;width:28.77%" data-tip="Footer (screens 3.7–4.8)"></div>
+<div class="s r-navigate" style="left:0.00%;width:4.12%" tabindex="0" role="img" aria-label="Header and breadcrumb (screens 1–1.2)" data-tip="Header and breadcrumb (screens 1–1.2)"></div>
+<div class="s r-navigate" style="left:4.12%;width:3.63%" tabindex="0" role="img" aria-label="H1 ランニングシューズ (screens 1.2–1.3)" data-tip="H1 ランニングシューズ (screens 1.2–1.3)"></div>
+<div class="s r-navigate" style="left:7.75%;width:3.42%" tabindex="0" role="img" aria-label="Use chips (width inside 絞り込み) (screens 1.3–1.4)" data-tip="Use chips (width inside 絞り込み) (screens 1.3–1.4)"></div>
+<div class="s r-decide" style="left:11.17%;width:58.42%" tabindex="0" role="img" aria-label="10 cards, filter, sort (screens 1.4–3.7)" data-tip="10 cards, filter, sort (screens 1.4–3.7)"></div>
+<div class="s r-navigate e" style="left:69.59%;width:28.77%" tabindex="0" role="img" aria-label="Footer (screens 3.7–4.8)" data-tip="Footer (screens 3.7–4.8)"></div>
 </div></div>
 <div class="r prop"><b>Proposed<small>3.9 screens · 5 sections</small></b><div class="bar">
-<div class="s r-navigate" style="left:0.00%;width:4.12%" data-tip="Header and breadcrumb (screens 1–1.2)"></div>
-<div class="s r-navigate" style="left:4.12%;width:3.63%" data-tip="H1 that names the width filter (screens 1.2–1.3)"></div>
-<div class="s r-decide" style="left:7.75%;width:5.06%" data-tip="Width toggle + use chips (screens 1.3–1.5)"></div>
-<div class="s r-decide" style="left:12.81%;width:58.42%" data-tip="Cards (state kept in the URL) (screens 1.5–3.8)"></div>
-<div class="s r-navigate e" style="left:71.23%;width:28.77%" data-tip="Footer (screens 3.8–4.9)"></div>
+<div class="s r-navigate" style="left:0.00%;width:4.12%" tabindex="0" role="img" aria-label="Header and breadcrumb (screens 1–1.2)" data-tip="Header and breadcrumb (screens 1–1.2)"></div>
+<div class="s r-navigate" style="left:4.12%;width:3.63%" tabindex="0" role="img" aria-label="H1 that names the width filter (screens 1.2–1.3)" data-tip="H1 that names the width filter (screens 1.2–1.3)"></div>
+<div class="s r-decide" style="left:7.75%;width:5.06%" tabindex="0" role="img" aria-label="Width toggle + use chips (screens 1.3–1.5)" data-tip="Width toggle + use chips (screens 1.3–1.5)"></div>
+<div class="s r-decide" style="left:12.81%;width:58.42%" tabindex="0" role="img" aria-label="Cards (state kept in the URL) (screens 1.5–3.8)" data-tip="Cards (state kept in the URL) (screens 1.5–3.8)"></div>
+<div class="s r-navigate e" style="left:71.23%;width:28.77%" tabindex="0" role="img" aria-label="Footer (screens 3.8–4.9)" data-tip="Footer (screens 3.8–4.9)"></div>
 </div></div>
 <div class="axis"><span></span><div><span>screen 1</span><span>screen 3</span><span>screen 5</span></div></div>
 </div>

@@ -217,11 +217,13 @@ footer.doc{margin-top:var(--s8);border-top:1px solid var(--border);padding:var(-
 .pmap .s{position:absolute;top:0;bottom:0;border-right:1px solid rgba(255,255,255,.7)}
 .pmap .s:first-child{border-radius:5px 0 0 5px}
 .pmap .s:last-child{border-radius:0 5px 5px 0}
-.pmap .s:hover{outline:2px solid var(--text);outline-offset:-2px;z-index:2}
-.pmap .s[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:0;z-index:3;width:max-content;max-width:min(240px,45vw);padding:4px 8px;border-radius:4px;background:var(--text);color:var(--surface);font-size:12px;font-weight:400;line-height:1.4;letter-spacing:0;white-space:normal;pointer-events:none}
-.pmap .s.e:hover::after{left:auto;right:0}
+.pmap .s:hover,.pmap .s:focus{outline:2px solid var(--text);outline-offset:-2px;z-index:2}
+.pmap .s[data-tip]:hover::after,.pmap .s[data-tip]:focus::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:0;z-index:3;width:max-content;max-width:min(240px,45vw);padding:4px 8px;border-radius:4px;background:var(--text);color:var(--surface);font-size:12px;font-weight:400;line-height:1.4;letter-spacing:0;white-space:normal;pointer-events:none}
+.pmap .s.e:hover::after,.pmap .s.e:focus::after{left:auto;right:0}
+.pmap .r:first-child .s:hover::after,.pmap .r:first-child .s:focus::after{bottom:auto;top:calc(100% + 6px)}
 .pmap .axis{display:grid;grid-template-columns:160px 1fr;gap:var(--s3);font-size:12px;color:var(--text-2)}
 .pmap .axis div{display:flex;justify-content:space-between}
+@media(max-width:600px){.layoutcard .pmap .r,.layoutcard .pmap .axis{grid-template-columns:1fr;gap:4px}.layoutcard .pmap .axis>span:first-child{display:none}}
 .shares{width:100%;border-collapse:collapse;font-size:13px;margin:var(--s3) 0}
 .shares th,.shares td{padding:6px 10px;border-bottom:1px solid var(--border);text-align:right}
 .shares th:first-child,.shares td:first-child{text-align:left}
@@ -231,6 +233,7 @@ footer.doc{margin-top:var(--s8);border-top:1px solid var(--border);padding:var(-
 .lrow .lrole{display:inline-flex;align-items:center;gap:6px;font-size:12px}
 .lrow .lrole i{width:10px;height:10px;border-radius:3px}
 .lrow .track{position:relative;height:12px;background:var(--canvas);border-radius:3px}
+.lrow.lhead .track{background:none}
 .lrow .track b{position:absolute;top:0;bottom:0;border-radius:3px}
 .lrow .lscr{text-align:right;color:var(--text-2);font-variant-numeric:tabular-nums}
 @media(max-width:700px){.lrow{grid-template-columns:1fr 90px 40px}.lrow .track{display:none}}

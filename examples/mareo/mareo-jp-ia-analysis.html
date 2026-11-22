@@ -214,7 +214,6 @@ html[lang=ja] p,html[lang=ja] li,html[lang=ja] td,html[lang=ja] h1,html[lang=ja]
 
 
 @media(max-width:700px){nav.toc .wrap{padding-right:132px}}
-@media(max-width:600px){.pmap .s{color:transparent}}
 
 .pmap .r.prop>b{color:var(--good)}
 :root{--role-decide:#6177A1;--role-reassure:#82BD97;--role-persuade:#CBA55D;--role-sell:#D66843;--role-navigate:#C6C2B6}
@@ -229,6 +228,7 @@ html[lang=ja] p,html[lang=ja] li,html[lang=ja] td,html[lang=ja] h1,html[lang=ja]
 .lrow .lrole{display:inline-flex;align-items:center;gap:6px;font-size:12px}
 .lrow .lrole i{width:10px;height:10px;border-radius:3px}
 .lrow .track{position:relative;height:12px;background:var(--canvas);border-radius:3px}
+.lrow.lhead .track{background:none}
 .lrow .track b{position:absolute;top:0;bottom:0;border-radius:3px}
 .lrow .lscr{text-align:right;color:var(--text-2);font-variant-numeric:tabular-nums}
 .layoutcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:var(--s5);margin:var(--s4) 0}
@@ -237,9 +237,12 @@ html[lang=ja] p,html[lang=ja] li,html[lang=ja] td,html[lang=ja] h1,html[lang=ja]
 .reads b{color:var(--deep)}
 .pmap .s:first-child{border-radius:5px 0 0 5px}
 .pmap .s:last-child{border-radius:0 5px 5px 0}
-.pmap .s:hover{outline:2px solid var(--text);outline-offset:-2px;z-index:2}
-.pmap .s[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:0;z-index:3;width:max-content;max-width:min(240px,45vw);padding:4px 8px;border-radius:4px;background:var(--text);color:var(--surface);font-size:12px;font-weight:400;line-height:1.4;letter-spacing:0;white-space:normal;pointer-events:none}
-.pmap .s.e:hover::after{left:auto;right:0}
+.pmap .s:hover,.pmap .s:focus{outline:2px solid var(--text);outline-offset:-2px;z-index:2}
+.pmap .s[data-tip]:hover::after,.pmap .s[data-tip]:focus::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:0;z-index:3;width:max-content;max-width:min(240px,45vw);padding:4px 8px;border-radius:4px;background:var(--text);color:var(--surface);font-size:12px;font-weight:400;line-height:1.4;letter-spacing:0;white-space:normal;pointer-events:none}
+.pmap .s.e:hover::after,.pmap .s.e:focus::after{left:auto;right:0}
+.pmap .r:first-child .s:hover::after,.pmap .r:first-child .s:focus::after{bottom:auto;top:calc(100% + 6px)}
+@media(max-width:600px){.layoutcard .pmap .r,.layoutcard .pmap .axis{grid-template-columns:1fr;gap:4px}.layoutcard .pmap .axis>span:first-child{display:none}}
+@media(max-width:700px){.lrow{grid-template-columns:1fr 90px 40px}.lrow .track{display:none}}
 </style>
 </head>
 <body>
@@ -341,57 +344,57 @@ html[lang=ja] p,html[lang=ja] li,html[lang=ja] td,html[lang=ja] h1,html[lang=ja]
 <h3>Product page (Sumi)</h3>
 <div class="pmap">
 <div class="r"><b>Mareo JP · Sumi<small>12.1 screens · 13 sections</small></b><div class="bar">
-<div class="s r-decide" style="left:0.00%;width:10.20%" data-tip="Buy box (screens 0–1.4)"></div>
-<div class="s r-persuade" style="left:10.41%;width:2.35%" data-tip="5 accordions (screens 1.5–1.8)"></div>
-<div class="s r-persuade" style="left:12.77%;width:8.42%" data-tip="Story (screens 1.8–3)"></div>
-<div class="s r-persuade" style="left:21.18%;width:4.78%" data-tip="Detail tiles (screens 3–3.6)"></div>
-<div class="s r-persuade" style="left:25.96%;width:9.13%" data-tip="Seat story (screens 3.6–4.9)"></div>
-<div class="s r-persuade" style="left:35.09%;width:7.28%" data-tip="Why Mareo (claims) (screens 4.9–5.9)"></div>
-<div class="s r-persuade" style="left:42.37%;width:9.20%" data-tip="Everyday (screens 5.9–7.2)"></div>
-<div class="s r-persuade e" style="left:51.57%;width:11.48%" data-tip="Craft (screens 7.2–8.8)"></div>
-<div class="s r-persuade e" style="left:63.05%;width:9.13%" data-tip="Durability (screens 8.8–10.1)"></div>
-<div class="s r-decide e" style="left:72.18%;width:2.57%" data-tip="Compare (screens 10.1–10.5)"></div>
-<div class="s r-reassure e" style="left:74.75%;width:5.92%" data-tip="Reviews (screens 10.5–11.3)"></div>
-<div class="s r-reassure e" style="left:80.67%;width:1.78%" data-tip="FAQ (screens 11.3–11.6)"></div>
-<div class="s r-navigate e" style="left:82.45%;width:3.71%" data-tip="Footer (screens 11.6–12.1)"></div>
+<div class="s r-decide" style="left:0.00%;width:10.20%" tabindex="0" role="img" aria-label="Buy box (screens 0–1.4)" data-tip="Buy box (screens 0–1.4)"></div>
+<div class="s r-reassure" style="left:10.41%;width:2.35%" tabindex="0" role="img" aria-label="5 accordions (screens 1.5–1.8)" data-tip="5 accordions (screens 1.5–1.8)"></div>
+<div class="s r-persuade" style="left:12.77%;width:8.42%" tabindex="0" role="img" aria-label="Story (screens 1.8–3)" data-tip="Story (screens 1.8–3)"></div>
+<div class="s r-persuade" style="left:21.18%;width:4.78%" tabindex="0" role="img" aria-label="Detail tiles (screens 3–3.6)" data-tip="Detail tiles (screens 3–3.6)"></div>
+<div class="s r-persuade" style="left:25.96%;width:9.13%" tabindex="0" role="img" aria-label="Seat story (screens 3.6–4.9)" data-tip="Seat story (screens 3.6–4.9)"></div>
+<div class="s r-persuade" style="left:35.09%;width:7.28%" tabindex="0" role="img" aria-label="Why Mareo (claims) (screens 4.9–5.9)" data-tip="Why Mareo (claims) (screens 4.9–5.9)"></div>
+<div class="s r-persuade" style="left:42.37%;width:9.20%" tabindex="0" role="img" aria-label="Everyday (screens 5.9–7.2)" data-tip="Everyday (screens 5.9–7.2)"></div>
+<div class="s r-persuade e" style="left:51.57%;width:11.48%" tabindex="0" role="img" aria-label="Craft (screens 7.2–8.8)" data-tip="Craft (screens 7.2–8.8)"></div>
+<div class="s r-persuade e" style="left:63.05%;width:9.13%" tabindex="0" role="img" aria-label="Durability (screens 8.8–10.1)" data-tip="Durability (screens 8.8–10.1)"></div>
+<div class="s r-decide e" style="left:72.18%;width:2.57%" tabindex="0" role="img" aria-label="Compare (screens 10.1–10.5)" data-tip="Compare (screens 10.1–10.5)"></div>
+<div class="s r-reassure e" style="left:74.75%;width:5.92%" tabindex="0" role="img" aria-label="Reviews (screens 10.5–11.3)" data-tip="Reviews (screens 10.5–11.3)"></div>
+<div class="s r-reassure e" style="left:80.67%;width:1.78%" tabindex="0" role="img" aria-label="FAQ (screens 11.3–11.6)" data-tip="FAQ (screens 11.3–11.6)"></div>
+<div class="s r-navigate e" style="left:82.45%;width:3.71%" tabindex="0" role="img" aria-label="Footer (screens 11.6–12.1)" data-tip="Footer (screens 11.6–12.1)"></div>
 </div></div>
-<div class="r"><b>LOWYA · ベルファ 3人掛けカウチソファ<small>14 screens · 11 sections</small></b><div class="bar">
-<div class="s r-decide" style="left:0.00%;width:10.27%" data-tip="Buy box (screens 0–1.4)"></div>
-<div class="s r-reassure" style="left:10.27%;width:3.21%" data-tip="Delivery date, store (screens 1.4–1.9)"></div>
-<div class="s r-decide" style="left:13.48%;width:4.14%" data-tip="Cart (screens 1.9–2.5)"></div>
-<div class="s r-persuade" style="left:17.62%;width:5.92%" data-tip="Description (screens 2.5–3.3)"></div>
-<div class="s r-persuade" style="left:23.54%;width:4.99%" data-tip="Room fit (screens 3.3–4)"></div>
-<div class="s r-persuade" style="left:28.53%;width:0.50%" data-tip="Specs (screens 4–4.1)"></div>
-<div class="s r-reassure" style="left:29.03%;width:18.76%" data-tip="Reviews (screens 4.1–6.7)"></div>
-<div class="s r-reassure" style="left:47.79%;width:2.35%" data-tip="Snaps (customer photos) (screens 6.7–7)"></div>
-<div class="s r-sell e" style="left:50.14%;width:9.56%" data-tip="Series, related (screens 7–8.4)"></div>
-<div class="s r-sell e" style="left:59.70%;width:4.49%" data-tip="Compared items (screens 8.4–9)"></div>
-<div class="s r-navigate e" style="left:64.19%;width:35.81%" data-tip="More items, footer (screens 9–14)"></div>
+<div class="r"><b>LOWYA · ベルファ 3人掛けカウチソファ<small>14.0 screens · 11 sections</small></b><div class="bar">
+<div class="s r-decide" style="left:0.00%;width:10.27%" tabindex="0" role="img" aria-label="Buy box (screens 0–1.4)" data-tip="Buy box (screens 0–1.4)"></div>
+<div class="s r-reassure" style="left:10.27%;width:3.21%" tabindex="0" role="img" aria-label="Delivery date, store (screens 1.4–1.9)" data-tip="Delivery date, store (screens 1.4–1.9)"></div>
+<div class="s r-decide" style="left:13.48%;width:4.14%" tabindex="0" role="img" aria-label="Cart (screens 1.9–2.5)" data-tip="Cart (screens 1.9–2.5)"></div>
+<div class="s r-persuade" style="left:17.62%;width:5.92%" tabindex="0" role="img" aria-label="Description (screens 2.5–3.3)" data-tip="Description (screens 2.5–3.3)"></div>
+<div class="s r-persuade" style="left:23.54%;width:4.99%" tabindex="0" role="img" aria-label="Room fit (screens 3.3–4)" data-tip="Room fit (screens 3.3–4)"></div>
+<div class="s r-persuade" style="left:28.53%;width:0.50%" tabindex="0" role="img" aria-label="Specs (screens 4–4.1)" data-tip="Specs (screens 4–4.1)"></div>
+<div class="s r-reassure" style="left:29.03%;width:18.76%" tabindex="0" role="img" aria-label="Reviews (screens 4.1–6.7)" data-tip="Reviews (screens 4.1–6.7)"></div>
+<div class="s r-reassure" style="left:47.79%;width:2.35%" tabindex="0" role="img" aria-label="Snaps (customer photos) (screens 6.7–7)" data-tip="Snaps (customer photos) (screens 6.7–7)"></div>
+<div class="s r-sell e" style="left:50.14%;width:9.56%" tabindex="0" role="img" aria-label="Series, related (screens 7–8.4)" data-tip="Series, related (screens 7–8.4)"></div>
+<div class="s r-sell e" style="left:59.70%;width:4.49%" tabindex="0" role="img" aria-label="Compared items (screens 8.4–9)" data-tip="Compared items (screens 8.4–9)"></div>
+<div class="s r-navigate e" style="left:64.19%;width:35.81%" tabindex="0" role="img" aria-label="More items, footer (screens 9–14)" data-tip="More items, footer (screens 9–14)"></div>
 </div></div>
 <div class="r prop"><b>Proposed<small>3.5 screens built · 6 sections</small></b><div class="bar">
-<div class="s r-decide" style="left:0.00%;width:10.63%" data-tip="Buy box (screens 0–1.5)"></div>
-<div class="s r-reassure" style="left:10.79%;width:3.49%" data-tip="Delivery, returns and warranty list; showroom line (screens 1.5–2)"></div>
-<div class="s r-reassure" style="left:14.29%;width:4.94%" data-tip="Reviews (お客様の評価) (screens 2–2.7)"></div>
-<div class="s r-decide" style="left:19.23%;width:2.53%" data-tip="Compare the three sofas (screens 2.7–3.1)"></div>
-<div class="s r-persuade" style="left:21.94%;width:2.20%" data-tip="Accordions: size, materials, delivery, warranty, FAQ (screens 3.1–3.4)"></div>
-<div class="s r-persuade" style="left:24.14%;width:0.90%" data-tip="Start of the product story (マレオのこだわり) (screens 3.4–3.5)"></div>
+<div class="s r-decide" style="left:0.00%;width:10.63%" tabindex="0" role="img" aria-label="Buy box (screens 0–1.5)" data-tip="Buy box (screens 0–1.5)"></div>
+<div class="s r-reassure" style="left:10.79%;width:3.49%" tabindex="0" role="img" aria-label="Delivery, returns and warranty list; showroom line (screens 1.5–2)" data-tip="Delivery, returns and warranty list; showroom line (screens 1.5–2)"></div>
+<div class="s r-reassure" style="left:14.29%;width:4.94%" tabindex="0" role="img" aria-label="Reviews (お客様の評価) (screens 2–2.7)" data-tip="Reviews (お客様の評価) (screens 2–2.7)"></div>
+<div class="s r-decide" style="left:19.23%;width:2.53%" tabindex="0" role="img" aria-label="Compare the three sofas (screens 2.7–3.1)" data-tip="Compare the three sofas (screens 2.7–3.1)"></div>
+<div class="s r-reassure" style="left:21.94%;width:2.20%" tabindex="0" role="img" aria-label="Accordions: size, materials, delivery, warranty, FAQ (screens 3.1–3.4)" data-tip="Accordions: size, materials, delivery, warranty, FAQ (screens 3.1–3.4)"></div>
+<div class="s r-persuade" style="left:24.14%;width:0.90%" tabindex="0" role="img" aria-label="Start of the product story (マレオのこだわり) (screens 3.4–3.5)" data-tip="Start of the product story (マレオのこだわり) (screens 3.4–3.5)"></div>
 </div></div>
 <div class="axis"><span></span><div><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span></div></div><div class="axis"><span></span><span style="text-align:right">screens at 390 × 844</span></div>
 </div>
 <p class="note" style="font-size:13px;color:var(--text-2);margin:0 0 var(--s3)">The proposed page is built down to the start of the product story; the rest is not measured, so the proposed shares are shown as “—”.</p>
 <div class="scroll"><table class="shares"><tr><th>Share of page</th><th>Decide</th><th>Reassure</th><th>Persuade</th><th>Sell more</th><th>Navigate</th><th>Decide starts</th><th>Reassure starts</th></tr>
-<tr><td>Mareo JP · Sumi</td><td>15%</td><td class="bad">9%</td><td>72%</td><td>0%</td><td>4%</td><td>top of page</td><td>screen 10.5</td></tr>
+<tr><td>Mareo JP · Sumi</td><td>15%</td><td class="bad">12%</td><td>69%</td><td>0%</td><td>4%</td><td>top of page</td><td>screen 1.5</td></tr>
 <tr><td>LOWYA · ベルファ 3人掛けカウチソファ</td><td>14%</td><td>24%</td><td>11%</td><td>14%</td><td>36%</td><td>top of page</td><td>screen 1.4</td></tr>
 <tr><td>Proposed</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>top of page</td><td>screen 1.5</td></tr>
 </table></div>
-<p class="reads"><b>What it shows:</b> Mareo gives 72% of the page to persuasion (seven story sections and the accordions), and reassurance starts only at screen 10.5, with the reviews; on LOWYA it starts at 1.4, with the delivery date and store check beside the cart (Finding 3, Finding 12, IA-5). Comparison waits until 10.1 (IA-1). Proposed: delivery, returns and warranty sit directly under the buy box (reassurance from 1.5), the reviews follow at 2.0 and the comparison at 2.7; the product story comes after, with each claim told once (not built in the mock).</p>
+<p class="reads"><b>What it shows:</b> Mareo gives 69% of the page to persuasion (seven brand-story sections). Reassurance takes 12%: it starts at screen 1.5, but only as five closed accordions (IA-10), and the reviews come at 10.5 (Finding 3, Finding 12, IA-5). On LOWYA it takes 24% and starts at 1.4, with the delivery date, guarantee tags and store check above the cart button. On Mareo the comparison also waits until 10.1 (IA-1). Proposed: delivery, returns and warranty sit directly under the buy box (reassurance from 1.5), followed by the reviews (2.0) and the comparison (2.7); the product story comes after, with each claim told once (not built in the mock).</p>
 <ul style="font-size:14px">
 <li>Mareo: buy box, then five accordions, then seven brand-story sections (1.8–10.1). The same claims appear more than once. Comparison starts at 10.1, reviews at 10.5.</li>
 <li>LOWYA: rating, gallery, options, price (税込), guarantee and delivery tags, delivery date by postcode, store check and cart, all within 2.4 screens. Description follows, with reviews from 4.1. LOWYA positions below screen 3 shift by a few hundred pixels between loads because of lazy loading.</li>
 </ul>
 <div class="lrow lhead"><span>Section</span><span>Role</span><span class="track"></span><span>Screen</span></div>
 <div class="lrow"><span>Buy box</span><span class="lrole"><i class="r-decide"></i>Decide</span><span class="track"><b class="r-decide" style="left:0.00%;width:11.84%"></b></span><span class="lscr">0</span></div>
-<div class="lrow"><span>5 accordions</span><span class="lrole"><i class="r-persuade"></i>Persuade</span><span class="track"><b class="r-persuade" style="left:12.09%;width:2.73%"></b></span><span class="lscr">1.5</span></div>
+<div class="lrow"><span>5 accordions</span><span class="lrole"><i class="r-reassure"></i>Reassure</span><span class="track"><b class="r-reassure" style="left:12.09%;width:2.73%"></b></span><span class="lscr">1.5</span></div>
 <div class="lrow"><span>Story</span><span class="lrole"><i class="r-persuade"></i>Persuade</span><span class="track"><b class="r-persuade" style="left:14.82%;width:9.77%"></b></span><span class="lscr">1.8</span></div>
 <div class="lrow"><span>Detail tiles</span><span class="lrole"><i class="r-persuade"></i>Persuade</span><span class="track"><b class="r-persuade" style="left:24.59%;width:5.55%"></b></span><span class="lscr">3</span></div>
 <div class="lrow"><span>Seat story</span><span class="lrole"><i class="r-persuade"></i>Persuade</span><span class="track"><b class="r-persuade" style="left:30.13%;width:10.60%"></b></span><span class="lscr">3.6</span></div>
@@ -620,7 +623,7 @@ html[lang=ja] p,html[lang=ja] li,html[lang=ja] td,html[lang=ja] h1,html[lang=ja]
 <div class="sec-head"><div class="no">03</div><div><h2>ページのレイアウトと階層</h2>
 <p class="lead">各バーはモバイル幅での1ページで、セクションごとに計測しています。色は各セクションの役割を示します。問題はページの長さではなく、判断と安心のための情報がどこにあるかです。</p></div></div>
 <div class="sec-body">
-<div class="legend-row"><span><i class="r-decide"></i>判断（商品、選択、比較、購入）</span><span><i class="r-reassure"></i>安心（配送、返品、レビュー、サポート、FAQ）</span><span><i class="r-persuade"></i>訴求（商品の詳細、ブランド／特長紹介）</span><span><i class="r-sell"></i>関連商品（シリーズ、関連商品、プロモーション）</span><span><i class="r-navigate"></i>ナビゲーション（ヘッダー、フッター）</span></div>
+<div class="legend-row"><span><i class="r-decide"></i>判断（商品、選択、比較、購入）</span><span><i class="r-reassure"></i>安心（配送、返品、レビュー、サポート、FAQ）</span><span><i class="r-persuade"></i>訴求（商品の詳細、ブランド／特長紹介）</span><span><i class="r-sell"></i>クロスセル（シリーズ、関連商品、プロモーション）</span><span><i class="r-navigate"></i>ナビゲーション（ヘッダー、フッター）</span></div>
 <h3>各ページの役割</h3>
 <p style="font-size:14px">訪問者がどのように来て、その時点で何を必要としているかに基づいた、各ページが果たすべき役割です。以下のマップはこれを基準に評価しています。</p>
 <div class="scroll"><table class="tbl">
@@ -636,57 +639,57 @@ html[lang=ja] p,html[lang=ja] li,html[lang=ja] td,html[lang=ja] h1,html[lang=ja]
 <h3>商品ページ（Sumi）</h3>
 <div class="pmap">
 <div class="r"><b>Mareo JP · Sumi<small>12.1画面・13セクション</small></b><div class="bar">
-<div class="s r-decide" style="left:0.00%;width:10.20%" data-tip="購入エリア （0〜1.4画面）"></div>
-<div class="s r-persuade" style="left:10.41%;width:2.35%" data-tip="アコーディオン5つ （1.5〜1.8画面）"></div>
-<div class="s r-persuade" style="left:12.77%;width:8.42%" data-tip="ストーリー （1.8〜3画面）"></div>
-<div class="s r-persuade" style="left:21.18%;width:4.78%" data-tip="詳細のタイル （3〜3.6画面）"></div>
-<div class="s r-persuade" style="left:25.96%;width:9.13%" data-tip="座面のストーリー （3.6〜4.9画面）"></div>
-<div class="s r-persuade" style="left:35.09%;width:7.28%" data-tip="選ばれる理由（訴求） （4.9〜5.9画面）"></div>
-<div class="s r-persuade" style="left:42.37%;width:9.20%" data-tip="毎日の使い方 （5.9〜7.2画面）"></div>
-<div class="s r-persuade e" style="left:51.57%;width:11.48%" data-tip="つくり （7.2〜8.8画面）"></div>
-<div class="s r-persuade e" style="left:63.05%;width:9.13%" data-tip="耐久性 （8.8〜10.1画面）"></div>
-<div class="s r-decide e" style="left:72.18%;width:2.57%" data-tip="比較 （10.1〜10.5画面）"></div>
-<div class="s r-reassure e" style="left:74.75%;width:5.92%" data-tip="レビュー （10.5〜11.3画面）"></div>
-<div class="s r-reassure e" style="left:80.67%;width:1.78%" data-tip="FAQ （11.3〜11.6画面）"></div>
-<div class="s r-navigate e" style="left:82.45%;width:3.71%" data-tip="フッター （11.6〜12.1画面）"></div>
+<div class="s r-decide" style="left:0.00%;width:10.20%" tabindex="0" role="img" aria-label="購入エリア（0〜1.4画面）" data-tip="購入エリア（0〜1.4画面）"></div>
+<div class="s r-reassure" style="left:10.41%;width:2.35%" tabindex="0" role="img" aria-label="アコーディオン5つ（1.5〜1.8画面）" data-tip="アコーディオン5つ（1.5〜1.8画面）"></div>
+<div class="s r-persuade" style="left:12.77%;width:8.42%" tabindex="0" role="img" aria-label="ストーリー（1.8〜3画面）" data-tip="ストーリー（1.8〜3画面）"></div>
+<div class="s r-persuade" style="left:21.18%;width:4.78%" tabindex="0" role="img" aria-label="詳細のタイル（3〜3.6画面）" data-tip="詳細のタイル（3〜3.6画面）"></div>
+<div class="s r-persuade" style="left:25.96%;width:9.13%" tabindex="0" role="img" aria-label="座面のストーリー（3.6〜4.9画面）" data-tip="座面のストーリー（3.6〜4.9画面）"></div>
+<div class="s r-persuade" style="left:35.09%;width:7.28%" tabindex="0" role="img" aria-label="選ばれる理由（訴求）（4.9〜5.9画面）" data-tip="選ばれる理由（訴求）（4.9〜5.9画面）"></div>
+<div class="s r-persuade" style="left:42.37%;width:9.20%" tabindex="0" role="img" aria-label="毎日の使い方（5.9〜7.2画面）" data-tip="毎日の使い方（5.9〜7.2画面）"></div>
+<div class="s r-persuade e" style="left:51.57%;width:11.48%" tabindex="0" role="img" aria-label="つくり（7.2〜8.8画面）" data-tip="つくり（7.2〜8.8画面）"></div>
+<div class="s r-persuade e" style="left:63.05%;width:9.13%" tabindex="0" role="img" aria-label="耐久性（8.8〜10.1画面）" data-tip="耐久性（8.8〜10.1画面）"></div>
+<div class="s r-decide e" style="left:72.18%;width:2.57%" tabindex="0" role="img" aria-label="比較（10.1〜10.5画面）" data-tip="比較（10.1〜10.5画面）"></div>
+<div class="s r-reassure e" style="left:74.75%;width:5.92%" tabindex="0" role="img" aria-label="レビュー（10.5〜11.3画面）" data-tip="レビュー（10.5〜11.3画面）"></div>
+<div class="s r-reassure e" style="left:80.67%;width:1.78%" tabindex="0" role="img" aria-label="FAQ（11.3〜11.6画面）" data-tip="FAQ（11.3〜11.6画面）"></div>
+<div class="s r-navigate e" style="left:82.45%;width:3.71%" tabindex="0" role="img" aria-label="フッター（11.6〜12.1画面）" data-tip="フッター（11.6〜12.1画面）"></div>
 </div></div>
-<div class="r"><b>LOWYA · ベルファ 3人掛けカウチソファ<small>14画面・11セクション</small></b><div class="bar">
-<div class="s r-decide" style="left:0.00%;width:10.27%" data-tip="購入エリア （0〜1.4画面）"></div>
-<div class="s r-reassure" style="left:10.27%;width:3.21%" data-tip="お届け日、店舗 （1.4〜1.9画面）"></div>
-<div class="s r-decide" style="left:13.48%;width:4.14%" data-tip="カート （1.9〜2.5画面）"></div>
-<div class="s r-persuade" style="left:17.62%;width:5.92%" data-tip="商品説明 （2.5〜3.3画面）"></div>
-<div class="s r-persuade" style="left:23.54%;width:4.99%" data-tip="部屋への置き方 （3.3〜4画面）"></div>
-<div class="s r-persuade" style="left:28.53%;width:0.50%" data-tip="仕様 （4〜4.1画面）"></div>
-<div class="s r-reassure" style="left:29.03%;width:18.76%" data-tip="レビュー （4.1〜6.7画面）"></div>
-<div class="s r-reassure" style="left:47.79%;width:2.35%" data-tip="投稿写真 （6.7〜7画面）"></div>
-<div class="s r-sell e" style="left:50.14%;width:9.56%" data-tip="シリーズ、関連商品 （7〜8.4画面）"></div>
-<div class="s r-sell e" style="left:59.70%;width:4.49%" data-tip="比較されている商品 （8.4〜9画面）"></div>
-<div class="s r-navigate e" style="left:64.19%;width:35.81%" data-tip="その他の商品、フッター （9〜14画面）"></div>
+<div class="r"><b>LOWYA · ベルファ 3人掛けカウチソファ<small>14.0画面・11セクション</small></b><div class="bar">
+<div class="s r-decide" style="left:0.00%;width:10.27%" tabindex="0" role="img" aria-label="購入エリア（0〜1.4画面）" data-tip="購入エリア（0〜1.4画面）"></div>
+<div class="s r-reassure" style="left:10.27%;width:3.21%" tabindex="0" role="img" aria-label="お届け日、店舗（1.4〜1.9画面）" data-tip="お届け日、店舗（1.4〜1.9画面）"></div>
+<div class="s r-decide" style="left:13.48%;width:4.14%" tabindex="0" role="img" aria-label="カート（1.9〜2.5画面）" data-tip="カート（1.9〜2.5画面）"></div>
+<div class="s r-persuade" style="left:17.62%;width:5.92%" tabindex="0" role="img" aria-label="商品説明（2.5〜3.3画面）" data-tip="商品説明（2.5〜3.3画面）"></div>
+<div class="s r-persuade" style="left:23.54%;width:4.99%" tabindex="0" role="img" aria-label="部屋への置き方（3.3〜4画面）" data-tip="部屋への置き方（3.3〜4画面）"></div>
+<div class="s r-persuade" style="left:28.53%;width:0.50%" tabindex="0" role="img" aria-label="仕様（4〜4.1画面）" data-tip="仕様（4〜4.1画面）"></div>
+<div class="s r-reassure" style="left:29.03%;width:18.76%" tabindex="0" role="img" aria-label="レビュー（4.1〜6.7画面）" data-tip="レビュー（4.1〜6.7画面）"></div>
+<div class="s r-reassure" style="left:47.79%;width:2.35%" tabindex="0" role="img" aria-label="投稿写真（6.7〜7画面）" data-tip="投稿写真（6.7〜7画面）"></div>
+<div class="s r-sell e" style="left:50.14%;width:9.56%" tabindex="0" role="img" aria-label="シリーズ、関連商品（7〜8.4画面）" data-tip="シリーズ、関連商品（7〜8.4画面）"></div>
+<div class="s r-sell e" style="left:59.70%;width:4.49%" tabindex="0" role="img" aria-label="比較されている商品（8.4〜9画面）" data-tip="比較されている商品（8.4〜9画面）"></div>
+<div class="s r-navigate e" style="left:64.19%;width:35.81%" tabindex="0" role="img" aria-label="その他の商品、フッター（9〜14画面）" data-tip="その他の商品、フッター（9〜14画面）"></div>
 </div></div>
-<div class="r prop"><b>提案<small>3.5画面（作成分）・6セクション</small></b><div class="bar">
-<div class="s r-decide" style="left:0.00%;width:10.63%" data-tip="購入エリア （0〜1.5画面）"></div>
-<div class="s r-reassure" style="left:10.79%;width:3.49%" data-tip="配送・返品・保証の一覧とショールームの案内 （1.5〜2画面）"></div>
-<div class="s r-reassure" style="left:14.29%;width:4.94%" data-tip="お客様の評価（レビュー） （2〜2.7画面）"></div>
-<div class="s r-decide" style="left:19.23%;width:2.53%" data-tip="3つのソファを比べる （2.7〜3.1画面）"></div>
-<div class="s r-persuade" style="left:21.94%;width:2.20%" data-tip="アコーディオン（サイズ、素材、お届け、保証、FAQ） （3.1〜3.4画面）"></div>
-<div class="s r-persuade" style="left:24.14%;width:0.90%" data-tip="商品ストーリーの始まり（マレオのこだわり） （3.4〜3.5画面）"></div>
+<div class="r prop"><b>提案<small>3.5画面（作成した範囲）・6セクション</small></b><div class="bar">
+<div class="s r-decide" style="left:0.00%;width:10.63%" tabindex="0" role="img" aria-label="購入エリア（0〜1.5画面）" data-tip="購入エリア（0〜1.5画面）"></div>
+<div class="s r-reassure" style="left:10.79%;width:3.49%" tabindex="0" role="img" aria-label="配送・返品・保証の一覧とショールームの案内（1.5〜2画面）" data-tip="配送・返品・保証の一覧とショールームの案内（1.5〜2画面）"></div>
+<div class="s r-reassure" style="left:14.29%;width:4.94%" tabindex="0" role="img" aria-label="お客様の評価（レビュー）（2〜2.7画面）" data-tip="お客様の評価（レビュー）（2〜2.7画面）"></div>
+<div class="s r-decide" style="left:19.23%;width:2.53%" tabindex="0" role="img" aria-label="3つのソファを比べる（2.7〜3.1画面）" data-tip="3つのソファを比べる（2.7〜3.1画面）"></div>
+<div class="s r-reassure" style="left:21.94%;width:2.20%" tabindex="0" role="img" aria-label="アコーディオン（サイズ、素材、お届け、保証、FAQ）（3.1〜3.4画面）" data-tip="アコーディオン（サイズ、素材、お届け、保証、FAQ）（3.1〜3.4画面）"></div>
+<div class="s r-persuade" style="left:24.14%;width:0.90%" tabindex="0" role="img" aria-label="商品ストーリーの始まり（マレオのこだわり）（3.4〜3.5画面）" data-tip="商品ストーリーの始まり（マレオのこだわり）（3.4〜3.5画面）"></div>
 </div></div>
 <div class="axis"><span></span><div><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span></div></div><div class="axis"><span></span><span style="text-align:right">390 × 844での画面数</span></div>
 </div>
-<p class="note" style="font-size:13px;color:var(--text-2);margin:0 0 var(--s3)">提案ページは商品ストーリーの始まりまでを作成しています。それ以降は計測していないため、提案の割合は「—」としています。</p>
-<div class="scroll"><table class="shares"><tr><th>ページに占める割合</th><th>判断</th><th>安心</th><th>訴求</th><th>関連商品</th><th>ナビゲーション</th><th>判断の開始</th><th>安心の開始</th></tr>
-<tr><td>Mareo JP · Sumi</td><td>15%</td><td class="bad">9%</td><td>72%</td><td>0%</td><td>4%</td><td>ページ冒頭</td><td>10.5画面目</td></tr>
+<p class="note" style="font-size:13px;color:var(--text-2);margin:0 0 var(--s3)">提案ページは商品ストーリーの始まりまでを作成しています。それ以降は計測していないため、ページに占める割合は「—」としています。</p>
+<div class="scroll"><table class="shares"><tr><th>ページに占める割合</th><th>判断</th><th>安心</th><th>訴求</th><th>クロスセル</th><th>ナビゲーション</th><th>判断の開始位置</th><th>安心の開始位置</th></tr>
+<tr><td>Mareo JP · Sumi</td><td>15%</td><td class="bad">12%</td><td>69%</td><td>0%</td><td>4%</td><td>ページ冒頭</td><td>1.5画面目</td></tr>
 <tr><td>LOWYA · ベルファ 3人掛けカウチソファ</td><td>14%</td><td>24%</td><td>11%</td><td>14%</td><td>36%</td><td>ページ冒頭</td><td>1.4画面目</td></tr>
 <tr><td>提案</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>ページ冒頭</td><td>1.5画面目</td></tr>
 </table></div>
-<p class="reads"><b>読み取れること：</b> マレオはページの72%を訴求（ストーリーの7セクションとアコーディオン）に使い、安心の情報はレビューのある10.5画面目でようやく始まります。LOWYAでは、カートの横のお届け日と店舗確認により1.4画面目から始まります（指摘3、指摘12、IA-5）。比較は10.1画面目まで出てきません（IA-1）。提案：配送・返品・保証を購入エリアのすぐ下に置き（安心は1.5画面目から）、レビューを2.0画面目、比較を2.7画面目に続けます。商品ストーリーはその後に、各訴求を1回ずつ伝えます（モックでは未作成）。</p>
+<p class="reads"><b>ここから分かること：</b> マレオはページの69%を訴求（ブランドストーリーの7セクション）に使っています。安心につながる情報は12%で、1.5画面目から始まるものの閉じたアコーディオン5つの中にあり（IA-10）、レビューは10.5画面目まで出てきません（指摘3、指摘12、IA-5）。LOWYAでは24%を占め、カートボタンの上にお届け日、保証のタグ、店舗の確認があり、1.4画面目から始まります。マレオでは、比較も10.1画面目まで出てきません（IA-1）。提案：配送・返品・保証を購入エリアのすぐ下に置き（安心は1.5画面目から）、その後にレビュー（2.0画面目）と比較（2.7画面目）を続けます。商品ストーリーはその後に置き、各訴求は1回ずつにします（モックでは未作成）。</p>
 <ul style="font-size:14px">
 <li>マレオ：購入エリア、アコーディオン5つ、ブランドストーリーの7セクション（1.8〜10.1）の順。同じ訴求が何度も出てきます。比較は10.1画面目、レビューは10.5画面目から始まります。</li>
 <li>LOWYA：評価、ギャラリー、選択肢、価格（税込）、保証と配送のタグ、郵便番号によるお届け日、店舗の確認とカートが、すべて2.4画面以内にあります。その後に商品説明が続き、レビューは4.1画面目からです。LOWYAの3画面目以降の位置は、遅延読み込みのため読み込むたびに数百ピクセルずれます。</li>
 </ul>
-<div class="lrow lhead"><span>セクション</span><span>役割</span><span class="track"></span><span>画面</span></div>
+<div class="lrow lhead"><span>セクション</span><span>役割</span><span class="track"></span><span>開始（画面目）</span></div>
 <div class="lrow"><span>購入エリア</span><span class="lrole"><i class="r-decide"></i>判断</span><span class="track"><b class="r-decide" style="left:0.00%;width:11.84%"></b></span><span class="lscr">0</span></div>
-<div class="lrow"><span>アコーディオン5つ</span><span class="lrole"><i class="r-persuade"></i>訴求</span><span class="track"><b class="r-persuade" style="left:12.09%;width:2.73%"></b></span><span class="lscr">1.5</span></div>
+<div class="lrow"><span>アコーディオン5つ</span><span class="lrole"><i class="r-reassure"></i>安心</span><span class="track"><b class="r-reassure" style="left:12.09%;width:2.73%"></b></span><span class="lscr">1.5</span></div>
 <div class="lrow"><span>ストーリー</span><span class="lrole"><i class="r-persuade"></i>訴求</span><span class="track"><b class="r-persuade" style="left:14.82%;width:9.77%"></b></span><span class="lscr">1.8</span></div>
 <div class="lrow"><span>詳細のタイル</span><span class="lrole"><i class="r-persuade"></i>訴求</span><span class="track"><b class="r-persuade" style="left:24.59%;width:5.55%"></b></span><span class="lscr">3</span></div>
 <div class="lrow"><span>座面のストーリー</span><span class="lrole"><i class="r-persuade"></i>訴求</span><span class="track"><b class="r-persuade" style="left:30.13%;width:10.60%"></b></span><span class="lscr">3.6</span></div>
@@ -933,57 +936,57 @@ html[lang=ja] p,html[lang=ja] li,html[lang=ja] td,html[lang=ja] h1,html[lang=ja]
 <h3>Product page (Sumi)</h3>
 <div class="pmap">
 <div class="r"><b>Mareo JP · Sumi<small>12.1 screens · 13 sections</small></b><div class="bar">
-<div class="s r-decide" style="left:0.00%;width:10.20%" data-tip="Buy box (screens 0–1.4)"></div>
-<div class="s r-persuade" style="left:10.41%;width:2.35%" data-tip="5 accordions (screens 1.5–1.8)"></div>
-<div class="s r-persuade" style="left:12.77%;width:8.42%" data-tip="Story (screens 1.8–3)"></div>
-<div class="s r-persuade" style="left:21.18%;width:4.78%" data-tip="Detail tiles (screens 3–3.6)"></div>
-<div class="s r-persuade" style="left:25.96%;width:9.13%" data-tip="Seat story (screens 3.6–4.9)"></div>
-<div class="s r-persuade" style="left:35.09%;width:7.28%" data-tip="Why Mareo (claims) (screens 4.9–5.9)"></div>
-<div class="s r-persuade" style="left:42.37%;width:9.20%" data-tip="Everyday (screens 5.9–7.2)"></div>
-<div class="s r-persuade e" style="left:51.57%;width:11.48%" data-tip="Craft (screens 7.2–8.8)"></div>
-<div class="s r-persuade e" style="left:63.05%;width:9.13%" data-tip="Durability (screens 8.8–10.1)"></div>
-<div class="s r-decide e" style="left:72.18%;width:2.57%" data-tip="Compare (screens 10.1–10.5)"></div>
-<div class="s r-reassure e" style="left:74.75%;width:5.92%" data-tip="Reviews (screens 10.5–11.3)"></div>
-<div class="s r-reassure e" style="left:80.67%;width:1.78%" data-tip="FAQ (screens 11.3–11.6)"></div>
-<div class="s r-navigate e" style="left:82.45%;width:3.71%" data-tip="Footer (screens 11.6–12.1)"></div>
+<div class="s r-decide" style="left:0.00%;width:10.20%" tabindex="0" role="img" aria-label="Buy box (screens 0–1.4)" data-tip="Buy box (screens 0–1.4)"></div>
+<div class="s r-reassure" style="left:10.41%;width:2.35%" tabindex="0" role="img" aria-label="5 accordions (screens 1.5–1.8)" data-tip="5 accordions (screens 1.5–1.8)"></div>
+<div class="s r-persuade" style="left:12.77%;width:8.42%" tabindex="0" role="img" aria-label="Story (screens 1.8–3)" data-tip="Story (screens 1.8–3)"></div>
+<div class="s r-persuade" style="left:21.18%;width:4.78%" tabindex="0" role="img" aria-label="Detail tiles (screens 3–3.6)" data-tip="Detail tiles (screens 3–3.6)"></div>
+<div class="s r-persuade" style="left:25.96%;width:9.13%" tabindex="0" role="img" aria-label="Seat story (screens 3.6–4.9)" data-tip="Seat story (screens 3.6–4.9)"></div>
+<div class="s r-persuade" style="left:35.09%;width:7.28%" tabindex="0" role="img" aria-label="Why Mareo (claims) (screens 4.9–5.9)" data-tip="Why Mareo (claims) (screens 4.9–5.9)"></div>
+<div class="s r-persuade" style="left:42.37%;width:9.20%" tabindex="0" role="img" aria-label="Everyday (screens 5.9–7.2)" data-tip="Everyday (screens 5.9–7.2)"></div>
+<div class="s r-persuade e" style="left:51.57%;width:11.48%" tabindex="0" role="img" aria-label="Craft (screens 7.2–8.8)" data-tip="Craft (screens 7.2–8.8)"></div>
+<div class="s r-persuade e" style="left:63.05%;width:9.13%" tabindex="0" role="img" aria-label="Durability (screens 8.8–10.1)" data-tip="Durability (screens 8.8–10.1)"></div>
+<div class="s r-decide e" style="left:72.18%;width:2.57%" tabindex="0" role="img" aria-label="Compare (screens 10.1–10.5)" data-tip="Compare (screens 10.1–10.5)"></div>
+<div class="s r-reassure e" style="left:74.75%;width:5.92%" tabindex="0" role="img" aria-label="Reviews (screens 10.5–11.3)" data-tip="Reviews (screens 10.5–11.3)"></div>
+<div class="s r-reassure e" style="left:80.67%;width:1.78%" tabindex="0" role="img" aria-label="FAQ (screens 11.3–11.6)" data-tip="FAQ (screens 11.3–11.6)"></div>
+<div class="s r-navigate e" style="left:82.45%;width:3.71%" tabindex="0" role="img" aria-label="Footer (screens 11.6–12.1)" data-tip="Footer (screens 11.6–12.1)"></div>
 </div></div>
-<div class="r"><b>LOWYA · ベルファ 3人掛けカウチソファ<small>14 screens · 11 sections</small></b><div class="bar">
-<div class="s r-decide" style="left:0.00%;width:10.27%" data-tip="Buy box (screens 0–1.4)"></div>
-<div class="s r-reassure" style="left:10.27%;width:3.21%" data-tip="Delivery date, store (screens 1.4–1.9)"></div>
-<div class="s r-decide" style="left:13.48%;width:4.14%" data-tip="Cart (screens 1.9–2.5)"></div>
-<div class="s r-persuade" style="left:17.62%;width:5.92%" data-tip="Description (screens 2.5–3.3)"></div>
-<div class="s r-persuade" style="left:23.54%;width:4.99%" data-tip="Room fit (screens 3.3–4)"></div>
-<div class="s r-persuade" style="left:28.53%;width:0.50%" data-tip="Specs (screens 4–4.1)"></div>
-<div class="s r-reassure" style="left:29.03%;width:18.76%" data-tip="Reviews (screens 4.1–6.7)"></div>
-<div class="s r-reassure" style="left:47.79%;width:2.35%" data-tip="Snaps (customer photos) (screens 6.7–7)"></div>
-<div class="s r-sell e" style="left:50.14%;width:9.56%" data-tip="Series, related (screens 7–8.4)"></div>
-<div class="s r-sell e" style="left:59.70%;width:4.49%" data-tip="Compared items (screens 8.4–9)"></div>
-<div class="s r-navigate e" style="left:64.19%;width:35.81%" data-tip="More items, footer (screens 9–14)"></div>
+<div class="r"><b>LOWYA · ベルファ 3人掛けカウチソファ<small>14.0 screens · 11 sections</small></b><div class="bar">
+<div class="s r-decide" style="left:0.00%;width:10.27%" tabindex="0" role="img" aria-label="Buy box (screens 0–1.4)" data-tip="Buy box (screens 0–1.4)"></div>
+<div class="s r-reassure" style="left:10.27%;width:3.21%" tabindex="0" role="img" aria-label="Delivery date, store (screens 1.4–1.9)" data-tip="Delivery date, store (screens 1.4–1.9)"></div>
+<div class="s r-decide" style="left:13.48%;width:4.14%" tabindex="0" role="img" aria-label="Cart (screens 1.9–2.5)" data-tip="Cart (screens 1.9–2.5)"></div>
+<div class="s r-persuade" style="left:17.62%;width:5.92%" tabindex="0" role="img" aria-label="Description (screens 2.5–3.3)" data-tip="Description (screens 2.5–3.3)"></div>
+<div class="s r-persuade" style="left:23.54%;width:4.99%" tabindex="0" role="img" aria-label="Room fit (screens 3.3–4)" data-tip="Room fit (screens 3.3–4)"></div>
+<div class="s r-persuade" style="left:28.53%;width:0.50%" tabindex="0" role="img" aria-label="Specs (screens 4–4.1)" data-tip="Specs (screens 4–4.1)"></div>
+<div class="s r-reassure" style="left:29.03%;width:18.76%" tabindex="0" role="img" aria-label="Reviews (screens 4.1–6.7)" data-tip="Reviews (screens 4.1–6.7)"></div>
+<div class="s r-reassure" style="left:47.79%;width:2.35%" tabindex="0" role="img" aria-label="Snaps (customer photos) (screens 6.7–7)" data-tip="Snaps (customer photos) (screens 6.7–7)"></div>
+<div class="s r-sell e" style="left:50.14%;width:9.56%" tabindex="0" role="img" aria-label="Series, related (screens 7–8.4)" data-tip="Series, related (screens 7–8.4)"></div>
+<div class="s r-sell e" style="left:59.70%;width:4.49%" tabindex="0" role="img" aria-label="Compared items (screens 8.4–9)" data-tip="Compared items (screens 8.4–9)"></div>
+<div class="s r-navigate e" style="left:64.19%;width:35.81%" tabindex="0" role="img" aria-label="More items, footer (screens 9–14)" data-tip="More items, footer (screens 9–14)"></div>
 </div></div>
 <div class="r prop"><b>Proposed<small>3.5 screens built · 6 sections</small></b><div class="bar">
-<div class="s r-decide" style="left:0.00%;width:10.63%" data-tip="Buy box (screens 0–1.5)"></div>
-<div class="s r-reassure" style="left:10.79%;width:3.49%" data-tip="Delivery, returns and warranty list; showroom line (screens 1.5–2)"></div>
-<div class="s r-reassure" style="left:14.29%;width:4.94%" data-tip="Reviews (お客様の評価) (screens 2–2.7)"></div>
-<div class="s r-decide" style="left:19.23%;width:2.53%" data-tip="Compare the three sofas (screens 2.7–3.1)"></div>
-<div class="s r-persuade" style="left:21.94%;width:2.20%" data-tip="Accordions: size, materials, delivery, warranty, FAQ (screens 3.1–3.4)"></div>
-<div class="s r-persuade" style="left:24.14%;width:0.90%" data-tip="Start of the product story (マレオのこだわり) (screens 3.4–3.5)"></div>
+<div class="s r-decide" style="left:0.00%;width:10.63%" tabindex="0" role="img" aria-label="Buy box (screens 0–1.5)" data-tip="Buy box (screens 0–1.5)"></div>
+<div class="s r-reassure" style="left:10.79%;width:3.49%" tabindex="0" role="img" aria-label="Delivery, returns and warranty list; showroom line (screens 1.5–2)" data-tip="Delivery, returns and warranty list; showroom line (screens 1.5–2)"></div>
+<div class="s r-reassure" style="left:14.29%;width:4.94%" tabindex="0" role="img" aria-label="Reviews (お客様の評価) (screens 2–2.7)" data-tip="Reviews (お客様の評価) (screens 2–2.7)"></div>
+<div class="s r-decide" style="left:19.23%;width:2.53%" tabindex="0" role="img" aria-label="Compare the three sofas (screens 2.7–3.1)" data-tip="Compare the three sofas (screens 2.7–3.1)"></div>
+<div class="s r-reassure" style="left:21.94%;width:2.20%" tabindex="0" role="img" aria-label="Accordions: size, materials, delivery, warranty, FAQ (screens 3.1–3.4)" data-tip="Accordions: size, materials, delivery, warranty, FAQ (screens 3.1–3.4)"></div>
+<div class="s r-persuade" style="left:24.14%;width:0.90%" tabindex="0" role="img" aria-label="Start of the product story (マレオのこだわり) (screens 3.4–3.5)" data-tip="Start of the product story (マレオのこだわり) (screens 3.4–3.5)"></div>
 </div></div>
 <div class="axis"><span></span><div><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span></div></div><div class="axis"><span></span><span style="text-align:right">screens at 390 × 844</span></div>
 </div>
 <p class="note" style="font-size:13px;color:var(--text-2);margin:0 0 var(--s3)">The proposed page is built down to the start of the product story; the rest is not measured, so the proposed shares are shown as “—”.</p>
 <div class="scroll"><table class="shares"><tr><th>Share of page</th><th>Decide</th><th>Reassure</th><th>Persuade</th><th>Sell more</th><th>Navigate</th><th>Decide starts</th><th>Reassure starts</th></tr>
-<tr><td>Mareo JP · Sumi</td><td>15%</td><td class="bad">9%</td><td>72%</td><td>0%</td><td>4%</td><td>top of page</td><td>screen 10.5</td></tr>
+<tr><td>Mareo JP · Sumi</td><td>15%</td><td class="bad">12%</td><td>69%</td><td>0%</td><td>4%</td><td>top of page</td><td>screen 1.5</td></tr>
 <tr><td>LOWYA · ベルファ 3人掛けカウチソファ</td><td>14%</td><td>24%</td><td>11%</td><td>14%</td><td>36%</td><td>top of page</td><td>screen 1.4</td></tr>
 <tr><td>Proposed</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>top of page</td><td>screen 1.5</td></tr>
 </table></div>
-<p class="reads"><b>What it shows:</b> Mareo gives 72% of the page to persuasion (seven story sections and the accordions), and reassurance starts only at screen 10.5, with the reviews; on LOWYA it starts at 1.4, with the delivery date and store check beside the cart (Finding 3, Finding 12, IA-5). Comparison waits until 10.1 (IA-1). Proposed: delivery, returns and warranty sit directly under the buy box (reassurance from 1.5), the reviews follow at 2.0 and the comparison at 2.7; the product story comes after, with each claim told once (not built in the mock).</p>
+<p class="reads"><b>What it shows:</b> Mareo gives 69% of the page to persuasion (seven brand-story sections). Reassurance takes 12%: it starts at screen 1.5, but only as five closed accordions (IA-10), and the reviews come at 10.5 (Finding 3, Finding 12, IA-5). On LOWYA it takes 24% and starts at 1.4, with the delivery date, guarantee tags and store check above the cart button. On Mareo the comparison also waits until 10.1 (IA-1). Proposed: delivery, returns and warranty sit directly under the buy box (reassurance from 1.5), followed by the reviews (2.0) and the comparison (2.7); the product story comes after, with each claim told once (not built in the mock).</p>
 <ul style="font-size:14px">
 <li>Mareo: buy box, then five accordions, then seven brand-story sections (1.8–10.1). The same claims appear more than once. Comparison starts at 10.1, reviews at 10.5.</li>
 <li>LOWYA: rating, gallery, options, price (税込), guarantee and delivery tags, delivery date by postcode, store check and cart, all within 2.4 screens. Description follows, with reviews from 4.1. LOWYA positions below screen 3 shift by a few hundred pixels between loads because of lazy loading.</li>
 </ul>
 <div class="lrow lhead"><span>Section</span><span>Role</span><span class="track"></span><span>Screen</span></div>
 <div class="lrow"><span>Buy box</span><span class="lrole"><i class="r-decide"></i>Decide</span><span class="track"><b class="r-decide" style="left:0.00%;width:11.84%"></b></span><span class="lscr">0</span></div>
-<div class="lrow"><span>5 accordions</span><span class="lrole"><i class="r-persuade"></i>Persuade</span><span class="track"><b class="r-persuade" style="left:12.09%;width:2.73%"></b></span><span class="lscr">1.5</span></div>
+<div class="lrow"><span>5 accordions</span><span class="lrole"><i class="r-reassure"></i>Reassure</span><span class="track"><b class="r-reassure" style="left:12.09%;width:2.73%"></b></span><span class="lscr">1.5</span></div>
 <div class="lrow"><span>Story</span><span class="lrole"><i class="r-persuade"></i>Persuade</span><span class="track"><b class="r-persuade" style="left:14.82%;width:9.77%"></b></span><span class="lscr">1.8</span></div>
 <div class="lrow"><span>Detail tiles</span><span class="lrole"><i class="r-persuade"></i>Persuade</span><span class="track"><b class="r-persuade" style="left:24.59%;width:5.55%"></b></span><span class="lscr">3</span></div>
 <div class="lrow"><span>Seat story</span><span class="lrole"><i class="r-persuade"></i>Persuade</span><span class="track"><b class="r-persuade" style="left:30.13%;width:10.60%"></b></span><span class="lscr">3.6</span></div>

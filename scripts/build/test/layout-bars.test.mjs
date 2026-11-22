@@ -71,4 +71,8 @@ test('bar segments are colour only: no text in the segment, the name in data-tip
   // A segment starting past the middle of the bar opens its tooltip leftwards.
   assert.deepEqual(segs.map((m) => !!m[1]), [false, true]);
   assert.doesNotMatch(r.stdout, /class="s [^"]*"[^>]*\stitle=/);
+  // Reachable without hover: focusable, with the same text as an accessible name.
+  for (const m of r.stdout.matchAll(/<div class="s [^"]*"[^>]*>/g)) {
+    assert.match(m[0], /tabindex="0" role="img" aria-label="([^"]*)" data-tip="\1"/);
+  }
 });
