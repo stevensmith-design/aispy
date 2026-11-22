@@ -20,8 +20,10 @@ the source project: the source holds the design intent, and reading it biases th
 what was meant rather than what a visitor actually gets.
 
 ### Logged-in areas
-Sign in yourself in the browser the session uses. The pack never asks for, types or stores
-credentials, and it doesn't add to cart, enter personal or payment data, or publish anything.
+Sign in yourself in the browser the session uses. Use your own browser, connected through Claude
+in Chrome (see [Install](../README.md#install), step 2), because the capture helper's Playwright
+starts a fresh browser without your sign-in. The pack never asks for, types or stores credentials,
+and it doesn't add to cart, enter personal or payment data, or publish anything.
 
 ### Native app
 Either a simulator or emulator the session can see and operate (Xcode Simulator, an Android
