@@ -52,6 +52,12 @@ Don't polish before the person has seen it.
   4. the kit's skills are readable.
   Exception: if the person supplies only screens (no URL or build), skip check 2 and record in
   `01-frame.md` that the sweep is done from the supplied screens.
+  If check 3 fails only because the capture helper isn't installed (no
+  `scripts/capture/node_modules`), offer to install it, in the same message as the agents question
+  when both are open: "The screenshot helper isn't installed. OK to install it now? It runs
+  `npm install` and `npx playwright install chromium` in the pack's `scripts/capture/` folder."
+  With a yes, run those two commands there, then re-run check 3. If the person declines or the
+  install fails, check 3 has failed.
   If any fails, **stop and tell the person** what failed and what it would cost the review. Don't
   continue in a reduced mode: lenses run in your own context are not independent, take a
   fraction of the time and find far less, and the result can't be compared with the reference
