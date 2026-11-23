@@ -113,13 +113,17 @@ we won't do, deliverables.
 **Reference examples.** If the person supplies example deliverables from an earlier review, they
 are the standard for depth, tone and what a good section contains. If they supply none, the
 pack's two examples are the standard, each for a different thing. `templates/` sets which
-sections a document has, so the package matches every other run.
-- `examples/brolga/` sets the standard for layout and page design: how each document, section
-  and component looks and reads, at 390 and 1440 px. Open its `index.html` and the three
-  documents.
-- `examples/mareo/` sets the standard for argument, research and evidence: what each section
-  contains, how it is argued, how evidence is marked, and the mock (it recreates the content of
-  the review the kit was tested against). Open its `index.html`,
+sections a document has and its layout, so the package matches every other run; build from it,
+never from an example's markup or CSS.
+- `examples/brolga/` shows that layout filled in by a real run. It is the standard for how the
+  index, the report and the IA analysis look and read, section by section and component by
+  component, at 390 and 1440 px. Open its `index.html`. In
+  `brolga-jp-localisation-review.html` and `brolga-jp-ia-analysis.html`, read the sections
+  you're building, not the whole file: most of each file is inline images.
+- `examples/mareo/` is the standard for argument, research and evidence: what each section
+  contains, how it is argued, the market research and benchmarks, and how evidence is marked.
+  With `templates/mock.html`, it is also the standard for the mock. It recreates the content of
+  the review the kit was tested against. Open its `index.html`,
   `mareo-jp-localisation-review.html`, `mareo-jp-ia-analysis.html`,
   `mareo-jp-mock-pdp-mobile.html` and `mock-spec.md`.
 
