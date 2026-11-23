@@ -1,0 +1,28 @@
+name: Idea or improvement
+description: Suggest a change to how reviews run, their documents, the scripts or the docs.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ideas are weighed by what they gain against the time and tokens they add to every review
+        run and to maintenance, so many will rightly stay ideas. Don't name real clients or people.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What's missing or wrong today, and how often it comes up.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What you'd change. The smallest version that solves the problem is best.
+    validations:
+      required: true
+  - type: textarea
+    id: cost
+    attributes:
+      label: Cost and risk
+      description: What it adds to each review run (time, tokens, steps), and what it could make worse.
