@@ -2,12 +2,13 @@
 
 This product-review kit was built to match one reference review: a Japanese-market UX/UI review
 made of four documents (an index, a localisation review, an information architecture analysis and
-a proposed product page). This example is that review
-recreated on a fictional store. The four documents keep the reference's sections, order,
-components and density of argument; the store, its problems, the evidence and the benchmarks are
-made for this example.
+a proposed product page). This example recreates that review's content on a fictional store, in
+the kit's current document form. The argument, the findings, the density of evidence and the
+research follow the reference; the documents' layout and components follow the kit's templates, as
+in [`examples/brolga/`](../brolga/). The store, its problems and its evidence are made for this
+example; the benchmarks are real Japanese sites, read live (see "Sources and benchmarks").
 
-It is not the output of a kit run. It shows what the kit is aiming at.
+It is not the output of a kit run. It shows the standard a run's content is held to.
 
 | Before | After |
 |---|---|
@@ -32,14 +33,17 @@ and surface relationships.
 | File | What it is |
 |---|---|
 | `index.html` | Start here: the three documents, four key messages, how to read the markers, how the review was made |
-| `mareo-jp-localisation-review.html` | 13 findings in three perspectives, each with marked evidence, a Japanese site that does it well and a proposal; what already works; market context; a global cross-check; next steps; appendix |
-| `mareo-jp-ia-analysis.html` | Navigation compared with LOWYA, a product-page map, eight shopper journeys, IA findings and items to confirm |
+| `mareo-jp-localisation-review.html` | Captures of the pages in scope; a summary by perspective with top priorities and what already works; market context with a side-by-side table of six Japanese furniture sites; 13 findings grouped by stage of the visit, each with marked evidence, a Japanese site that does it well and a proposal, then further findings; improvement directions; a global cross-check; next steps; appendix |
+| `mareo-jp-ia-analysis.html` | Navigation compared with LOWYA; the product-page layout card (Mareo, LOWYA and the proposed page by role, with shares) and the heading hierarchy; eight shopper journeys; a label audit; IA findings; the proposed structure, including the menu; items to confirm |
 | `mareo-jp-mock-pdp-mobile.html` | Current and proposed product page side by side, with every change explained |
 | `site/before.html`, `site/after.html` | The store's product page before and after, at 390 px. On the before page, `?state=menu`, `menu-sofa`, `search` (with `&q=`), `popup`, `size`, `spec` or `deliv` opens each state. The after page is generated from the mock |
 
 ## Scope
 
-The review is set at a 390 × 844 phone screen, and "first screen" means that size throughout. On a shorter phone, such as 375 × 667, the proposed price falls just below the first screen.
+The review is set at a 390 × 844 phone screen, and "first screen" means that size throughout.
+Positions on a page count from the top as screen 1, as in the kit (so "screen 11.5" is halfway
+down the eleventh screen); lengths are plain ("12.1 screens"). On a shorter phone, such as
+375 × 667, the proposed price falls just below the first screen.
 
 The reference covered six pages. This example covers the product page, the header, the menu
 drawer and search. Sections of the reference that need a homepage or a category page are kept in
