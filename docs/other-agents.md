@@ -19,5 +19,5 @@ lines to your request:
 Start each lens and each checker as a new agent with no conversation history.
 Give checkers only the render and the report. Don't reuse an agent for a second role.
 Stop and show me the mock spec before building the mock.
-Read the reference examples in full.
+Read the reference examples in full (for Brolga's report and IA analysis, the sections you're building).
 ```
