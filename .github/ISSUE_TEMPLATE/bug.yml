@@ -1,0 +1,38 @@
+name: Problem in a review run
+description: Something in a review, its documents or a script didn't work as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a public issue. Don't name real clients or people, and don't paste client URLs,
+        screenshots, captures or review output. Describe the site in general terms instead
+        (for example "a small e-commerce site in Japanese").
+  - type: input
+    id: version
+    attributes:
+      label: AIspy version
+      description: The `version:` line in `skills/product-review/SKILL.md`, or the release tag.
+      placeholder: 0.8.11
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and model
+      placeholder: Claude Code with Opus, Codex, …
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Which step, script or document, what you expected, and what you got instead.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Error or check output
+      description: Paste any error message or check output, with client names and URLs removed.
+      render: text

@@ -3,6 +3,8 @@
 AIspy has been tested to work well in Claude Code. A change has to keep review quality and cost at
 least as good, and add real value for the complexity it brings.
 
+Everyone taking part follows the [code of conduct](CODE_OF_CONDUCT.md).
+
 ## Pull requests
 
 - Start from an issue, except for small docs fixes. Keep one issue, or one tightly related group,
