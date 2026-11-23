@@ -10,7 +10,7 @@ Made by Steven Smith. More on AIspy and my other work: [stevensmith.dev/aispy](h
 |---|---|---|
 | ![The example review report's cover: headline finding, scope and reviewer](docs/images/example-report.png) | ![The example IA analysis's cover: headline and task-path results](docs/images/example-ia.png) | ![The example mock: current and proposed product page side by side, with numbered markers and notes](docs/images/example-mock.png) |
 
-<sub>Real output from a full AIspy run on Brolga, a fictional running-shoe brand selling in Japan. The standard every run is held to is [`examples/mareo/`](examples/mareo/), the reference review recreated on a fictional store. More under [Examples](#examples).</sub>
+<sub>Real output from a full AIspy run on Brolga, a fictional running-shoe brand selling in Japan. It shows the kit's templates filled in, and is the standard for how the index, report and IA analysis look and read; the standard for argument, research, evidence and the mock is [`examples/mareo/`](examples/mareo/), the reference review recreated on a fictional store. More under [Examples](#examples).</sub>
 
 For product managers, founders, developers and marketers without a senior designer to hand, and for designers and agent-led teams who want a full review to start from.
 
@@ -94,7 +94,7 @@ browser to start.
 |---|---|---|
 | What it is | The review AIspy was built and tested against, recreated on a fictional Danish sofa brand selling in Japan. It isn't a kit run: it shows what the kit aims at. | A full AIspy run on a fictional Australian running-shoe brand selling in Japan, reviewed once by a person. |
 | Scope | One product page at 390 px, with the header, menu drawer and search. Sections that need other pages are kept and labelled "out of scope in this example". | The top page, all shoes, three product pages and the size guide; phone first, desktop where a finding differs. |
-| What it shows | The standard the skill matches by default: document form, density of argument, how evidence is marked, and the mock. Also the store's product page before and after. | What a complete multi-page package looks like, from intake to the finished documents. |
+| What it shows | The standard for argument, research and evidence: density of argument, the market research and benchmarks, how evidence is marked, and the mock. Also the store's product page before and after. | The kit's templates filled in: the standard for how the index, report and IA analysis look and read, and what a complete multi-page package looks like, from intake to the finished documents. |
 | Documents | Index, localisation review (13 findings), IA analysis, mock, mock spec | Index, review report (18 findings), IA analysis, mock, mock spec |
 
 Both pass the pack's checks (`scripts/checks/`). The examples' stores and products are made up;
@@ -250,8 +250,8 @@ scripts/              optional helpers, not required steps
   build/              theme-from-tokens.mjs, assemble.mjs, layout-bars.mjs
   checks/             check-deliverable.mjs, check-report.mjs, check-mock.mjs, forbid.mjs
                       (tests: node --test scripts/checks/test/)
-examples/mareo/       the reference review recreated on a fictional store (default standard)
-examples/brolga/      a complete multi-page example run
+examples/mareo/       the reference review recreated on a fictional store (standard for argument, evidence and the mock)
+examples/brolga/      a complete multi-page example run (standard for layout and page design)
 docs/how-to-use.md    inputs by product type, and what to expect
 ```
 

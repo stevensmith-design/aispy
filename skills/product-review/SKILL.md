@@ -112,15 +112,25 @@ we won't do, deliverables.
 
 **Reference examples.** If the person supplies example deliverables from an earlier review, they
 are the standard for depth, tone and what a good section contains. If they supply none, the
-pack's examples are the standard. `templates/` sets which sections a document has and its layout,
-so the package matches every other run. `examples/mareo/` sets the standard for what each section
-contains, how it is argued and how evidence is marked, and for the mock (it recreates the review
-the kit was tested against). Open its `index.html`, `mareo-jp-localisation-review.html`,
-`mareo-jp-ia-analysis.html`, `mareo-jp-mock-pdp-mobile.html` and `mock-spec.md`. Open
-`examples/brolga/index.html` for what a full run's package looks like. The findings count follows
-the 12–15 rule (Mareo has 13); Brolga is a run's output, not the standard. Mareo covers one
-product page, and the parts of the reference it leaves out are labelled "out of scope in this
-example"; a run must not copy those labels or that scope, which comes from the run's own intake.
+pack's two examples are the standard, each for a different thing. `templates/` sets which
+sections a document has and its layout, so the package matches every other run; build from it,
+never from an example's markup or CSS.
+- `examples/brolga/` shows that layout filled in by a real run. It is the standard for how the
+  index, the report and the IA analysis look and read, section by section and component by
+  component, at 390 and 1440 px. Open its `index.html`. In
+  `brolga-jp-localisation-review.html` and `brolga-jp-ia-analysis.html`, read the sections
+  you're building, not the whole file: most of each file is inline images.
+- `examples/mareo/` is the standard for argument, research and evidence: what each section
+  contains, how it is argued, the market research and benchmarks, and how evidence is marked.
+  With `templates/mock.html`, it is also the standard for the mock. It recreates the content of
+  the review the kit was tested against. Open its `index.html`,
+  `mareo-jp-localisation-review.html`, `mareo-jp-ia-analysis.html`,
+  `mareo-jp-mock-pdp-mobile.html` and `mock-spec.md`.
+
+The findings count follows the 12–15 rule (Mareo has 13); Brolga's 18 is one run's count, not a
+target. Mareo covers one product page, and the parts of the reference it leaves out are labelled
+"out of scope in this example"; a run must not copy those labels or that scope, which comes from
+the run's own intake.
 Take every finding, fact and screenshot from the product being reviewed, never from the examples.
 
 **Supplied review.** If research, lens outputs and a synthesis are supplied too, start at step 7:
