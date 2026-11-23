@@ -228,7 +228,7 @@ html[lang=ja] body{letter-spacing:.04em}
 html[lang=ja] p,html[lang=ja] li,html[lang=ja] td,html[lang=ja] h1,html[lang=ja] h2,html[lang=ja] h3{word-break:auto-phrase;line-break:strict}
 
 
-@media(max-width:700px){nav.toc .wrap{padding-right:132px}}
+@media(max-width:700px){nav.toc{background:var(--canvas)}nav.toc .wrap{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none;margin-right:132px;padding-right:8px}nav.toc .wrap::-webkit-scrollbar{display:none}}
 
 .pmap .r.prop>b{color:var(--good)}
 :root{--role-decide:#6177A1;--role-reassure:#82BD97;--role-persuade:#CBA55D;--role-sell:#D66843;--role-navigate:#C6C2B6}
@@ -301,7 +301,7 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="sec-body">
 <div class="scroll"><table class="tbl">
 <tr><th style="width:34%">Structural issue</th><th>What we measured</th><th style="width:22%">Best Japanese reference</th></tr>
-<tr><td><b>1. “Which sofa is right for me?” has no home.</b> Comparison sits at the end of the product page, not in the navigation.</td><td>0 menu entries for 比較 or 選び方. The three sofas appear in the menu by name only. The comparison starts at screen 11.1 of a 12.1-screen page.</td><td>ACTUS: a sofa buying guide linked from the homepage</td></tr>
+<tr><td><b>1. “Which sofa is right for me?” has no home.</b> Comparison sits at the end of the product page, not in the navigation.</td><td>0 menu entries for 比較 or 選び方. The three sofas appear in the menu by name only. The comparison starts at screen 11.1, near the end of a 12.1-screen page.</td><td>ACTUS: a sofa buying guide linked from the homepage</td></tr>
 <tr><td><b>2. Trust content arrives late.</b> Delivery, returns and reviews are far from the decision point.</td><td>Product page: reviews at screen 11.5 (LOWYA: review summary at 5.1). No arrival date anywhere; return conditions on an external help centre.</td><td>LOWYA: delivery date, guarantee tags and store check above the cart button, within 2.4 screens</td></tr>
 <tr><td><b>3. The product page tells the story before the facts.</b> Seven brand-story sections come before comparison and reviews.</td><td>8.3 screens of story (2.8–11.1), with <span lang="ja">「究極の座り心地」</span> twice and <span lang="ja">「ふんわりやわらか」</span> three times.</td><td>LOWYA: description after the purchase area, reviews next</td></tr>
 <tr><td><b>4. Ways to try before buying are split up.</b> Showroom and fabric samples sit in two places.</td><td>The showroom is a utility link in the drawer. Fabric samples are an ⓘ pill under the button. Neither is linked from the product page body.</td><td>LOWYA, Re:CENO, unico: <span lang="ja">「店舗の展示・在庫を確認する」</span> next to the cart button</td></tr>
@@ -635,7 +635,7 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="sec-body">
 <div class="scroll"><table class="tbl">
 <tr><th style="width:34%">構造上の課題</th><th>計測した内容</th><th style="width:22%">参考になる日本のサイト</th></tr>
-<tr><td><b>1.「自分に合うソファはどれ？」に応える決まった場所がない。</b>比較は商品ページの最後にあり、ナビゲーションにはない。</td><td>「比較」や「選び方」のメニュー項目は0件。3つのソファはメニューに名前だけで並んでいる。比較は12.1画面あるページの11.1画面目から始まる。</td><td>ACTUS：トップページからリンクされたソファの選び方ガイド</td></tr>
+<tr><td><b>1.「自分に合うソファはどれ？」に応える決まった場所がない。</b>比較は商品ページの最後にあり、ナビゲーションにはない。</td><td>「比較」や「選び方」のメニュー項目は0件。3つのソファはメニューに名前だけで並んでいる。比較は12.1画面分あるページの終わり近く、11.1画面目から始まる。</td><td>ACTUS：トップページからリンクされたソファの選び方ガイド</td></tr>
 <tr><td><b>2. 安心につながる情報が出てくるのが遅い。</b>配送、返品、レビューが判断の場所から遠い。</td><td>商品ページ：レビューは11.5画面目（LOWYAはレビューのサマリーが5.1画面目）。お届け日はどこにもなく、返品条件は外部のヘルプセンターにある。</td><td>LOWYA：お届け日、保証のタグ、店舗の確認がカートボタンの上にあり、2.4画面以内に収まる</td></tr>
 <tr><td><b>3. 商品ページが、事実より先にストーリーを語っている。</b>比較とレビューの前に、ブランドストーリーのセクションが7つある。</td><td>ストーリーが8.3画面分（2.8〜11.1）あり、「究極の座り心地」が2回、「ふんわりやわらか」が3回出てくる。</td><td>LOWYA：購入エリアの後に商品説明、その次にレビュー</td></tr>
 <tr><td><b>4. 購入前に試す方法がばらばらになっている。</b>ショールームと生地サンプルが2か所に分かれている。</td><td>ショールームはドロワーのユーティリティのリンク。生地サンプルはボタンの下のⓘ付きのピル。どちらも商品ページの本文からリンクされていない。</td><td>LOWYA、Re:CENO、unico：カートボタンの横に「店舗の展示・在庫を確認する」</td></tr>
@@ -971,7 +971,7 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="sec-body">
 <div class="scroll"><table class="tbl">
 <tr><th style="width:34%">Structural issue</th><th>What we measured</th><th style="width:22%">Best Japanese reference</th></tr>
-<tr><td><b>1. “Which sofa is right for me?” has no home.</b> Comparison sits at the end of the product page, not in the navigation.</td><td>0 menu entries for 比較 or 選び方. The three sofas appear in the menu by name only. The comparison starts at screen 11.1 of a 12.1-screen page.</td><td>ACTUS: a sofa buying guide linked from the homepage</td></tr>
+<tr><td><b>1. “Which sofa is right for me?” has no home.</b> Comparison sits at the end of the product page, not in the navigation.</td><td>0 menu entries for 比較 or 選び方. The three sofas appear in the menu by name only. The comparison starts at screen 11.1, near the end of a 12.1-screen page.</td><td>ACTUS: a sofa buying guide linked from the homepage</td></tr>
 <tr><td><b>2. Trust content arrives late.</b> Delivery, returns and reviews are far from the decision point.</td><td>Product page: reviews at screen 11.5 (LOWYA: review summary at 5.1). No arrival date anywhere; return conditions on an external help centre.</td><td>LOWYA: delivery date, guarantee tags and store check above the cart button, within 2.4 screens</td></tr>
 <tr><td><b>3. The product page tells the story before the facts.</b> Seven brand-story sections come before comparison and reviews.</td><td>8.3 screens of story (2.8–11.1), with <span lang="ja">「究極の座り心地」</span> twice and <span lang="ja">「ふんわりやわらか」</span> three times.</td><td>LOWYA: description after the purchase area, reviews next</td></tr>
 <tr><td><b>4. Ways to try before buying are split up.</b> Showroom and fabric samples sit in two places.</td><td>The showroom is a utility link in the drawer. Fabric samples are an ⓘ pill under the button. Neither is linked from the product page body.</td><td>LOWYA, Re:CENO, unico: <span lang="ja">「店舗の展示・在庫を確認する」</span> next to the cart button</td></tr>
