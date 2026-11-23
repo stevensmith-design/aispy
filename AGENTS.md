@@ -14,7 +14,8 @@ an IA analysis, a mock and an index page.
   reasoning or other checks. Don't reuse an agent for a second role.
 - After writing the mock spec, stop and show it to the person before building the mock. A general
   "go ahead" for the mock doesn't approve the spec.
-- Read the reference examples `SKILL.md` names in full, not only their headings.
+- Read the reference examples `SKILL.md` names in full, not only their headings. For Brolga's
+  report and IA analysis, read the sections you're building, as `SKILL.md` says.
 
 ## Changing this repository
 
