@@ -161,6 +161,21 @@ footer{margin-top:var(--s8);border-top:1px solid var(--border);padding:var(--s5)
 .backbar a{color:var(--on-primary);text-decoration:none;opacity:.92}
 .backbar a:hover{opacity:1;text-decoration:underline}
 .backbar span{opacity:.7;letter-spacing:.06em;font-size:12px}
+@media(max-width:700px){.backbar span{display:none}}
+@media(max-width:700px){.tbl{font-size:13px}.tbl th,.tbl td{padding:10px}}
+/* Label audit on a phone: one block per concept, as the Japanese phrases don't fit three columns */
+@media(max-width:600px){
+  .tbl.labels tr{display:block;border-bottom:1px solid var(--border)}
+  .tbl.labels tr:first-child{display:none}
+  .tbl.labels td{display:block;border-bottom:0;padding:4px 12px}
+  .tbl.labels td:first-child{font-weight:600;padding-top:12px}
+  .tbl.labels td:last-child{padding-bottom:12px}
+  .tbl.labels td:nth-child(2)::before,.tbl.labels td:nth-child(3)::before{display:block;font-size:12px;color:var(--text-2)}
+  .tbl.labels td:nth-child(2)::before{content:"Labels found"}
+  .tbl.labels td:nth-child(3)::before{content:"Proposed"}
+  html[lang=ja] .tbl.labels td:nth-child(2)::before{content:"使われているラベル"}
+  html[lang=ja] .tbl.labels td:nth-child(3)::before{content:"統一案"}
+}
 .howto{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:var(--s4) var(--s5);margin:var(--s5) 0 0;font-size:14px;max-width:none}
 .howto b{font-weight:600}
 
@@ -418,8 +433,6 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="lrow"><span>FAQ</span><span class="lrole"><i class="r-reassure"></i>Reassure</span><span class="track"><b class="r-reassure" style="left:93.63%;width:2.07%"></b></span><span class="lscr">12.3</span></div>
 <div class="lrow"><span>Footer</span><span class="lrole"><i class="r-navigate"></i>Navigate</span><span class="track"><b class="r-navigate" style="left:95.70%;width:4.30%"></b></span><span class="lscr">12.6</span></div>
 </div>
-<h3>Category page (ソファ)</h3>
-<p class="note" style="font-size:14px;color:var(--text-2)">Out of scope in this example.</p>
 <div class="layoutcard">
 <h3>Heading hierarchy (Sumi product page)</h3>
 <p style="font-size:14px;margin:0 0 var(--s3)">What a screen reader or search engine reads as the outline of the Sumi page, in page order.</p>
@@ -433,6 +446,8 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="hrow"><span class="lv">H2</span><span>“FAQs”</span><span class="at">FAQ · screen 12.3</span><span class="why">In English.</span></div>
 <p style="font-size:13px;color:var(--text-2);margin:var(--s3) 0 0">Related: IA-11.</p>
 </div>
+<h3>Category page (ソファ)</h3>
+<p class="note" style="font-size:14px;color:var(--text-2)">Out of scope in this example.</p>
 </div>
 </section>
 <section id="journeys">
@@ -497,22 +512,22 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="sec-head"><div class="no">05</div><div><h2>Label audit: one concept, one name</h2>
 <p class="lead"><span lang="ja">「カートに入れる」</span> has one name in the buy box and the sticky bar, a strength. Reviews, the FAQ, shipping and the newsletter offer don't: each has two or three names on one product page, some in English. Where this analysis already proposes a label (the proposed menu, the mock, the findings), the row uses it; labels marked <i>proposal</i> are new here.</p></div></div>
 <div class="sec-body">
-<div class="scroll"><table class="tbl">
+<div class="scroll"><table class="tbl labels">
 <tr><th style="width:20%">Concept</th><th>Labels found (where)</th><th style="width:32%">Proposed</th></tr>
-<tr><td>Reviews</td><td class="bad"><span lang="ja">「口コミ」</span> (sticky in-page anchors) · <span lang="ja">「カスタマーレビュー」</span> (section H2) · “reviews” (review widget, “128 reviews”)</td><td><span lang="ja">「お客様の評価」</span> in the anchors, the heading and the widget (the proposed page's heading)</td></tr>
-<tr><td>FAQ</td><td class="bad"><span lang="ja">「Q&amp;A」</span> (sticky in-page anchors) · <span lang="ja">「よくある質問」</span> (first accordion; menu and footer link ↗ to the external help centre) · “FAQs” (section H2)</td><td><span lang="ja">「よくある質問」</span> everywhere, on-domain (proposed menu, サポート)</td></tr>
-<tr><td>Shipping cost</td><td class="bad">“Free Shipping” (announcement bar, price pill) · 送料無料 (elsewhere on the page)</td><td><span lang="ja">「送料無料」</span>, in Japanese only <i>(proposal)</i></td></tr>
-<tr><td>Newsletter offer</td><td class="bad">“Newsletter登録で10%OFF” (announcement bar) · <span lang="ja">「10% OFF」</span> (floating bubble, pop-up) · 3,000円 OFF (newsletter pill in the buy box)</td><td>One offer in one placement (localisation review, A2), named <span lang="ja">「メルマガ登録」</span> <i>(proposal)</i></td></tr>
-<tr><td>Compare</td><td class="bad"><span lang="ja">「モデルを比較」</span> (section H2) · no menu entry · left out of the sticky anchors</td><td><span lang="ja">「ソファを比べる・選び方」</span> in the menu, <span lang="ja">「3つのソファを比べる」</span> on the page (proposed menu, mock)</td></tr>
-<tr><td>Each sofa in the menu</td><td class="bad">Sumi / Ren / Mio (names only) · NEW / SALE (tags)</td><td>Name with seat feel, seat and starting price: “Sumi かため · ポケットコイル · 98,000円〜” (proposed menu)</td></tr>
-<tr><td>Firmness</td><td class="bad">4/5, 2/5, 3/5 (<span lang="ja">「モデルを比較」</span>) · <span lang="ja">「ふんわりやわらか」</span> three times (story) · inside <span lang="ja">「Specifications」</span></td><td>In words: かため / ふつう / やわらかめ (proposed menu)</td></tr>
-<tr><td>Specs and size</td><td class="bad"><span lang="ja">「Specifications」</span> (accordion, in English) · <span lang="ja">「サイズ」</span> (accordion) · <span lang="ja">「詳細」</span> (sticky in-page anchor)</td><td>Japanese group names: サイズと搬入 · 素材とお手入れ (proposed structure)</td></tr>
-<tr><td>Delivery, returns, warranty</td><td class="bad"><span lang="ja">「返品保証」</span> (ⓘ pill under the button) · <span lang="ja">「お届け・返品」</span> (accordion) · <span lang="ja">「保証」</span> (accordion, one line) · return conditions on the external help centre</td><td><span lang="ja">「配送・搬入」</span> and <span lang="ja">「返品・保証」</span>, on-domain (proposed menu, サポート)</td></tr>
-<tr><td>Try before buying</td><td class="bad"><span lang="ja">「ショールーム」</span> (menu utility area) · <span lang="ja">「生地サンプル無料」</span> (ⓘ pill under the button) · nothing in the product page body</td><td>Group <span lang="ja">「試す・見る」</span> with <span lang="ja">「ショールーム」</span> and <span lang="ja">「生地サンプル（無料）」</span>; <span lang="ja">「ショールームで見る」</span> in the trust block (proposed menu and structure)</td></tr>
-<tr><td>Help and contact</td><td class="bad"><span lang="ja">「よくある質問 ↗」</span> (utility area, footer) · <span lang="ja">「詳しくはヘルプセンターをご覧ください」</span> (product FAQ) · phone in the footer only · LINE as a social icon · chat button</td><td>Group <span lang="ja">「サポート」</span>, ending in <span lang="ja">「お問い合わせ（電話 · チャット · LINE）」</span> (proposed menu)</td></tr>
-<tr><td>Feature tile</td><td class="bad">“Height Adjustable” (H3 on one of the four tiles)</td><td>A Japanese heading like the other three, such as <span lang="ja">「高さ調節」</span> <i>(proposal)</i></td></tr>
-<tr><td>Price</td><td class="bad"><span lang="ja">「124,000円」</span> (buy box, sticky bar, comparison)</td><td><span lang="ja">「124,000円（税込）」</span> (N1)</td></tr>
-<tr><td>Legal notice</td><td class="bad"><span lang="ja">「ご利用ガイド・規約」</span></td><td><span lang="ja">「特定商取引法に基づく表記」</span>, the standard label (N5)</td></tr>
+<tr><td>Reviews</td><td><span lang="ja">「口コミ」</span> (sticky in-page anchors) · <span lang="ja">「カスタマーレビュー」</span> (section H2) · “reviews” (review widget, “128 reviews”)</td><td><span lang="ja">「お客様の評価」</span> in the anchors, the heading and the widget (the proposed page's heading)</td></tr>
+<tr><td>FAQ</td><td><span lang="ja">「Q&amp;A」</span> (sticky in-page anchors) · <span lang="ja">「よくある質問」</span> (first accordion; menu and footer link ↗ to the external help centre) · “FAQs” (section H2)</td><td><span lang="ja">「よくある質問」</span> everywhere, on-domain (proposed menu, サポート)</td></tr>
+<tr><td>Shipping cost</td><td>“Free Shipping” (announcement bar, price pill) · 送料無料 (elsewhere on the page)</td><td><span lang="ja">「送料無料」</span>, in Japanese only <i>(proposal)</i></td></tr>
+<tr><td>Newsletter offer</td><td>“Newsletter登録で10%OFF” (announcement bar) · <span lang="ja">「10% OFF」</span> (floating bubble, pop-up) · 3,000円 OFF (newsletter pill in the buy box)</td><td>One offer in one placement (localisation review, A2), named <span lang="ja">「メルマガ登録」</span> <i>(proposal)</i></td></tr>
+<tr><td>Compare</td><td><span lang="ja">「モデルを比較」</span> (section H2) · no menu entry · left out of the sticky anchors</td><td><span lang="ja">「ソファを比べる・選び方」</span> in the menu, <span lang="ja">「3つのソファを比べる」</span> on the page (proposed menu, mock)</td></tr>
+<tr><td>Each sofa in the menu</td><td>Sumi / Ren / Mio (names only) · NEW / SALE (tags)</td><td>Name with seat feel, seat and starting price: “Sumi かため · ポケットコイル · 98,000円〜” (proposed menu)</td></tr>
+<tr><td>Firmness</td><td>4/5, 2/5, 3/5 (<span lang="ja">「モデルを比較」</span>) · <span lang="ja">「ふんわりやわらか」</span> three times (story) · inside <span lang="ja">「Specifications」</span></td><td>In words: かため / ふつう / やわらかめ (proposed menu)</td></tr>
+<tr><td>Specs and size</td><td><span lang="ja">「Specifications」</span> (accordion, in English) · <span lang="ja">「サイズ」</span> (accordion) · <span lang="ja">「詳細」</span> (sticky in-page anchor)</td><td>Japanese group names: サイズと搬入 · 素材とお手入れ (proposed structure)</td></tr>
+<tr><td>Delivery, returns, warranty</td><td><span lang="ja">「返品保証」</span> (ⓘ pill under the button) · <span lang="ja">「お届け・返品」</span> (accordion) · <span lang="ja">「保証」</span> (accordion, one line) · return conditions on the external help centre</td><td><span lang="ja">「配送・搬入」</span> and <span lang="ja">「返品・保証」</span>, on-domain (proposed menu, サポート)</td></tr>
+<tr><td>Try before buying</td><td><span lang="ja">「ショールーム」</span> (menu utility area) · <span lang="ja">「生地サンプル無料」</span> (ⓘ pill under the button) · nothing in the product page body</td><td>Group <span lang="ja">「試す・見る」</span> with <span lang="ja">「ショールーム」</span> and <span lang="ja">「生地サンプル（無料）」</span>; <span lang="ja">「ショールームで見る」</span> in the trust block (proposed menu and structure)</td></tr>
+<tr><td>Help and contact</td><td><span lang="ja">「よくある質問 ↗」</span> (utility area, footer) · <span lang="ja">「詳しくはヘルプセンターをご覧ください」</span> (product FAQ) · phone in the footer only · LINE as a social icon · chat button</td><td>Group <span lang="ja">「サポート」</span>, ending in <span lang="ja">「お問い合わせ（電話 · チャット · LINE）」</span> (proposed menu)</td></tr>
+<tr><td>Feature tile</td><td>“Height Adjustable” (H3 on one of the four tiles)</td><td>A Japanese heading like the other three, such as <span lang="ja">「高さ調節」</span> <i>(proposal)</i></td></tr>
+<tr><td>Price</td><td><span lang="ja">「124,000円」</span> (buy box, sticky bar, comparison)</td><td><span lang="ja">「124,000円（税込）」</span> (N1)</td></tr>
+<tr><td>Legal notice</td><td><span lang="ja">「ご利用ガイド・規約」</span></td><td><span lang="ja">「特定商取引法に基づく表記」</span>, the standard label (N5)</td></tr>
 <tr><td>Add to cart</td><td class="ok"><span lang="ja">「カートに入れる」</span> (buy box, sticky bar)</td><td>Keep</td></tr>
 </table></div>
 <p style="font-size:13px;color:var(--text-2)">Related: IA-6, IA-7, IA-8, IA-10, IA-11, IA-12, N1, N5.</p>
@@ -547,7 +562,7 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 </section>
 <section id="proposal">
 <div class="sec-head"><div class="no">07</div><div><h2>Proposed structure</h2>
-<p class="lead">Each page gets one job, and the decision and trust content moves forward. These are structural directions for the mock-up, within the current template and brand system.</p></div></div>
+<p class="lead">Each page gets one job, and the decision and trust content moves forward. These are structural directions for the mock-up, within the current template and brand system. Moved or new sections are in green.</p></div></div>
 <div class="sec-body">
 <div class="grid2">
 <div class="panel"><h3 class="h4">TOP PAGE</h3><p style="font-size:14px;color:var(--text-2);margin:0">Out of scope in this example: no homepage was reviewed.</p></div>
@@ -555,9 +570,9 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 </div>
 <div class="panel" style="margin-top:16px"><h3 class="h4">PRODUCT PAGE</h3><ol class="order" style="margin:0">
 <li><b>Buy box</b><span>Rating, name, one-line “who it's for”, price (税込), firmness scale, sizes with width and price, named colours, carry-in size, CTA with returns sub-line</span></li>
-<li><b>Trust block</b><span>Arrival estimate, returns, warranty, fabric samples, payment, chat, “see it in the showroom”</span></li>
-<li><b>Review summary</b><span>Histogram, attribute filters in Japanese, picked reviews</span></li>
-<li><b>Compare (short)</b><span>Key rows vs Ren and Mio, link to the full table</span></li>
+<li class="moved"><b>Trust block</b><span>Arrival estimate, returns, warranty, fabric samples, payment, chat, “see it in the showroom”<small class="why">New: purchase-risk information from four places, at the button (IA-9)</small></span></li>
+<li class="moved"><b>Review summary</b><span>Histogram, attribute filters in Japanese, picked reviews<small class="why">Moved forward from screen 11.5 (IA-5)</small></span></li>
+<li class="moved"><b>Compare (short)</b><span>Key rows vs Ren and Mio, link to the full table<small class="why">Moved forward from screen 11.1 (IA-1, IA-5)</small></span></li>
 <li><b>One brand story</b><span>Each claim once</span></li>
 <li><b>Details (5 groups) and FAQ</b><span>Size and carry-in, materials and care, delivery and returns, warranty; buying questions first</span></li>
 <li><b>Second purchase point, cross-sell</b><span>After the story</span></li></ol></div>
@@ -752,8 +767,6 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="lrow"><span>FAQ</span><span class="lrole"><i class="r-reassure"></i>安心</span><span class="track"><b class="r-reassure" style="left:93.63%;width:2.07%"></b></span><span class="lscr">12.3</span></div>
 <div class="lrow"><span>フッター</span><span class="lrole"><i class="r-navigate"></i>ナビゲーション</span><span class="track"><b class="r-navigate" style="left:95.70%;width:4.30%"></b></span><span class="lscr">12.6</span></div>
 </div>
-<h3>カテゴリページ（ソファ）</h3>
-<p class="note" style="font-size:14px;color:var(--text-2)">この事例では対象外です。</p>
 <div class="layoutcard">
 <h3>見出しの階層（Sumiの商品ページ）</h3>
 <p style="font-size:14px;margin:0 0 var(--s3)">スクリーンリーダーや検索エンジンが読み取るSumiのページのアウトラインを、ページの順に示します。</p>
@@ -767,6 +780,8 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="hrow"><span class="lv">H2</span><span>“FAQs”</span><span class="at">FAQ · 12.3画面目</span><span class="why">英語のままです。</span></div>
 <p style="font-size:13px;color:var(--text-2);margin:var(--s3) 0 0">関連：IA-11。</p>
 </div>
+<h3>カテゴリページ（ソファ）</h3>
+<p class="note" style="font-size:14px;color:var(--text-2)">この事例では対象外です。</p>
 </div>
 </section>
 <section id="journeys">
@@ -831,22 +846,22 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="sec-head"><div class="no">05</div><div><h2>ラベルの見直し：同じものには同じ名前を</h2>
 <p class="lead">「カートに入れる」は購入エリアでも追従する購入バーでも同じ名前で、これは強みです。一方、レビュー、FAQ、送料、メルマガの特典は、1つの商品ページの中に2〜3通りの呼び方があり、一部は英語のままです。この分析ですでに名前を提案しているもの（メニューの構成案、モック、指摘）はそれを使い、ここで新たに提案する名前には<i>（提案）</i>と付けています。</p></div></div>
 <div class="sec-body">
-<div class="scroll"><table class="tbl">
+<div class="scroll"><table class="tbl labels">
 <tr><th style="width:20%">対象</th><th>使われているラベル（場所）</th><th style="width:32%">統一案</th></tr>
-<tr><td>レビュー</td><td class="bad">「口コミ」（追従するページ内リンク）· 「カスタマーレビュー」（セクションのH2）· “reviews”（レビューウィジェット、“128 reviews”）</td><td>ページ内リンク、見出し、ウィジェットのすべてで「お客様の評価」（提案ページの見出し）</td></tr>
-<tr><td>FAQ</td><td class="bad">「Q&amp;A」（追従するページ内リンク）· 「よくある質問」（先頭のアコーディオン。メニューとフッターでは外部のヘルプセンターへのリンク ↗）· “FAQs”（セクションのH2）</td><td>すべて「よくある質問」にし、自社ドメイン内に置く（メニューの構成案、サポート）</td></tr>
-<tr><td>送料</td><td class="bad">“Free Shipping”（お知らせバー、価格のピル）· 送料無料（ページ内のほかの箇所）</td><td>日本語の「送料無料」に統一<i>（提案）</i></td></tr>
-<tr><td>メルマガの特典</td><td class="bad">“Newsletter登録で10%OFF”（お知らせバー）· 「10% OFF」（浮いているバブル、ポップアップ）· 3,000円OFF（購入エリアのメルマガのピル）</td><td>特典は1つ、表示は1か所に（ローカライズ・デザインレビュー、付録A2）。名前は「メルマガ登録」<i>（提案）</i></td></tr>
-<tr><td>比較</td><td class="bad">「モデルを比較」（セクションのH2）· メニューに項目なし · 追従するページ内リンクに含まれていない</td><td>メニューでは「ソファを比べる・選び方」、ページでは「3つのソファを比べる」（メニューの構成案、モック）</td></tr>
-<tr><td>メニューの各ソファ</td><td class="bad">Sumi / Ren / Mio（名前のみ）· NEW / SALE（タグ）</td><td>名前に座り心地・座面・価格を添える：“Sumi かため · ポケットコイル · 98,000円〜”（メニューの構成案）</td></tr>
-<tr><td>硬さ</td><td class="bad">4/5、2/5、3/5（「モデルを比較」）· 「ふんわりやわらか」が3回（ストーリー）· 「Specifications」の中</td><td>言葉で示す：かため / ふつう / やわらかめ（メニューの構成案）</td></tr>
-<tr><td>仕様とサイズ</td><td class="bad">「Specifications」（アコーディオン、英語）· 「サイズ」（アコーディオン）· 「詳細」（追従するページ内リンク）</td><td>日本語のグループ名：サイズと搬入 · 素材とお手入れ（構成案）</td></tr>
-<tr><td>配送・返品・保証</td><td class="bad">「返品保証」（ボタンの下のⓘ付きのピル）· 「お届け・返品」（アコーディオン）· 「保証」（アコーディオン、中身は1行）· 返品条件は外部のヘルプセンター</td><td>「配送・搬入」と「返品・保証」、自社ドメイン内に置く（メニューの構成案、サポート）</td></tr>
-<tr><td>購入前に試す</td><td class="bad">「ショールーム」（メニューのユーティリティのエリア）· 「生地サンプル無料」（ボタンの下のⓘ付きのピル）· 商品ページの本文にはない</td><td>「試す・見る」のグループに「ショールーム」と「生地サンプル（無料）」。安心ブロックに「ショールームで見る」（メニューの構成案、商品ページの構成案）</td></tr>
-<tr><td>ヘルプと問い合わせ</td><td class="bad">「よくある質問 ↗」（ユーティリティのエリア、フッター）· 「詳しくはヘルプセンターをご覧ください」（商品のFAQ）· 電話はフッターだけ · LINEはSNSのアイコンだけ · チャットボタン</td><td>「サポート」のグループの最後に「お問い合わせ（電話 · チャット · LINE）」（メニューの構成案）</td></tr>
-<tr><td>特長のタイル</td><td class="bad">“Height Adjustable”（4つのタイルのうち1つのH3）</td><td>ほかの3つと同じく日本語の見出しに。例：「高さ調節」<i>（提案）</i></td></tr>
-<tr><td>価格</td><td class="bad">「124,000円」（購入エリア、追従する購入バー、比較）</td><td>「124,000円（税込）」（N1）</td></tr>
-<tr><td>法定表記</td><td class="bad">「ご利用ガイド・規約」</td><td>標準のラベル「特定商取引法に基づく表記」（N5）</td></tr>
+<tr><td>レビュー</td><td>「口コミ」（追従するページ内リンク）· 「カスタマーレビュー」（セクションのH2）· “reviews”（レビューウィジェット、“128 reviews”）</td><td>ページ内リンク、見出し、ウィジェットのすべてで「お客様の評価」（提案ページの見出し）</td></tr>
+<tr><td>FAQ</td><td>「Q&amp;A」（追従するページ内リンク）· 「よくある質問」（先頭のアコーディオン。メニューとフッターでは外部のヘルプセンターへのリンク ↗）· “FAQs”（セクションのH2）</td><td>すべて「よくある質問」にし、自社ドメイン内に置く（メニューの構成案、サポート）</td></tr>
+<tr><td>送料</td><td>“Free Shipping”（お知らせバー、価格のピル）· 送料無料（ページ内のほかの箇所）</td><td>日本語の「送料無料」に統一<i>（提案）</i></td></tr>
+<tr><td>メルマガの特典</td><td>“Newsletter登録で10%OFF”（お知らせバー）· 「10% OFF」（浮いているバブル、ポップアップ）· 3,000円OFF（購入エリアのメルマガのピル）</td><td>特典は1つ、表示は1か所に（ローカライズ・デザインレビュー、付録A2）。名前は「メルマガ登録」<i>（提案）</i></td></tr>
+<tr><td>比較</td><td>「モデルを比較」（セクションのH2）· メニューに項目なし · 追従するページ内リンクに含まれていない</td><td>メニューでは「ソファを比べる・選び方」、ページでは「3つのソファを比べる」（メニューの構成案、モック）</td></tr>
+<tr><td>メニューの各ソファ</td><td>Sumi / Ren / Mio（名前のみ）· NEW / SALE（タグ）</td><td>名前に座り心地・座面・価格を添える：“Sumi かため · ポケットコイル · 98,000円〜”（メニューの構成案）</td></tr>
+<tr><td>硬さ</td><td>4/5、2/5、3/5（「モデルを比較」）· 「ふんわりやわらか」が3回（ストーリー）· 「Specifications」の中</td><td>言葉で示す：かため / ふつう / やわらかめ（メニューの構成案）</td></tr>
+<tr><td>仕様とサイズ</td><td>「Specifications」（アコーディオン、英語）· 「サイズ」（アコーディオン）· 「詳細」（追従するページ内リンク）</td><td>日本語のグループ名：サイズと搬入 · 素材とお手入れ（構成案）</td></tr>
+<tr><td>配送・返品・保証</td><td>「返品保証」（ボタンの下のⓘ付きのピル）· 「お届け・返品」（アコーディオン）· 「保証」（アコーディオン、中身は1行）· 返品条件は外部のヘルプセンター</td><td>「配送・搬入」と「返品・保証」、自社ドメイン内に置く（メニューの構成案、サポート）</td></tr>
+<tr><td>購入前に試す</td><td>「ショールーム」（メニューのユーティリティのエリア）· 「生地サンプル無料」（ボタンの下のⓘ付きのピル）· 商品ページの本文にはない</td><td>「試す・見る」のグループに「ショールーム」と「生地サンプル（無料）」。安心ブロックに「ショールームで見る」（メニューの構成案、商品ページの構成案）</td></tr>
+<tr><td>ヘルプと問い合わせ</td><td>「よくある質問 ↗」（ユーティリティのエリア、フッター）· 「詳しくはヘルプセンターをご覧ください」（商品のFAQ）· 電話はフッターだけ · LINEはSNSのアイコンだけ · チャットボタン</td><td>「サポート」のグループの最後に「お問い合わせ（電話 · チャット · LINE）」（メニューの構成案）</td></tr>
+<tr><td>特長のタイル</td><td>“Height Adjustable”（4つのタイルのうち1つのH3）</td><td>ほかの3つと同じく日本語の見出しに。例：「高さ調節」<i>（提案）</i></td></tr>
+<tr><td>価格</td><td>「124,000円」（購入エリア、追従する購入バー、比較）</td><td>「124,000円（税込）」（N1）</td></tr>
+<tr><td>法定表記</td><td>「ご利用ガイド・規約」</td><td>標準のラベル「特定商取引法に基づく表記」（N5）</td></tr>
 <tr><td>カートボタン</td><td class="ok">「カートに入れる」（購入エリア、追従する購入バー）</td><td>現行のまま</td></tr>
 </table></div>
 <p style="font-size:13px;color:var(--text-2)">関連：IA-6、IA-7、IA-8、IA-10、IA-11、IA-12、N1、N5。</p>
@@ -881,7 +896,7 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 </section>
 <section id="proposal">
 <div class="sec-head"><div class="no">07</div><div><h2>構成案</h2>
-<p class="lead">各ページに役割を1つずつ持たせ、判断と安心のための情報を前に出します。現在のテンプレートとブランドシステムの範囲内での、モックに向けた構造の方向性です。</p></div></div>
+<p class="lead">各ページに役割を1つずつ持たせ、判断と安心のための情報を前に出します。現在のテンプレートとブランドシステムの範囲内での、モックに向けた構造の方向性です。移動または新設したセクションは緑で示します。</p></div></div>
 <div class="sec-body">
 <div class="grid2">
 <div class="panel"><h3 class="h4">トップページ</h3><p style="font-size:14px;color:var(--text-2);margin:0">この事例では対象外：トップページはレビューしていません。</p></div>
@@ -889,9 +904,9 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 </div>
 <div class="panel" style="margin-top:16px"><h3 class="h4">商品ページ</h3><ol class="order" style="margin:0">
 <li><b>購入エリア</b><span>評価、商品名、どんな人に向いているかの1行、価格（税込）、硬さの尺度、幅と価格付きのサイズ、名前付きのカラー、搬入サイズ、返品保証の補足付きの購入ボタン</span></li>
-<li><b>安心ブロック</b><span>お届け目安、返品、保証、生地サンプル、支払い、チャット、「ショールームで見る」</span></li>
-<li><b>レビューのサマリー</b><span>評価分布、日本語の属性での絞り込み、厳選したレビュー</span></li>
-<li><b>比較（簡易）</b><span>RenとMioとの主な項目、比較表全体へのリンク</span></li>
+<li class="moved"><b>安心ブロック</b><span>お届け目安、返品、保証、生地サンプル、支払い、チャット、「ショールームで見る」<small class="why">新規：4か所に分かれた購入リスクの情報を、ボタンのそばにまとめる（IA-9）</small></span></li>
+<li class="moved"><b>レビューのサマリー</b><span>評価分布、日本語の属性での絞り込み、厳選したレビュー<small class="why">11.5画面目から前へ移動（IA-5）</small></span></li>
+<li class="moved"><b>比較（簡易）</b><span>RenとMioとの主な項目、比較表全体へのリンク<small class="why">11.1画面目から前へ移動（IA-1、IA-5）</small></span></li>
 <li><b>ブランドストーリーは1つ</b><span>各訴求は1回ずつ</span></li>
 <li><b>詳細（5グループ）とFAQ</b><span>サイズと搬入、素材とお手入れ、配送と返品、保証。購入に関する質問を先に</span></li>
 <li><b>2つ目の購入ポイント、関連商品</b><span>ストーリーの後</span></li></ol></div>
@@ -1088,8 +1103,6 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="lrow"><span>FAQ</span><span class="lrole"><i class="r-reassure"></i>Reassure</span><span class="track"><b class="r-reassure" style="left:93.63%;width:2.07%"></b></span><span class="lscr">12.3</span></div>
 <div class="lrow"><span>Footer</span><span class="lrole"><i class="r-navigate"></i>Navigate</span><span class="track"><b class="r-navigate" style="left:95.70%;width:4.30%"></b></span><span class="lscr">12.6</span></div>
 </div>
-<h3>Category page (ソファ)</h3>
-<p class="note" style="font-size:14px;color:var(--text-2)">Out of scope in this example.</p>
 <div class="layoutcard">
 <h3>Heading hierarchy (Sumi product page)</h3>
 <p style="font-size:14px;margin:0 0 var(--s3)">What a screen reader or search engine reads as the outline of the Sumi page, in page order.</p>
@@ -1103,6 +1116,8 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="hrow"><span class="lv">H2</span><span>“FAQs”</span><span class="at">FAQ · screen 12.3</span><span class="why">In English.</span></div>
 <p style="font-size:13px;color:var(--text-2);margin:var(--s3) 0 0">Related: IA-11.</p>
 </div>
+<h3>Category page (ソファ)</h3>
+<p class="note" style="font-size:14px;color:var(--text-2)">Out of scope in this example.</p>
 </div>
 </section>
 <section id="journeys">
@@ -1167,22 +1182,22 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 <div class="sec-head"><div class="no">05</div><div><h2>Label audit: one concept, one name</h2>
 <p class="lead"><span lang="ja">「カートに入れる」</span> has one name in the buy box and the sticky bar, a strength. Reviews, the FAQ, shipping and the newsletter offer don't: each has two or three names on one product page, some in English. Where this analysis already proposes a label (the proposed menu, the mock, the findings), the row uses it; labels marked <i>proposal</i> are new here.</p></div></div>
 <div class="sec-body">
-<div class="scroll"><table class="tbl">
+<div class="scroll"><table class="tbl labels">
 <tr><th style="width:20%">Concept</th><th>Labels found (where)</th><th style="width:32%">Proposed</th></tr>
-<tr><td>Reviews</td><td class="bad"><span lang="ja">「口コミ」</span> (sticky in-page anchors) · <span lang="ja">「カスタマーレビュー」</span> (section H2) · “reviews” (review widget, “128 reviews”)</td><td><span lang="ja">「お客様の評価」</span> in the anchors, the heading and the widget (the proposed page's heading)</td></tr>
-<tr><td>FAQ</td><td class="bad"><span lang="ja">「Q&amp;A」</span> (sticky in-page anchors) · <span lang="ja">「よくある質問」</span> (first accordion; menu and footer link ↗ to the external help centre) · “FAQs” (section H2)</td><td><span lang="ja">「よくある質問」</span> everywhere, on-domain (proposed menu, サポート)</td></tr>
-<tr><td>Shipping cost</td><td class="bad">“Free Shipping” (announcement bar, price pill) · 送料無料 (elsewhere on the page)</td><td><span lang="ja">「送料無料」</span>, in Japanese only <i>(proposal)</i></td></tr>
-<tr><td>Newsletter offer</td><td class="bad">“Newsletter登録で10%OFF” (announcement bar) · <span lang="ja">「10% OFF」</span> (floating bubble, pop-up) · 3,000円 OFF (newsletter pill in the buy box)</td><td>One offer in one placement (localisation review, A2), named <span lang="ja">「メルマガ登録」</span> <i>(proposal)</i></td></tr>
-<tr><td>Compare</td><td class="bad"><span lang="ja">「モデルを比較」</span> (section H2) · no menu entry · left out of the sticky anchors</td><td><span lang="ja">「ソファを比べる・選び方」</span> in the menu, <span lang="ja">「3つのソファを比べる」</span> on the page (proposed menu, mock)</td></tr>
-<tr><td>Each sofa in the menu</td><td class="bad">Sumi / Ren / Mio (names only) · NEW / SALE (tags)</td><td>Name with seat feel, seat and starting price: “Sumi かため · ポケットコイル · 98,000円〜” (proposed menu)</td></tr>
-<tr><td>Firmness</td><td class="bad">4/5, 2/5, 3/5 (<span lang="ja">「モデルを比較」</span>) · <span lang="ja">「ふんわりやわらか」</span> three times (story) · inside <span lang="ja">「Specifications」</span></td><td>In words: かため / ふつう / やわらかめ (proposed menu)</td></tr>
-<tr><td>Specs and size</td><td class="bad"><span lang="ja">「Specifications」</span> (accordion, in English) · <span lang="ja">「サイズ」</span> (accordion) · <span lang="ja">「詳細」</span> (sticky in-page anchor)</td><td>Japanese group names: サイズと搬入 · 素材とお手入れ (proposed structure)</td></tr>
-<tr><td>Delivery, returns, warranty</td><td class="bad"><span lang="ja">「返品保証」</span> (ⓘ pill under the button) · <span lang="ja">「お届け・返品」</span> (accordion) · <span lang="ja">「保証」</span> (accordion, one line) · return conditions on the external help centre</td><td><span lang="ja">「配送・搬入」</span> and <span lang="ja">「返品・保証」</span>, on-domain (proposed menu, サポート)</td></tr>
-<tr><td>Try before buying</td><td class="bad"><span lang="ja">「ショールーム」</span> (menu utility area) · <span lang="ja">「生地サンプル無料」</span> (ⓘ pill under the button) · nothing in the product page body</td><td>Group <span lang="ja">「試す・見る」</span> with <span lang="ja">「ショールーム」</span> and <span lang="ja">「生地サンプル（無料）」</span>; <span lang="ja">「ショールームで見る」</span> in the trust block (proposed menu and structure)</td></tr>
-<tr><td>Help and contact</td><td class="bad"><span lang="ja">「よくある質問 ↗」</span> (utility area, footer) · <span lang="ja">「詳しくはヘルプセンターをご覧ください」</span> (product FAQ) · phone in the footer only · LINE as a social icon · chat button</td><td>Group <span lang="ja">「サポート」</span>, ending in <span lang="ja">「お問い合わせ（電話 · チャット · LINE）」</span> (proposed menu)</td></tr>
-<tr><td>Feature tile</td><td class="bad">“Height Adjustable” (H3 on one of the four tiles)</td><td>A Japanese heading like the other three, such as <span lang="ja">「高さ調節」</span> <i>(proposal)</i></td></tr>
-<tr><td>Price</td><td class="bad"><span lang="ja">「124,000円」</span> (buy box, sticky bar, comparison)</td><td><span lang="ja">「124,000円（税込）」</span> (N1)</td></tr>
-<tr><td>Legal notice</td><td class="bad"><span lang="ja">「ご利用ガイド・規約」</span></td><td><span lang="ja">「特定商取引法に基づく表記」</span>, the standard label (N5)</td></tr>
+<tr><td>Reviews</td><td><span lang="ja">「口コミ」</span> (sticky in-page anchors) · <span lang="ja">「カスタマーレビュー」</span> (section H2) · “reviews” (review widget, “128 reviews”)</td><td><span lang="ja">「お客様の評価」</span> in the anchors, the heading and the widget (the proposed page's heading)</td></tr>
+<tr><td>FAQ</td><td><span lang="ja">「Q&amp;A」</span> (sticky in-page anchors) · <span lang="ja">「よくある質問」</span> (first accordion; menu and footer link ↗ to the external help centre) · “FAQs” (section H2)</td><td><span lang="ja">「よくある質問」</span> everywhere, on-domain (proposed menu, サポート)</td></tr>
+<tr><td>Shipping cost</td><td>“Free Shipping” (announcement bar, price pill) · 送料無料 (elsewhere on the page)</td><td><span lang="ja">「送料無料」</span>, in Japanese only <i>(proposal)</i></td></tr>
+<tr><td>Newsletter offer</td><td>“Newsletter登録で10%OFF” (announcement bar) · <span lang="ja">「10% OFF」</span> (floating bubble, pop-up) · 3,000円 OFF (newsletter pill in the buy box)</td><td>One offer in one placement (localisation review, A2), named <span lang="ja">「メルマガ登録」</span> <i>(proposal)</i></td></tr>
+<tr><td>Compare</td><td><span lang="ja">「モデルを比較」</span> (section H2) · no menu entry · left out of the sticky anchors</td><td><span lang="ja">「ソファを比べる・選び方」</span> in the menu, <span lang="ja">「3つのソファを比べる」</span> on the page (proposed menu, mock)</td></tr>
+<tr><td>Each sofa in the menu</td><td>Sumi / Ren / Mio (names only) · NEW / SALE (tags)</td><td>Name with seat feel, seat and starting price: “Sumi かため · ポケットコイル · 98,000円〜” (proposed menu)</td></tr>
+<tr><td>Firmness</td><td>4/5, 2/5, 3/5 (<span lang="ja">「モデルを比較」</span>) · <span lang="ja">「ふんわりやわらか」</span> three times (story) · inside <span lang="ja">「Specifications」</span></td><td>In words: かため / ふつう / やわらかめ (proposed menu)</td></tr>
+<tr><td>Specs and size</td><td><span lang="ja">「Specifications」</span> (accordion, in English) · <span lang="ja">「サイズ」</span> (accordion) · <span lang="ja">「詳細」</span> (sticky in-page anchor)</td><td>Japanese group names: サイズと搬入 · 素材とお手入れ (proposed structure)</td></tr>
+<tr><td>Delivery, returns, warranty</td><td><span lang="ja">「返品保証」</span> (ⓘ pill under the button) · <span lang="ja">「お届け・返品」</span> (accordion) · <span lang="ja">「保証」</span> (accordion, one line) · return conditions on the external help centre</td><td><span lang="ja">「配送・搬入」</span> and <span lang="ja">「返品・保証」</span>, on-domain (proposed menu, サポート)</td></tr>
+<tr><td>Try before buying</td><td><span lang="ja">「ショールーム」</span> (menu utility area) · <span lang="ja">「生地サンプル無料」</span> (ⓘ pill under the button) · nothing in the product page body</td><td>Group <span lang="ja">「試す・見る」</span> with <span lang="ja">「ショールーム」</span> and <span lang="ja">「生地サンプル（無料）」</span>; <span lang="ja">「ショールームで見る」</span> in the trust block (proposed menu and structure)</td></tr>
+<tr><td>Help and contact</td><td><span lang="ja">「よくある質問 ↗」</span> (utility area, footer) · <span lang="ja">「詳しくはヘルプセンターをご覧ください」</span> (product FAQ) · phone in the footer only · LINE as a social icon · chat button</td><td>Group <span lang="ja">「サポート」</span>, ending in <span lang="ja">「お問い合わせ（電話 · チャット · LINE）」</span> (proposed menu)</td></tr>
+<tr><td>Feature tile</td><td>“Height Adjustable” (H3 on one of the four tiles)</td><td>A Japanese heading like the other three, such as <span lang="ja">「高さ調節」</span> <i>(proposal)</i></td></tr>
+<tr><td>Price</td><td><span lang="ja">「124,000円」</span> (buy box, sticky bar, comparison)</td><td><span lang="ja">「124,000円（税込）」</span> (N1)</td></tr>
+<tr><td>Legal notice</td><td><span lang="ja">「ご利用ガイド・規約」</span></td><td><span lang="ja">「特定商取引法に基づく表記」</span>, the standard label (N5)</td></tr>
 <tr><td>Add to cart</td><td class="ok"><span lang="ja">「カートに入れる」</span> (buy box, sticky bar)</td><td>Keep</td></tr>
 </table></div>
 <p style="font-size:13px;color:var(--text-2)">Related: IA-6, IA-7, IA-8, IA-10, IA-11, IA-12, N1, N5.</p>
@@ -1217,7 +1232,7 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 </section>
 <section id="proposal">
 <div class="sec-head"><div class="no">07</div><div><h2>Proposed structure</h2>
-<p class="lead">Each page gets one job, and the decision and trust content moves forward. These are structural directions for the mock-up, within the current template and brand system.</p></div></div>
+<p class="lead">Each page gets one job, and the decision and trust content moves forward. These are structural directions for the mock-up, within the current template and brand system. Moved or new sections are in green.</p></div></div>
 <div class="sec-body">
 <div class="grid2">
 <div class="panel"><h3 class="h4">TOP PAGE</h3><p style="font-size:14px;color:var(--text-2);margin:0">Out of scope in this example: no homepage was reviewed.</p></div>
@@ -1225,9 +1240,9 @@ ol.order .why{display:block;font-size:12.5px;color:var(--text-2);margin-top:2px}
 </div>
 <div class="panel" style="margin-top:16px"><h3 class="h4">PRODUCT PAGE</h3><ol class="order" style="margin:0">
 <li><b>Buy box</b><span>Rating, name, one-line “who it's for”, price (税込), firmness scale, sizes with width and price, named colours, carry-in size, CTA with returns sub-line</span></li>
-<li><b>Trust block</b><span>Arrival estimate, returns, warranty, fabric samples, payment, chat, “see it in the showroom”</span></li>
-<li><b>Review summary</b><span>Histogram, attribute filters in Japanese, picked reviews</span></li>
-<li><b>Compare (short)</b><span>Key rows vs Ren and Mio, link to the full table</span></li>
+<li class="moved"><b>Trust block</b><span>Arrival estimate, returns, warranty, fabric samples, payment, chat, “see it in the showroom”<small class="why">New: purchase-risk information from four places, at the button (IA-9)</small></span></li>
+<li class="moved"><b>Review summary</b><span>Histogram, attribute filters in Japanese, picked reviews<small class="why">Moved forward from screen 11.5 (IA-5)</small></span></li>
+<li class="moved"><b>Compare (short)</b><span>Key rows vs Ren and Mio, link to the full table<small class="why">Moved forward from screen 11.1 (IA-1, IA-5)</small></span></li>
 <li><b>One brand story</b><span>Each claim once</span></li>
 <li><b>Details (5 groups) and FAQ</b><span>Size and carry-in, materials and care, delivery and returns, warranty; buying questions first</span></li>
 <li><b>Second purchase point, cross-sell</b><span>After the story</span></li></ol></div>
