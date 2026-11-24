@@ -6,7 +6,8 @@ measured against.
 
 ## Unreleased
 
-- `README.md` and `docs/how-to-use.md` (#80): the three stops are after the report and IA analysis, after the mock spec, and after the mock, as in `SKILL.md`. Packaging is no longer listed as a stop. Stop timings now follow `SKILL.md`'s reference table (report about 50 minutes, IA analysis about 55, mock about 20 per round).
+- `README.md` and `docs/how-to-use.md` (#79): the source project of a staging or local site is welcome, since it helps the analysis and the design-system extraction; the docs no longer say to withhold it. AIspy still reviews the pages as they render.
+- `README.md` and `docs/how-to-use.md` (#80): the three stops are after the report and IA analysis, after the mock spec, and after the mock, as on the website. Packaging (the index page and final package, when the review goes out) is no longer listed as a stop; `SKILL.md` Phase 3 still stops there, which is #83. Stop timings now follow `SKILL.md`'s reference table (report about 50 minutes, IA analysis about 55, mock about 20 per round).
 
 ## 0.8.11
 
