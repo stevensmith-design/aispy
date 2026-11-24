@@ -211,8 +211,9 @@ https://example.com をレビューして、改善案を出して。レビュー
 
 - **Live site:** the URL is enough. Better, also save each page in scope as HTML ("Save page as",
   complete) and connect the folder.
-- **Staging or local site:** give the served build or a reachable URL, never the source project
-  (the source holds the design intent and biases the review).
+- **Staging or local site:** give a reachable URL or the served build. The source project is
+  welcome too: it helps the analysis and the design-system extraction. The review still judges
+  the pages as they render.
 - **Logged-in areas:** you sign in yourself in the browser; the pack never handles credentials.
 - **Native app:** a simulator or emulator the session can see and operate, or exported screens per
   flow with the sweep done by hand. Tap areas are less exact than on the web.
