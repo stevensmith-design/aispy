@@ -223,7 +223,7 @@ https://example.com をレビューして、改善案を出して。レビュー
 
 Three stops, one review round from you at each:
 
-1. **Review report and IA analysis.** The deliverables step takes about 40 minutes from a finished review.
+1. **Review report and IA analysis.** The deliverables step takes about 1¾ hours from a finished review (about 50 minutes for the report and 55 for the IA analysis, for six pages).
 2. **Mock spec, then the mock.** About 25 minutes, including the spec and checks.
 3. **Packaging:** the index page and the final package.
 
@@ -243,7 +243,7 @@ skills/
                       deliverable outlines), templates/ (the four documents; see templates/README.md)
   review-scoping/     optional: inventory a big site and pick pages by type
   design-kit/         the six design-kit skills the pack calls (see design-kit/PROVENANCE.md)
-scripts/              optional helpers, not required steps
+scripts/              helpers the workflow runs (capture and evidence crops, build, checks)
   capture/            capture.mjs, extract-in-page.js, sweep-in-page.js, annotate.mjs (evidence crops)
                       (tests: node --test scripts/capture/test/)
   inventory/          inventory.mjs (sitemap, page types, broken URLs)

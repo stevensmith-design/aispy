@@ -26,7 +26,7 @@ shows the form and the level of detail; none of it is a fact to reuse.
    sample content; delete `data-sample` from the `<template>` once you have.
 4. **Evidence images:** for each finding, write an `annotate.mjs` spec (crop + marks) and
    generate the crops into `src/img/` (`…-a@2x.png`; assemble shows them at their crop size).
-   The check fails a finding whose evidence isn't an annotated crop or is taller than 700 px.
+   The check fails a finding whose evidence isn't an annotated crop or is taller than 520 px.
 5. **Page layout:** write `layout.json` from the measured section positions (the capture's sweep
    gives top and bottom of each section), then
    `node scripts/build/layout-bars.mjs layout.json > layout.html` and paste each card into
