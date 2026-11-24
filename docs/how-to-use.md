@@ -67,9 +67,12 @@ Then three stops, each with one review round from you:
 
 | Stop | What you get | Rough time |
 |---|---|---|
-| 1. Review | The review report and the IA analysis | Capture, research and the three lenses depend on scope; the deliverables step takes about 40 minutes from a finished review |
-| 2. Mock | A mock spec (one row per change) for your approval, then the current-vs-proposed mock | About 25 minutes, including the spec and checks |
-| 3. Packaging | The index page and the final package | Short |
+| 1. Review | The review report and the IA analysis | Capture, research and the three lenses depend on scope; then about 50 minutes for the report and 55 for the IA analysis (six pages) |
+| 2. Mock spec | One row per change, with the finding it answers, for your approval before the mock is built | Short |
+| 3. Mock | The current-vs-proposed mock of the agreed screen, with a note per change | About 20 minutes per round of changes |
+
+After your review of the mock, when the review is going out to others, AIspy builds the index
+page and the final package. That isn't a stop of its own.
 
 Times are from the test runs and vary with scope and the session. Everything is written to
 `review/<product>-<date>/` in the folder you connected, with a `run-log.md` of what ran, when and
