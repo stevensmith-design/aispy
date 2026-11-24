@@ -26,8 +26,8 @@ All four are styled in the reviewed product's own design system. AIspy replicate
 review made by a senior designer, and was tested against it (November 2026): its research and
 findings at least match the reference, and its documents follow the same form.
 
-It supports a reviewer; it doesn't replace one. It stops for your review after the report,
-again after the mock, and before packaging.
+It supports a reviewer; it doesn't replace one. It stops for your review three times: after the
+report and IA analysis, after the mock spec, and after the mock.
 
 ## Quick start
 
@@ -223,12 +223,14 @@ https://example.com をレビューして、改善案を出して。レビュー
 
 Three stops, one review round from you at each:
 
-1. **Review report and IA analysis.** The deliverables step takes about 40 minutes from a finished review.
-2. **Mock spec, then the mock.** About 25 minutes, including the spec and checks.
-3. **Packaging:** the index page and the final package.
+1. **Review report and IA analysis.** About 50 minutes for the report and 55 for the IA analysis
+   (six pages), after capture, research and the three lenses.
+2. **Mock spec:** one row per change, for your approval before the mock is built.
+3. **Mock:** current and proposed side by side. About 20 minutes per round of changes.
 
-Times are from the test runs. Everything is written to `review/<product>-<date>/` in the folder you
-connected, with a run log.
+After your review of the mock, it builds the index page and the final package; that isn't a stop
+of its own. Times are from the test runs. Everything is written to `review/<product>-<date>/` in
+the folder you connected, with a run log.
 
 **Accessibility:** it checks contrast, text size, tap targets, alt text, screen-reader strings,
 headings and motion. It is not a full WCAG audit, and it doesn't do a screen-reader or
