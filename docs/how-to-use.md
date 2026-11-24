@@ -15,9 +15,11 @@ as… → Webpage, Complete**) into one folder and connect that folder to the se
 works from the real markup and CSS, even when the site blocks scripted browsers.
 
 ### Staging or local site
-Give the **served build** (the built HTML, CSS and JS) or a URL the session can reach. Never give
-the source project: the source holds the design intent, and reading it biases the review towards
-what was meant rather than what a visitor actually gets.
+Give a URL the session can reach, or the **served build** (the built HTML, CSS and JS). The
+source project is welcome too, so connect it if you can. It helps the analysis (the IA analysis
+can read routes and screen names from it) and the design-system extraction (theme and token names
+help name the extracted tokens). AIspy still reviews the pages as they render: findings and token
+values come from what a visitor actually gets.
 
 ### Logged-in areas
 Sign in yourself in the browser the session uses. Use your own browser, connected through Claude

@@ -4,6 +4,10 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## Unreleased
+
+- `README.md` and `docs/how-to-use.md` (#79): the source project of a staging or local site is welcome, since it helps the analysis and the design-system extraction; the docs no longer say to withhold it. AIspy still reviews the pages as they render.
+
 ## 0.8.11
 
 - `SKILL.md` "Before you start", setup check only (#66, #67): when check 3 fails only because the capture helper isn't installed (no `scripts/capture/node_modules`), the agent offers to install it, in the same message as the agents question when both are open. After a yes, it runs `npm install` and `npx playwright install chromium` in the pack's `scripts/capture/` and re-runs check 3. A decline or a failed install means check 3 has failed, and the review stops as before. Checked with two setup-only Claude runs on fresh clones (approve: installs, all four checks pass; decline: stops). No Brolga comparison, since nothing after the setup check changed.
