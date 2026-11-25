@@ -31,6 +31,8 @@ report and IA analysis, after the mock spec, and after the mock.
 
 ## Quick start
 
+Step-by-step guide: https://stevensmith.dev/writing/ux-review-with-ai
+
 **From a clone or download** (nothing to install into Claude Code):
 
 1. **Get AIspy:** `git clone https://github.com/stevensmith-design/aispy.git`, or download the ZIP
@@ -57,6 +59,8 @@ Each review starts with a setup check (agents, the browser reaching your site, s
 kit) and stops if anything fails. The manual commands are under [Install](#install).
 
 ### クイックスタート（日本語）
+
+手順を追ったガイド：https://stevensmith.dev/ja/writing/ux-review-with-ai
 
 **クローンまたはダウンロードして使う**（Claude Code へのインストールは不要）
 
