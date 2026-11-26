@@ -26,10 +26,12 @@ All four are styled in the reviewed product's own design system. AIspy replicate
 review made by a senior designer, and was tested against it (November 2026): its research and
 findings at least match the reference, and its documents follow the same form.
 
-It supports a reviewer; it doesn't replace one. It stops for your review after the report,
-again after the mock, and before packaging.
+It supports a reviewer; it doesn't replace one. It stops for your review three times: after the
+report and IA analysis, after the mock spec, and after the mock.
 
 ## Quick start
+
+Step-by-step guide: https://stevensmith.dev/writing/ux-review-with-ai
 
 **From a clone or download** (nothing to install into Claude Code):
 
@@ -57,6 +59,8 @@ Each review starts with a setup check (agents, the browser reaching your site, s
 kit) and stops if anything fails. The manual commands are under [Install](#install).
 
 ### クイックスタート（日本語）
+
+手順を追ったガイド：https://stevensmith.dev/ja/writing/ux-review-with-ai
 
 **クローンまたはダウンロードして使う**（Claude Code へのインストールは不要）
 
@@ -211,8 +215,9 @@ https://example.com をレビューして、改善案を出して。レビュー
 
 - **Live site:** the URL is enough. Better, also save each page in scope as HTML ("Save page as",
   complete) and connect the folder.
-- **Staging or local site:** give the served build or a reachable URL, never the source project
-  (the source holds the design intent and biases the review).
+- **Staging or local site:** give a reachable URL or the served build. The source project is
+  welcome too: it helps the analysis and the design-system extraction. The review still judges
+  the pages as they render.
 - **Logged-in areas:** you sign in yourself in the browser; the pack never handles credentials.
 - **Native app:** a simulator or emulator the session can see and operate, or exported screens per
   flow with the sweep done by hand. Tap areas are less exact than on the web.
@@ -223,12 +228,14 @@ https://example.com をレビューして、改善案を出して。レビュー
 
 Three stops, one review round from you at each:
 
-1. **Review report and IA analysis.** The deliverables step takes about 1¾ hours from a finished review (about 50 minutes for the report and 55 for the IA analysis, for six pages).
-2. **Mock spec, then the mock.** About 25 minutes, including the spec and checks.
-3. **Packaging:** the index page and the final package.
+1. **Review report and IA analysis.** About 50 minutes for the report and 55 for the IA analysis
+   (six pages), after capture, research and the three lenses.
+2. **Mock spec:** one row per change, for your approval before the mock is built.
+3. **Mock:** current and proposed side by side. About 20 minutes per round of changes.
 
-Times are from the test runs. Everything is written to `review/<product>-<date>/` in the folder you
-connected, with a run log.
+When the review is going out to others, it then builds the index page and the final package;
+that isn't a stop of its own. Times are from the test runs. Everything is written to `review/<product>-<date>/` in
+the folder you connected, with a run log.
 
 **Accessibility:** it checks contrast, text size, tap targets, alt text, screen-reader strings,
 headings and motion. It is not a full WCAG audit, and it doesn't do a screen-reader or

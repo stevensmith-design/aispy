@@ -4,6 +4,12 @@ Versions before 0.7.0 were private; their notes are kept here as the design hist
 reference review" is the senior designer's review the pack was built to replicate and is
 measured against.
 
+## Unreleased
+
+- `README.md` and `docs/how-to-use.md` (#79): the source project of a staging or local site is welcome, since it helps the analysis and the design-system extraction; the docs no longer say to withhold it. AIspy still reviews the pages as they render.
+- `README.md` and `docs/how-to-use.md` (#80): the three stops are after the report and IA analysis, after the mock spec, and after the mock, as on the website. Packaging (the index page and final package, when the review goes out) is no longer listed as a stop; `SKILL.md` Phase 3 still stops there, which is #83. Stop timings now follow `SKILL.md`'s reference table (report about 50 minutes, IA analysis about 55, mock about 20 per round).
+- `SKILL.md` steps 1, 3 and 5, and `references/deliverables.md` (#85): when the team supplies brand guidelines or a design system, however partial, the review still extracts the live site and merges the two: specified values win, gaps are filled from the site, and nothing is guessed. The UI lens checks the screens against the specified values only. Scattered drift (one role, several values) is an ordinary finding; a specified value the site replaces everywhere with one other value becomes a question for the client ("which is current?"), and the site's value stays in the theme until they answer. The report lists what the guidelines don't cover in A3. An earlier AIspy extraction still skips steps 2–3. Reviews without supplied guidelines are unchanged. Checked with a targeted run (steps 1–3 and the UI lens) on a fictional brand with a partial guideline; part of the #73 comparison-run batch.
+
 ## 0.8.11
 
 - `SKILL.md` "Before you start", setup check only (#66, #67): when check 3 fails only because the capture helper isn't installed (no `scripts/capture/node_modules`), the agent offers to install it, in the same message as the agents question when both are open. After a yes, it runs `npm install` and `npx playwright install chromium` in the pack's `scripts/capture/` and re-runs check 3. A decline or a failed install means check 3 has failed, and the review stops as before. Checked with two setup-only Claude runs on fresh clones (approve: installs, all four checks pass; decline: stops). No Brolga comparison, since nothing after the setup check changed.
