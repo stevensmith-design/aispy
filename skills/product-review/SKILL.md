@@ -97,7 +97,8 @@ the key-task page. From that, propose a default for each question and ask them t
 - **priority device** (mobile for consumer products, desktop for B2B tools)
 - review type: general, localisation or both (localisation if the audience's market differs from
   the company's home market)
-- official logo and fonts, analytics or A/B results, research, constraints and deadlines
+- official logo and fonts, brand guidelines or a design system (tokens, a Figma library or a PDF,
+  however partial), analytics or A/B results, research, constraints and deadlines
 - output language, whether a second-language version is needed (and when), and who gives
   feedback and how quickly
 - **how the deliverables should name the reviewer:** a person, an organisation, both, or neither.
@@ -138,12 +139,15 @@ use them as they are, and only check live what a document needs.
 
 **Review only.** If the request is for the findings without documents, stop after step 6: give
 the synthesis (every finding with its number, priority, perspective, where it occurs and the
-evidence, plus the IA findings and task-path verdicts) in the reply, and save it as
-`05-synthesis.md`.
+evidence, plus the IA findings, task-path verdicts and any questions for the client) in the
+reply, and save it as `05-synthesis.md`.
 
-**Supplied extraction.** If captures and a design system are supplied (from an earlier session or
-another person), use them as they are and skip steps 2–3. Only do the parts that are missing,
-such as the sweep note or a fresh first-load capture, and only when a finding needs them.
+**Supplied extraction.** If captures and a design system extracted from the site are supplied
+(from an earlier session or another person), use them as they are and skip steps 2–3. Only do
+the parts that are missing, such as the sweep note or a fresh first-load capture, and only when a
+finding needs them. Brand guidelines or a design system the team made are not an extraction:
+step 3 still runs (see "Supplied guidelines"). If both are supplied, don't extract again: merge
+the team's guidelines into a copy of the supplied extraction as "Supplied guidelines" describes.
 
 ### 2 · Capture
 Use the browser (or `scripts/capture/capture.mjs` when the shell can reach the site). For a native
@@ -174,6 +178,22 @@ one used most and list the others as drift. Theme or custom-property names help 
 but don't decide its value. It is the visual language of every deliverable. Logo: the official file if supplied; otherwise the site's own SVG, labelled "taken
 from the site". If the request is only for extraction, stop here.
 
+**Supplied guidelines.** If the team supplied brand guidelines or a design system, extract the
+site as above anyway, then merge: take every value the supplied material states (marked
+"specified" in `DESIGN.md`, with where it says so; `tokens.json` keeps its usual shape), and fill
+only the gaps from the extraction (still "extracted, not approved"). Compare by role, one kind
+of element at a time (buttons, links, body text). Where every element in a role has the same
+other value, keep the site's value for now, marked in `DESIGN.md` "site value; guidelines say X:
+question for the client" (step 5); buttons that follow the guidelines and links that all use one
+other value are one match and one question. Never fill a gap by guessing what the guidelines
+meant. A specified value that fails a contrast check is still taken; where the site uses it, that
+is an accessibility finding. Record the validator's FAIL on it as expected; the deliverables'
+theme uses the nearest passing shade, noted in `theme.css`. List in `DESIGN.md`, under
+"Differences from the guidelines" (separate from the extraction's drift list), what the
+guidelines don't cover and every role where the site doesn't use the specified value, with what
+it uses instead and whether it is consistent (every element in the role, one other value),
+scattered (several values in one role) or not seen on the pages in scope (not checked).
+
 ### 4 · Research
 Market context and official statistics (the **newest edition**, cited with its date); the
 regulation and conventions that apply to the category and market (not legal advice); and **4–6
@@ -196,7 +216,12 @@ look for, with each lens's own categories):
 Each lens investigates everything in scope and reports all its findings, strongest first; the
 ranking is for the summary, not a limit on what gets looked at. For a localisation review, each
 lens also applies the checklist's market notes. If the person supplies their own review
-guideline, give it to every lens as well.
+guideline, give it to every lens as well. With brand guidelines or a design system supplied
+(step 3; not the review guideline above), `ui-design-review` also checks the screens against the
+specified values only, never the gaps. There, scattered drift (several values in one role) is an
+ordinary finding, grouped and prioritised like any other. Where every element in a role has the
+same other value, the guidelines may be out of date: make it a question for the client ("which
+is current?"), not a finding.
 
 Then a short synthesis that accounts for **every lens finding** (kept as #n, merged into #n, or
 dropped with a reason), so nothing disappears unnoticed, and records each of the nine review
