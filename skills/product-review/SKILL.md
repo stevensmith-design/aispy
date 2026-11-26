@@ -139,14 +139,15 @@ use them as they are, and only check live what a document needs.
 
 **Review only.** If the request is for the findings without documents, stop after step 6: give
 the synthesis (every finding with its number, priority, perspective, where it occurs and the
-evidence, plus the IA findings and task-path verdicts) in the reply, and save it as
-`05-synthesis.md`.
+evidence, plus the IA findings, task-path verdicts and any questions for the client) in the
+reply, and save it as `05-synthesis.md`.
 
 **Supplied extraction.** If captures and a design system extracted from the site are supplied
 (from an earlier session or another person), use them as they are and skip steps 2–3. Only do
 the parts that are missing, such as the sweep note or a fresh first-load capture, and only when a
 finding needs them. Brand guidelines or a design system the team made are not an extraction:
-step 3 still runs (see "Supplied guidelines").
+step 3 still runs (see "Supplied guidelines"). If both are supplied, don't extract again: merge
+the team's guidelines into a copy of the supplied extraction as "Supplied guidelines" describes.
 
 ### 2 · Capture
 Use the browser (or `scripts/capture/capture.mjs` when the shell can reach the site). For a native
@@ -180,12 +181,17 @@ from the site". If the request is only for extraction, stop here.
 **Supplied guidelines.** If the team supplied brand guidelines or a design system, extract the
 site as above anyway, then merge: take every value the supplied material states (marked
 "specified" in `DESIGN.md`, with where it says so; `tokens.json` keeps its usual shape), and fill
-only the gaps from the extraction (still "extracted, not approved"). Where every use of a
-specified value (every button, every link) has the same other value on the site, keep the site's
-value for now: it goes to the client as a question (step 5). Never fill a gap by guessing what
-the guidelines meant. List in `DESIGN.md` what the guidelines don't cover and every specified
-value the site doesn't use, with what it uses instead and whether it is consistent (every use,
-one other value) or scattered (several values for one role).
+only the gaps from the extraction (still "extracted, not approved"). Compare by role, one kind
+of element at a time (buttons, links, body text). Where every element in a role has the same
+other value, keep the site's value for now, marked "site value; guidelines say X: question for
+the client" (step 5); buttons that follow the guidelines and links that all use one other value
+are one match and one question. Never fill a gap by guessing what the guidelines meant. A
+specified value that fails a contrast check is still taken; where the site uses it, that is an
+accessibility finding. List in `DESIGN.md`, under "Differences from the guidelines" (separate
+from the extraction's drift list), what the guidelines don't cover and every specified value the
+site doesn't use, with what it uses instead and whether it is consistent (every element in the
+role, one other value), scattered (several values in one role) or not seen on the pages in scope
+(not checked).
 
 ### 4 · Research
 Market context and official statistics (the **newest edition**, cited with its date); the
@@ -209,11 +215,12 @@ look for, with each lens's own categories):
 Each lens investigates everything in scope and reports all its findings, strongest first; the
 ranking is for the summary, not a limit on what gets looked at. For a localisation review, each
 lens also applies the checklist's market notes. If the person supplies their own review
-guideline, give it to every lens as well. With supplied guidelines (step 3), `ui-design-review`
-also checks the screens against the specified values only, never the gaps. Scattered drift (one
-role, several values) is an ordinary finding, grouped and prioritised like any other. Where every
-use of a specified value has the same other value, the guidelines may be out of date: make it a
-question for the client ("which is current?"), not a finding.
+guideline, give it to every lens as well. With brand guidelines or a design system supplied
+(step 3; not the review guideline above), `ui-design-review` also checks the screens against the
+specified values only, never the gaps. There, scattered drift (several values in one role) is an
+ordinary finding, grouped and prioritised like any other. Where every element in a role has the
+same other value, the guidelines may be out of date: make it a question for the client ("which
+is current?"), not a finding.
 
 Then a short synthesis that accounts for **every lens finding** (kept as #n, merged into #n, or
 dropped with a reason), so nothing disappears unnoticed, and records each of the nine review
