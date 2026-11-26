@@ -408,7 +408,8 @@ finding it answers, and why this design should work better.
    - the current side matches the live site
 
 ## Phase 3: packaging (when it goes to a client)
-Only after the person's review of the mock, and **stop for their review before it goes out**.
+Only after the person's review of the mock. It isn't a stop of its own: build it, run the checks
+below, then hand over the package with a short note of what's in it.
 - **Index page** (`templates/index.html`, `references/deliverables.md`): the opportunity in one sentence, a card per
   document, the main conclusions, how to read the numbers and colours, how it was made in plain
   language (human-led, who led it; don't overclaim or hide the AI's part), and what it doesn't
