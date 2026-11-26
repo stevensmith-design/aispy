@@ -133,12 +133,14 @@ nav; a DRAFT label until the client has seen it. Rendered and checked at 1440 an
 8. **Next steps** and **questions for the client.** Next steps as a phased table: phase, the
    findings it covers, the type of change (copy, content, UI, structure) and the **A/B test
    hypothesis** with its metric ("if the price shows 税込 and every payment method, mobile
-   add-to-cart rises").
+   add-to-cart rises"). With supplied guidelines, the questions include each value where the whole
+   site consistently differs from them ("which is current?").
 9. **Appendix:**
    - A1 accessibility, in one place (WCAG 2.2 AA, plus the local standard where one exists, e.g.
      JIS X 8341-3)
    - A2 structure and polish (the Low items)
-   - A3 scope limits: what wasn't assessed and why
+   - A3 scope limits: what wasn't assessed and why; with supplied guidelines, one line on what
+     they don't cover (those values were taken from the site, not checked)
    - A4 method: how it was made, which agents and checks ran
    - A5 sources, with dates
 
