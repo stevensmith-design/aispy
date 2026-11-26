@@ -76,14 +76,14 @@ Don't polish before the person has seen it.
   name the folder from the site's URL and keep that name for the whole run. Keep a short
   `run-log.md`: what ran, what didn't, which agents were started (with what input), the start and
   end time of each phase (read from the clock when it happens, never estimated afterwards), and
-  anything dropped between drafts, with the reason. **Before every stop, the deliverables must be in
-  that folder**, not only in your own workspace.
+  anything dropped between drafts, with the reason. **Before every stop and before the handover,
+  the deliverables must be in that folder**, not only in your own workspace.
 - **Don't** add to cart, enter personal or payment data, sign in for the person, or publish
   anything. For logged-in areas, the person signs in in the browser themselves. Never use
   another client's name, screenshots or content in any output.
-- **Versions.** Before each stop, compare the new version of every document with the previous
-  one; nothing is dropped without a stated reason. Superseded versions go to `_archive/`, never
-  deleted.
+- **Versions.** Before each stop and before the handover, compare the new version of every
+  document with the previous one; nothing is dropped without a stated reason. Superseded versions
+  go to `_archive/`, never deleted.
 
 ## Phase 1: review, report and IA analysis
 
@@ -199,14 +199,15 @@ Market context and official statistics (the **newest edition**, cited with its d
 regulation and conventions that apply to the category and market (not legal advice); and **4–6
 benchmarks read live**: the closest local competitor, the category leader, 1–2 premium or
 design-led brands, and one global brand with a well-localised site (for a general review: the
-closest competitors and the category leader). Measure the same things on each (type values, where
-delivery, price and payment information sits, review placement, menu structure, page length in
-screens) and screenshot them on the priority device. Cover the user behaviour the findings will
-lean on, wherever official or large-sample survey data exists: delivery (expected arrival date,
-delivery options), payment methods, how reviews are used, and the trust signals people check
-before buying. Where a topic has no usable data, say so rather than filling it with weaker
-sources. For each pattern you'd recommend copying,
-note why that brand does it and whether it transfers. Write it up as `04-research.md`: market
+closest competitors and the category leader). Cover the user behaviour the findings are likely to
+lean on, wherever official or large-sample survey data exists: for a shop, delivery (expected
+arrival date, delivery options), payment methods, how reviews are used, and the trust signals
+people check before buying; for other products, the equivalent decisions. Where one of these
+topics has no usable data, say so in one line rather than filling it with weaker sources.
+Measure the same things on each benchmark (type values, where delivery, price and payment
+information sits, review placement, menu structure, page length in screens) and screenshot them
+on the priority device. For each pattern you'd recommend copying, note why that brand does it
+and whether it transfers. Write it up as `04-research.md`: market
 evidence, standards (e.g. typography), the measured benchmark tables, implications, sources.
 
 ### 5 · Review: three lenses in parallel
@@ -230,9 +231,12 @@ is current?"), not a finding.
 Then a short synthesis that accounts for **every lens finding** (kept as #n, merged into #n, or
 dropped with a reason), so nothing disappears unnoticed, and records each of the nine review
 categories as covered, partly covered or not covered, and why. The lens reports stay as written,
-one file per lens; only the synthesis combines them, and each backlog item names its source lens.
-Where lenses disagree, record both views and put the disagreement to the person at the first stop
-rather than picking one (as `design-refine` asks). One numbered backlog, mixed severities
+one file per lens (`05-lens-ui.md`, `05-lens-ia.md`, `05-lens-refine.md`); only the synthesis
+combines them, and each backlog item names its source lens or lenses. Where lenses disagree on
+whether something is a problem or on its priority band, record both views in the synthesis and
+don't settle it by majority (as `design-refine` asks): the report uses the synthesis's call,
+marked as contested in `05-synthesis.md`, and the disagreement goes to the person at the first
+stop. One numbered backlog, mixed severities
 split, prioritised by this rule:
 - **High:** weakens the key task on the priority device, or directly undermines a goal the
   client stated (for example a premium brand feel), as seen by the target users
@@ -290,7 +294,8 @@ what each analysis component must lead to.
    `--localisation` for a
    localisation review and `--forbid` listing every person or organisation name you can see in
    your context that wasn't supplied at intake and isn't one this run cites (its benchmarks,
-   cross-check brands and sources). Fix until it passes.
+   cross-check brands and sources; never another client's: the rule above still applies). Fix
+   until it passes.
 You may add a section or change the order when the product calls for it; note each change and
 the reason in the run log. Never drop a required section: keep it and say what's missing.
 - **Report:** the verdict title, about this review, summary by perspective with top priorities and
@@ -327,7 +332,8 @@ checking agent re-checks only those items. **If either file is missing, the docu
 ready for review.**
 
 Put the files in the folder, then give the person the report, the IA analysis, the open client
-questions and a proposed mock area with the reason. **Stop for their review.** Always stop here,
+questions, any lens disagreements, and a proposed mock area with the reason. **Stop for their
+review.** Always stop here,
 even if the request also asks for the mock and even if nobody is there to answer: the mock area
 is the person's decision, and building it on an unreviewed report wastes the work if the report
 changes.
@@ -349,7 +355,8 @@ finding it answers, and why this design should work better.
    the person the table and wait: correcting a table is cheap, correcting a built mock is slow.
    Approval is an answer to this table. A general "go ahead", "make the mock" or approval of the
    report doesn't approve the spec: show the table and ask about it. Build without an answer
-   only if the person said up front that they won't be there, and note that in the run log.
+   only if the person said beforehand (at intake or at an earlier stop) that they won't be there,
+   and note that in the run log.
    Red numbered markers are
    findings from the report; dark "D" markers are design proposals (lower priority).
    If a finished reference mock was supplied, it is the minimum bar: match or beat its quality
