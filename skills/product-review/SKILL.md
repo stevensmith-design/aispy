@@ -183,15 +183,16 @@ site as above anyway, then merge: take every value the supplied material states 
 "specified" in `DESIGN.md`, with where it says so; `tokens.json` keeps its usual shape), and fill
 only the gaps from the extraction (still "extracted, not approved"). Compare by role, one kind
 of element at a time (buttons, links, body text). Where every element in a role has the same
-other value, keep the site's value for now, marked "site value; guidelines say X: question for
-the client" (step 5); buttons that follow the guidelines and links that all use one other value
-are one match and one question. Never fill a gap by guessing what the guidelines meant. A
-specified value that fails a contrast check is still taken; where the site uses it, that is an
-accessibility finding. List in `DESIGN.md`, under "Differences from the guidelines" (separate
-from the extraction's drift list), what the guidelines don't cover and every specified value the
-site doesn't use, with what it uses instead and whether it is consistent (every element in the
-role, one other value), scattered (several values in one role) or not seen on the pages in scope
-(not checked).
+other value, keep the site's value for now, marked in `DESIGN.md` "site value; guidelines say X:
+question for the client" (step 5); buttons that follow the guidelines and links that all use one
+other value are one match and one question. Never fill a gap by guessing what the guidelines
+meant. A specified value that fails a contrast check is still taken; where the site uses it, that
+is an accessibility finding. Record the validator's FAIL on it as expected; the deliverables'
+theme uses the nearest passing shade, noted in `theme.css`. List in `DESIGN.md`, under
+"Differences from the guidelines" (separate from the extraction's drift list), what the
+guidelines don't cover and every role where the site doesn't use the specified value, with what
+it uses instead and whether it is consistent (every element in the role, one other value),
+scattered (several values in one role) or not seen on the pages in scope (not checked).
 
 ### 4 · Research
 Market context and official statistics (the **newest edition**, cited with its date); the
