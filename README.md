@@ -250,7 +250,7 @@ skills/
                       deliverable outlines), templates/ (the four documents; see templates/README.md)
   review-scoping/     optional: inventory a big site and pick pages by type
   design-kit/         the six design-kit skills the pack calls (see design-kit/PROVENANCE.md)
-scripts/              optional helpers, not required steps
+scripts/              helpers the workflow runs (capture and evidence crops, build, checks)
   capture/            capture.mjs, extract-in-page.js, sweep-in-page.js, annotate.mjs (evidence crops)
                       (tests: node --test scripts/capture/test/)
   inventory/          inventory.mjs (sitemap, page types, broken URLs)
