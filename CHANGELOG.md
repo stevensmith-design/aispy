@@ -22,7 +22,7 @@ measured against.
 - Community files (#75, #77): a pull request template, bug and idea issue forms, and a code of conduct.
 - `README.md` (#84): Quick start links the step-by-step guide (EN and JA).
 
-The workflow changes above (#46, #47, #11, #25, #83, #72) were checked with one full review of the Brolga site on the #78 branch, compared stage by stage with `examples/brolga/` (#73): no regression in findings, documents, research, lenses or mock, and the three stops as intended. The one regression it found (the IA analysis kept the IA lens's own ratings where lenses disagreed) is fixed in this release.
+The workflow changes above (#46, #47, #11, #25, #83, #72) were checked with one full review of the Brolga site on the #78 branch, compared stage by stage with `examples/brolga/` (#73): findings, research, lenses and timing were as good or better, with minor, non-blocking regressions only, and the three stops were as intended. The one the kit caused (the IA analysis kept the IA lens's own ratings where lenses disagreed) is fixed in this release.
 
 ## 0.8.11
 
