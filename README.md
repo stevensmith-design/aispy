@@ -284,7 +284,7 @@ demonstrated gap, or when a run shows it beats the reference on quality or cost.
 
 ## Status
 
-0.8.11. See [CHANGELOG.md](CHANGELOG.md) for the history and the
+0.8.12. See [CHANGELOG.md](CHANGELOG.md) for the history and the
 [open issues](https://github.com/stevensmith-design/aispy/issues) for what's next.
 
 ## Licence

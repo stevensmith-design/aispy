@@ -13,7 +13,7 @@ body:
     attributes:
       label: AIspy version
       description: The `version:` line in `skills/product-review/SKILL.md`, or the release tag.
-      placeholder: 0.8.11
+      placeholder: "for example 0.8.12"
     validations:
       required: true
   - type: input
