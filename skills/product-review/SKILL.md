@@ -234,9 +234,9 @@ categories as covered, partly covered or not covered, and why. The lens reports 
 one file per lens (`05-lens-ui.md`, `05-lens-ia.md`, `05-lens-refine.md`); only the synthesis
 combines them, and each backlog item names its source lens or lenses. Where lenses disagree on
 whether something is a problem or on its priority band, record both views in the synthesis and
-don't settle it by majority (as `design-refine` asks): the report uses the synthesis's call,
-marked as contested in `05-synthesis.md`, and the disagreement goes to the person at the first
-stop. One numbered backlog, mixed severities
+don't settle it by majority (as `design-refine` asks): the report and the IA analysis both use
+the synthesis's call, marked as contested in `05-synthesis.md`, and the disagreement goes to the
+person at the first stop. One numbered backlog, mixed severities
 split, prioritised by this rule:
 - **High:** weakens the key task on the priority device, or directly undermines a goal the
   client stated (for example a premium brand feel), as seen by the target users
